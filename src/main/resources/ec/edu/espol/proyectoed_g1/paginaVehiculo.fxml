@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="850.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" onMouseClicked="#pagPrincipalClick" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imagenes/logo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="#e0252d" strokeType="OUTSIDE" strokeWidth="0.0" text="CarMatch" wrappingWidth="150.08245849609375">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="28.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="214.0" style="-fx-background-color: #e0252d; -fx-background-radius: 40;" text="Inicio" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <VBox prefHeight="700.0" prefWidth="208.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="208.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UsrName" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="22.0" prefWidth="1080.0" spacing="825.0">
+               <children>
+                  <Text fx:id="carroNombre" fill="#222222" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="carroPrecio" fill="#222222" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="1080.0" spacing="10.0">
+               <children>
+                  <Label fx:id="anioAuto" style="-fx-border-radius: 5; -fx-padding: 5; -fx-border-color: #727272; -fx-border-width: 1;" text="Label" textFill="#727272">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="kmAuto" text="Label" textFill="#727272" />
+                  <Label text="." />
+                  <Label text="Label" textFill="#727272" />
+               </children>
+            </HBox>
+            <ImageView fx:id="imgPrin" fitHeight="516.0" fitWidth="976.0" pickOnBounds="true" preserveRatio="true" />
+            <HBox alignment="CENTER" prefHeight="86.0" prefWidth="976.0" spacing="1.0">
+               <children>
+                  <ScrollPane fx:id="carImgs" prefHeight="75.0" prefWidth="806.0" style="-fx-background-color: #FFFFFF;" />
+                  <Button fx:id="preBoton" mnemonicParsing="false" prefHeight="85.0" prefWidth="85.0" style="-fx-background-color: #0000; -fx-border-color: #727272;" text="&lt;" textFill="#727272">
+                     <font>
+                        <Font name="Arial Black" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="nextBoton" mnemonicParsing="false" prefHeight="85.0" prefWidth="85.0" style="-fx-background-color: #0000; -fx-border-color: #727272;" text="&gt;" textFill="#727272">
+                     <font>
+                        <Font name="Arial Black" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <padding>
+      <Insets left="50.0" right="50.0" />
+   </padding>
+</BorderPane>
