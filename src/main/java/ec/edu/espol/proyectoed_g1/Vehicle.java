@@ -21,9 +21,10 @@ public class Vehicle {
     private String ubiAct;
     private Usuario dueno;
     private boolean esVendido;
-    private DoublyLinkedList<VehicleManagement> HistReparacion; 
-    
-    public Vehicle(Precio precio, String marca, String modelo, int year, float km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, DoublyLinkedList<VehicleManagement> HistReparacion) {
+    private DoublyLinkedList<VehicleManagement> HistReparacion;
+    private tipoVehiculo tipovehiculo;
+
+    public Vehicle(Precio precio, String marca, String modelo, int year, float km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, DoublyLinkedList<VehicleManagement> HistReparacion, tipoVehiculo tipovehiculo) {
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;
@@ -35,6 +36,7 @@ public class Vehicle {
         this.dueno = dueno;
         this.esVendido = esVendido;
         this.HistReparacion = HistReparacion;
+        this.tipovehiculo = tipovehiculo;
     }
 
     public Precio getPrecio() {
@@ -101,12 +103,36 @@ public class Vehicle {
         this.ubiAct = ubiAct;
     }
 
+    public Usuario getDueno() {
+        return dueno;
+    }
+
+    public void setDueno(Usuario dueno) {
+        this.dueno = dueno;
+    }
+
+    public boolean isEsVendido() {
+        return esVendido;
+    }
+
+    public void setEsVendido(boolean esVendido) {
+        this.esVendido = esVendido;
+    }
+
     public DoublyLinkedList<VehicleManagement> getHistReparacion() {
         return HistReparacion;
     }
 
     public void setHistReparacion(DoublyLinkedList<VehicleManagement> HistReparacion) {
         this.HistReparacion = HistReparacion;
+    }
+
+    public tipoVehiculo getTipovehiculo() {
+        return tipovehiculo;
+    }
+
+    public void setTipovehiculo(tipoVehiculo tipovehiculo) {
+        this.tipovehiculo = tipovehiculo;
     }
     
     public void venderVehiculo(){
