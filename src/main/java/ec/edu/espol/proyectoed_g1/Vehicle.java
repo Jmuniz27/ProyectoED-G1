@@ -21,8 +21,7 @@ public class Vehicle {
     private String ubiAct;
     private Usuario dueno;
     private boolean esVendido;
-    private DoublyLinkedList<VehicleManagement> HistReparacion;
-    private 
+    private DoublyLinkedList<VehicleManagement> HistReparacion; 
     
     public Vehicle(Precio precio, String marca, String modelo, int year, float km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, DoublyLinkedList<VehicleManagement> HistReparacion) {
         this.precio = precio;
