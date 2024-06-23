@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InicioController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="controllers.InicioController">
+   <children>
+      <Text fill="#bf0000" layoutX="65.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a CarMatch" textAlignment="CENTER" wrappingWidth="470.046875">
+         <font>
+            <Font name="Gill Sans Bold" size="36.0" />
+         </font>
+      </Text>
+      <Rectangle fx:id="buscarVehiculo" arcHeight="5.0" arcWidth="5.0" fill="#eae8e7" height="166.0" layoutX="33.0" layoutY="151.0" stroke="#dadada" strokeType="INSIDE" style="-fx-blend-mode: #EAE8E7;" width="158.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eae8e7" height="166.0" layoutX="221.0" layoutY="151.0" stroke="#dadada" strokeType="INSIDE" width="158.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eae8e7" height="166.0" layoutX="409.0" layoutY="151.0" stroke="#dadada" strokeType="INSIDE" width="158.0" />
+   </children>
 </AnchorPane>
