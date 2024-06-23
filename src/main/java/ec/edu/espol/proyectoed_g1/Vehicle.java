@@ -4,12 +4,14 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
+
 /**
  *
  * @author creditos gonzalez
  */
 public class Vehicle {
-    private float precio;
+    private Precio precio;
     private String marca;
     private String modelo;
     private int year;
@@ -17,5 +19,100 @@ public class Vehicle {
     private String transmisión;
     private float peso;
     private String ubiAct;
-    private LinkedList<VehicleManagement> HistReparacion;
+    private Usuario dueno;
+    private boolean esVendido;
+    private DoublyLinkedList<VehicleManagement> HistReparacion;
+    private 
+    
+    public Vehicle(Precio precio, String marca, String modelo, int year, float km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, DoublyLinkedList<VehicleManagement> HistReparacion) {
+        this.precio = precio;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.year = year;
+        this.km = km;
+        this.transmisión = transmisión;
+        this.peso = peso;
+        this.ubiAct = ubiAct;
+        this.dueno = dueno;
+        this.esVendido = esVendido;
+        this.HistReparacion = HistReparacion;
+    }
+
+    public Precio getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Precio precio) {
+        this.precio = precio;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public float getKm() {
+        return km;
+    }
+
+    public void setKm(float km) {
+        this.km = km;
+    }
+
+    public String getTransmisión() {
+        return transmisión;
+    }
+
+    public void setTransmisión(String transmisión) {
+        this.transmisión = transmisión;
+    }
+
+    public float getPeso() {
+        return peso;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+
+    public String getUbiAct() {
+        return ubiAct;
+    }
+
+    public void setUbiAct(String ubiAct) {
+        this.ubiAct = ubiAct;
+    }
+
+    public DoublyLinkedList<VehicleManagement> getHistReparacion() {
+        return HistReparacion;
+    }
+
+    public void setHistReparacion(DoublyLinkedList<VehicleManagement> HistReparacion) {
+        this.HistReparacion = HistReparacion;
+    }
+    
+    public void venderVehiculo(){
+        
+    }
+    
+    
 }
