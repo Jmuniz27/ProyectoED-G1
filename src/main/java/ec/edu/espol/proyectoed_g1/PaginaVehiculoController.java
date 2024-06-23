@@ -6,6 +6,7 @@ package ec.edu.espol.proyectoed_g1;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -48,6 +49,8 @@ public class PaginaVehiculoController implements Initializable {
     private ImageView heartIcon;
     @FXML
     private Text heartText;
+    @FXML
+    private Button botonInicio;
 
     /**
      * Initializes the controller class.
@@ -63,6 +66,10 @@ public class PaginaVehiculoController implements Initializable {
 
     @FXML
     private void heartClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void irInicio(ActionEvent event) {
     }
     
 }
