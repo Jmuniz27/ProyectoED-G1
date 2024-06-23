@@ -9,4 +9,5 @@ ec/edu/espol/proyectoed_g1/modelo/Listas/CircularDoublyLinkedList.class
 ec/edu/espol/proyectoed_g1/PrimaryController.class
 ec/edu/espol/proyectoed_g1/modelo/Nodos/DoublyNode.class
 module-info.class
+ec/edu/espol/proyectoed_g1/BuscarVehiculosController.class
 ec/edu/espol/proyectoed_g1/SecondaryController.class
