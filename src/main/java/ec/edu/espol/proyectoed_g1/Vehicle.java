@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
+
 /**
  *
  * @author creditos gonzalez
@@ -17,5 +19,5 @@ public class Vehicle {
     private String transmisión;
     private float peso;
     private String ubiAct;
-    private LinkedList<VehicleManagement> HistReparacion;
+    private DoublyLinkedList<VehicleManagement> HistReparacion;
 }
