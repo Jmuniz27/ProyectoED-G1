@@ -6,9 +6,11 @@ package ec.edu.espol.proyectoed_g1;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -19,13 +21,19 @@ import javafx.scene.shape.Rectangle;
 public class InicioController implements Initializable {
 
     @FXML
-    private Rectangle buscarVehiculo;
+    private ImageView imgLogo;
     @FXML
-    private Rectangle crearVehiculo;
+    private ImageView imgBuscarVehiculos;
     @FXML
-    private Rectangle verMisVehiculos;
+    private ImageView imgVenderVehiculo;
     @FXML
-    private Button botonBuscarVehiculo;
+    private ImageView imgVerMisVehiculos;
+    @FXML
+    private Button botonBuscarVehiculos;
+    @FXML
+    private Button botonVenderVehiculo;
+    @FXML
+    private Button botonBuscarVehiculo11;
 
     
     /**
@@ -35,5 +43,17 @@ public class InicioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void clickBuscarVehiculo(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickVenderVehiculo(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickVerMisVehiculos(ActionEvent event) {
+    }
     
 }
