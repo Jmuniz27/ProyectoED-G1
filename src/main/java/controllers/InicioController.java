@@ -6,7 +6,10 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.shape.Rectangle;
 
 /**
  * FXML Controller class
@@ -15,6 +18,16 @@ import javafx.fxml.Initializable;
  */
 public class InicioController implements Initializable {
 
+    @FXML
+    private Rectangle buscarVehiculo;
+    @FXML
+    private Rectangle crearVehiculo;
+    @FXML
+    private Rectangle verMisVehiculos;
+    @FXML
+    private Button botonBuscarVehiculo;
+
+    
     /**
      * Initializes the controller class.
      */
