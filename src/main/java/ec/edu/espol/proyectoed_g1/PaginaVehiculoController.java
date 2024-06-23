@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 /**
@@ -38,6 +40,20 @@ public class PaginaVehiculoController implements Initializable {
     private Button preBoton;
     @FXML
     private Button nextBoton;
+    @FXML
+    private GridPane resumGrid;
+    @FXML
+    private VBox vBoxResu;
+    @FXML
+    private Text tipo;
+    @FXML
+    private Text descr;
+    @FXML
+    private Text usrName;
+    @FXML
+    private ImageView heartIcon;
+    @FXML
+    private Text heartText;
 
     /**
      * Initializes the controller class.
@@ -49,6 +65,10 @@ public class PaginaVehiculoController implements Initializable {
 
     @FXML
     private void pagPrincipalClick(MouseEvent event) {
+    }
+
+    @FXML
+    private void heartClick(MouseEvent event) {
     }
     
 }
