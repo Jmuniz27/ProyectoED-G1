@@ -43,12 +43,6 @@ public class PaginaVehiculoController implements Initializable {
     @FXML
     private GridPane resumGrid;
     @FXML
-    private VBox vBoxResu;
-    @FXML
-    private Text tipo;
-    @FXML
-    private Text descr;
-    @FXML
     private Text usrName;
     @FXML
     private ImageView heartIcon;
@@ -68,7 +62,7 @@ public class PaginaVehiculoController implements Initializable {
     }
 
     @FXML
-    private void heartClick(MouseEvent event) {
+    private void heartClicked(MouseEvent event) {
     }
     
 }
