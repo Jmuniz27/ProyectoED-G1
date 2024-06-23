@@ -10,7 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -20,23 +23,43 @@ import javafx.scene.control.ComboBox;
 public class CrearVehiculoController implements Initializable {
 
     @FXML
-    private ComboBox<?> botonTipoVehiculo;
+    private Button botonInicio;
     @FXML
-    private ComboBox<?> botonModeloVehiculo;
+    private ComboBox<?> cbMarca;
     @FXML
-    private ComboBox<?> botonAñoVehiculo;
+    private ComboBox<?> cbModelo;
     @FXML
-    private ComboBox<?> botonUbicacionVehiculo;
+    private ComboBox<?> cbAnio;
     @FXML
-    private ComboBox<?> botonMarcaVehiculo;
+    private ComboBox<?> cbKilo;
     @FXML
-    private ComboBox<?> botonSubtipoVehiculo;
+    private ComboBox<?> cbMotor;
     @FXML
-    private ComboBox<?> botonKilometrajeVehiculo;
+    private ComboBox<?> cbTransmision;
     @FXML
-    private ComboBox<?> botonCiudadVehiculo;
+    private ComboBox<?> cbPeso;
     @FXML
-    private Button botonContinuar;
+    private ComboBox<?> cbCiudad;
+    @FXML
+    private TextField tfPrecio;
+    @FXML
+    private CheckBox checkNegociable;
+    @FXML
+    private CheckBox checkAccidente;
+    @FXML
+    private TextArea taAccidente;
+    @FXML
+    private TextArea taMantenimiento;
+    @FXML
+    private TextField tfNombre;
+    @FXML
+    private TextField tfApellido;
+    @FXML
+    private TextField tfTelefono;
+    @FXML
+    private TextField tfCorreo;
+    @FXML
+    private Button botonPonerVenta;
 
     /**
      * Initializes the controller class.
@@ -47,7 +70,15 @@ public class CrearVehiculoController implements Initializable {
     }    
 
     @FXML
-    private void Select(ActionEvent event) {
+    private void irInicio(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickEnAccidente(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickEnPonerVenta(ActionEvent event) {
     }
     
 }

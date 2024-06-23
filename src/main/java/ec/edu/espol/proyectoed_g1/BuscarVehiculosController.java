@@ -39,14 +39,6 @@ public class BuscarVehiculosController implements Initializable {
     private ComboBox<?> cbKiloHasta;
     @FXML
     private Button botonBuscar;
-    @FXML
-    private VBox gpCatalogo;
-    @FXML
-    private ImageView flechaAntes;
-    @FXML
-    private Label lblNumPagina;
-    @FXML
-    private ImageView flechaDespues;
 
     /**
      * Initializes the controller class.
@@ -64,12 +56,5 @@ public class BuscarVehiculosController implements Initializable {
     private void buscarFiltros(ActionEvent event) {
     }
 
-    @FXML
-    private void irPaginaAnterior(MouseEvent event) {
-    }
-
-    @FXML
-    private void irPaginaDespues(MouseEvent event) {
-    }
     
 }
