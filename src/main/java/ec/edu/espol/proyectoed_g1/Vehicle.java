@@ -4,6 +4,7 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
 
 /**
@@ -23,8 +24,9 @@ public class Vehicle {
     private boolean esVendido;
     private DoublyLinkedList<VehicleManagement> HistReparacion;
     private tipoVehiculo tipovehiculo;
+    private CircularDoublyLinkedList<Imagen> imagsCarro;
 
-    public Vehicle(Precio precio, String marca, String modelo, int year, float km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, DoublyLinkedList<VehicleManagement> HistReparacion, tipoVehiculo tipovehiculo) {
+    public Vehicle(Precio precio, String marca, String modelo, int year, float km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, DoublyLinkedList<VehicleManagement> HistReparacion, tipoVehiculo tipovehiculo, CircularDoublyLinkedList<Imagen> imagsCarro) {
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;
@@ -37,6 +39,7 @@ public class Vehicle {
         this.esVendido = esVendido;
         this.HistReparacion = HistReparacion;
         this.tipovehiculo = tipovehiculo;
+        this.imagsCarro = imagsCarro;
     }
 
     public Precio getPrecio() {
@@ -133,6 +136,14 @@ public class Vehicle {
 
     public void setTipovehiculo(tipoVehiculo tipovehiculo) {
         this.tipovehiculo = tipovehiculo;
+    }
+
+    public CircularDoublyLinkedList<Imagen> getImagsCarro() {
+        return imagsCarro;
+    }
+
+    public void setImagsCarro(CircularDoublyLinkedList<Imagen> imagsCarro) {
+        this.imagsCarro = imagsCarro;
     }
     
     public void venderVehiculo(){
