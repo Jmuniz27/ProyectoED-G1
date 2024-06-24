@@ -9,5 +9,17 @@ package ec.edu.espol.proyectoed_g1;
  * @author isabella
  */
 public class Imagen {
-    private String url;
+    private String ruta;
+
+    public Imagen(String ruta) {
+        this.ruta = ruta;
+    }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
 }

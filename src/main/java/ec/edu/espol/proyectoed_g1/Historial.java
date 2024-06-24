@@ -11,28 +11,28 @@ import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
  * @author creditos gonzalez
  */
 public class Historial{
-    private LinkedList<Accidente> accidentes;
-    private LinkedList<Mantenimiento> mantenimiento;
+    private LinkedList<AccidenteServicios> reparaciones;
+    private LinkedList<AccidenteServicios> mantenimientos;
 
-    public Historial(LinkedList<Accidente> accidentes, LinkedList<Mantenimiento> mantenimiento) {
-        this.accidentes = accidentes;
-        this.mantenimiento = mantenimiento;
+    public Historial(LinkedList<AccidenteServicios> reparaciones, LinkedList<AccidenteServicios> mantenimientos) {
+        this.reparaciones = reparaciones;
+        this.mantenimientos = mantenimientos;
     }
 
-    public LinkedList<Accidente> getAccidentes() {
-        return accidentes;
+    public LinkedList<AccidenteServicios> getAccidentes() {
+        return reparaciones;
     }
 
-    public void setAccidentes(LinkedList<Accidente> accidentes) {
-        this.accidentes = accidentes;
+    public void setAccidentes(LinkedList<AccidenteServicios> accidentes) {
+        this.reparaciones = accidentes;
     }
 
-    public LinkedList<Mantenimiento> getMantenimiento() {
-        return mantenimiento;
+    public LinkedList<AccidenteServicios> getMantenimiento() {
+        return mantenimientos;
     }
 
-    public void setMantenimiento(LinkedList<Mantenimiento> mantenimiento) {
-        this.mantenimiento = mantenimiento;
+    public void setMantenimiento(LinkedList<AccidenteServicios> mantenimiento) {
+        this.mantenimientos = mantenimiento;
     }
     
     

@@ -11,21 +11,28 @@ import excepciones.ComboBoxSinEleccion;
 import excepciones.NoEsNumero;
 import excepciones.StringVacio;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -71,36 +78,34 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private ImageView imgLogo;
     @FXML
-    private CheckBox cCarroceria;
-    @FXML
-    private CheckBox cParachoques;
-    @FXML
-    private CheckBox cSuspension;
-    @FXML
-    private CheckBox cFarros;
-    @FXML
-    private CheckBox cEscape;
-    @FXML
-    private CheckBox cAceite;
-    @FXML
-    private CheckBox cFiltros;
-    @FXML
-    private CheckBox cBateria;
-    @FXML
-    private CheckBox cFrenos;
-    @FXML
-    private CheckBox cNeumaticos;
-    @FXML
     private Button botonSubirImagen;
     
-    private CircularDoublyLinkedList<String> imagenes = new CircularDoublyLinkedList<>();
+    private CircularDoublyLinkedList<Image> imagenes = new CircularDoublyLinkedList<>();
+    
+    private boolean hayImagenes;
+    @FXML
+    private VBox vbImagenes;
+    @FXML
+    private Button btnAnadirAccidente;
+    @FXML
+    private Button btnAnadirMantenimiento;
+    @FXML
+    private Label lblCantAccidentes;
+    @FXML
+    private Label lblCantMantenimientos;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        imagenes.clear();
+        Image loadingCar = new Image("/imagenes/default.png");
+        imagenes.addLast(loadingCar);
+        ImageView ivLoadingCar = new ImageView(loadingCar);
+        vbImagenes.getChildren().add(ivLoadingCar);
+        hayImagenes = false;
         Image img1 = new Image("/imagenes/logo.png");
-        imgLogo.setImage(img1);;
+        imgLogo.setImage(img1);
         for(Marca m: InicioController.marcas){
             cbMarca.getItems().add(m);
         }
@@ -135,11 +140,11 @@ public class CrearVehiculoController implements Initializable {
         
     }
     
-    public void guardarAccidente(Accidente a, LinkedList<Accidente> accidentes){
-        accidentes.addLast(a);
+    public void guardarAccidente(AccidenteServicios r, LinkedList<AccidenteServicios> reparaciones){
+        reparaciones.addLast(r);
     }
     
-    public void guardarMantenimiento(Mantenimiento m, LinkedList<Mantenimiento> mantenimientos){
+    public void guardarMantenimiento(AccidenteServicios m, LinkedList<AccidenteServicios> mantenimientos){
         mantenimientos.addLast(m);
     }
     
@@ -169,7 +174,7 @@ public class CrearVehiculoController implements Initializable {
         return new Usuario(tfNombre.getText() + " " + tfApellido.getText(),tfTelefono.getText(), tfCorreo.getText());
     }
     
-    public LinkedList<Accidente> crearListaAccidentes(){
+    /*public LinkedList<Accidente> crearListaAccidentes(){
         LinkedList<Accidente> acc = new LinkedList<>();
         if(cCarroceria.isSelected()){
                 guardarAccidente(Accidente.CARROCERIA, acc);
@@ -187,15 +192,15 @@ public class CrearVehiculoController implements Initializable {
             guardarAccidente(Accidente.ESCAPE, acc);
         }
         return acc;
-    }
+    }*/
     
-    public Historial crearHistorial(){
+    /*public Historial crearHistorial(){
         LinkedList<Accidente> accidentes = crearListaAccidentes();
         LinkedList<Mantenimiento> mantenimientos = crearListaMantenimientos();
         return new Historial(accidentes,mantenimientos);
-    }
+    }*/
     
-    public LinkedList<Mantenimiento> crearListaMantenimientos(){
+    /*public LinkedList<Mantenimiento> crearListaMantenimientos(){
         LinkedList<Mantenimiento> mantenimientos = new LinkedList<>();
         if(cAceite.isSelected()){
             guardarMantenimiento(Mantenimiento.ACEITE, mantenimientos);
@@ -213,9 +218,7 @@ public class CrearVehiculoController implements Initializable {
             guardarMantenimiento(Mantenimiento.NEUMATICOS, mantenimientos);
         }
         return mantenimientos;
-    }
-    
-    
+    }*/
     
     @FXML
     private void clickEnPonerVenta(ActionEvent event) {
@@ -244,9 +247,9 @@ public class CrearVehiculoController implements Initializable {
             boolean esVendido = false;
             
             //Creando Historial
-            Historial histReparacion = crearHistorial();
+            //Historial histReparacion = crearHistorial();
             System.out.println(imagenes);
-            Vehicle vehiculo = new Vehicle(precio,marca,modelo,year,km,transmisión,peso,ubiAct,dueno,esVendido,histReparacion,imagenes);
+            //Vehicle vehiculo = new Vehicle(precio,marca,modelo,year,km,transmisión,peso,ubiAct,dueno,esVendido,histReparacion,imagenes);
             try{
                 App.setRoot("inicio");
             } catch(IOException e){
@@ -264,58 +267,26 @@ public class CrearVehiculoController implements Initializable {
     }
 
     @FXML
-    private void clickEnCCarroceria(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCParachoques(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCSuspension(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCFaros(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCbEscape(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCAceite(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCFiltros(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCBateria(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCFrenos(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickEnCNeumaticos(ActionEvent event) {
-    }
-
-    @FXML
     private void clickEnSubirImagen(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleccionar Imágenes");
+        ImageView imageView = new ImageView();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"));
-        List<File> files = (List<File>) fileChooser.showOpenMultipleDialog(new Stage());
-
-        if (files != null) {
-            for (File file : files) {
-                imagenes.addLast(file.getAbsolutePath());
+        File file = fileChooser.showOpenDialog(new Stage());
+            if (file != null) {
+                try {
+                    Image image = new Image(new FileInputStream(file));
+                    imageView.setImage(image);
+                    if(!hayImagenes){
+                        imagenes.removeFirst();
+                        vbImagenes.getChildren().clear();
+                    }
+                    vbImagenes.getChildren().add(imageView);
+                    imagenes.addLast(image);
+                    hayImagenes = true;
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
-            System.out.println("Imágenes seleccionadas: " + imagenes.size());
-        }
     }
 
     @FXML
@@ -326,5 +297,15 @@ public class CrearVehiculoController implements Initializable {
             cbModelo.getItems().add(modelo);
         }
     }
+
+    @FXML
+    private void clickEnAnadirAccidente(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void clickEnAnadirMantenimiento(ActionEvent event) {
+    }
+
     
 }

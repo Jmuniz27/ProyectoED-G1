@@ -4,10 +4,13 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import java.util.Date;
+
 /**
  *
- * @author creditos gonzalez
+ * @author isabella
  */
-public enum Accidente {
-    CARROCERIA, PARACHOQUES, SUSPENSION, LUCES, ESCAPE
+public class AccidenteServicios {
+    private Date fecha;
+    private String descrip;
 }

@@ -6,6 +6,7 @@ package ec.edu.espol.proyectoed_g1;
 
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -23,9 +24,9 @@ public class Vehicle {
     private Usuario dueno;
     private boolean esVendido;
     private Historial histReparacion;
-    private CircularDoublyLinkedList<String> imagsCarro;
+    private CircularDoublyLinkedList<Image> imagsCarro;
 
-    public Vehicle(Precio precio, Marca marca, String modelo, int year, int km, String transmisión, double peso, String ubiAct, Usuario dueno, boolean esVendido, Historial HistReparacion, CircularDoublyLinkedList<String> imagsCarro) {
+    public Vehicle(Precio precio, Marca marca, String modelo, int year, int km, String transmisión, double peso, String ubiAct, Usuario dueno, boolean esVendido, Historial HistReparacion, CircularDoublyLinkedList<Image> imagsCarro) {
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;
@@ -128,11 +129,11 @@ public class Vehicle {
         this.histReparacion = HistReparacion;
     }
 
-    public CircularDoublyLinkedList<String> getImagsCarro() {
+    public CircularDoublyLinkedList<Image> getImagsCarro() {
         return imagsCarro;
     }
 
-    public void setImagsCarro(CircularDoublyLinkedList<String> imagsCarro) {
+    public void setImagsCarro(CircularDoublyLinkedList<Image> imagsCarro) {
         this.imagsCarro = imagsCarro;
     }
     
