@@ -71,7 +71,7 @@
                               <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" spacing="20.0">
                                  <children>
                                     <ComboBox fx:id="cbMarca" prefWidth="150.0" promptText="Marca" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
-                                    <ComboBox fx:id="cbModelo" prefWidth="150.0" promptText="Modelo" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
+                                    <ComboBox fx:id="cbModelo" onMouseClicked="#clickEnModelo" prefWidth="150.0" promptText="Modelo" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" spacing="20.0">

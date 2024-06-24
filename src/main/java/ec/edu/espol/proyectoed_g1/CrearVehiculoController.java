@@ -5,7 +5,9 @@
 package ec.edu.espol.proyectoed_g1;
 
 import ec.edu.espol.proyectoed_g1.modelo.Interfaces.List;
+import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 /**
@@ -30,21 +33,21 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private Button botonInicio;
     @FXML
-    private ComboBox<?> cbMarca;
+    private ComboBox<Marca> cbMarca;
     @FXML
-    private ComboBox<?> cbModelo;
+    private ComboBox<String> cbModelo;
     @FXML
-    private ComboBox<?> cbAnio;
+    private ComboBox<Integer> cbAnio;
     @FXML
-    private ComboBox<?> cbKilo;
+    private ComboBox<Integer> cbKilo;
     @FXML
-    private ComboBox<?> cbMotor;
+    private ComboBox<String> cbMotor;
     @FXML
-    private ComboBox<?> cbTransmision;
+    private ComboBox<String> cbTransmision;
     @FXML
-    private ComboBox<?> cbPeso;
+    private ComboBox<Integer> cbPeso;
     @FXML
-    private ComboBox<?> cbCiudad;
+    private ComboBox<String> cbCiudad;
     @FXML
     private TextField tfPrecio;
     @FXML
@@ -89,14 +92,41 @@ public class CrearVehiculoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Image img1 = new Image("/imagenes/logo.png");
+        imgLogo.setImage(img1);;
+        for(Marca m: InicioController.marcas){
+            cbMarca.getItems().add(m);
+        }
+        for(Integer a: InicioController.anios){
+            cbAnio.getItems().add(a);
+        }
+        for(Integer k: InicioController.kilometrajes){
+            cbKilo.getItems().add(k);
+        }
+        for(String mo : InicioController.motores){
+            cbMotor.getItems().add(mo);
+        }
+        for(String t: InicioController.transmisiones){
+            cbTransmision.getItems().add(t);
+        }
+        for(Integer p: InicioController.pesos){
+            cbPeso.getItems().add(p);
+        }
+        for(String c: InicioController.ciudades){
+            cbCiudad.getItems().add(c);
+        }
+        
     }    
 
     @FXML
     private void irInicio(ActionEvent event) {
+        try{
+            App.setRoot("inicio");
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
-
-
+    
     @FXML
     private void clickEnPonerVenta(ActionEvent event) {
     }
@@ -144,6 +174,15 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private void clickEnSubirImagen(ActionEvent event) {
         
+    }
+
+    @FXML
+    private void clickEnModelo(MouseEvent event) {
+        cbModelo.getItems().clear();
+        Marca marca =  cbMarca.getValue();
+        for(String modelo: marca.getModelos()){
+            cbModelo.getItems().add(modelo);
+        }
     }
     
 }
