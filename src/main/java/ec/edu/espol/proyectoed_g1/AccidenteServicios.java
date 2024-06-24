@@ -10,7 +10,11 @@ import java.util.Date;
  *
  * @author isabella
  */
-public class AccidenteServicios {
+public class AccidenteServicios{
     private Date fecha;
     private String descrip;
+    public AccidenteServicios(Date fecha, String descrip){
+        this.fecha = fecha;
+        this.descrip = descrip;
+    }
 }
