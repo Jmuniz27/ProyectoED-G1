@@ -131,6 +131,28 @@ public class BuscarVehiculosController implements Initializable {
 
     @FXML
     private void buscarFiltros(ActionEvent event) {
+        String modeloSelec = cbModelo.getSelectionModel().getSelectedItem() != null ? cbModelo.getSelectionModel().getSelectedItem().toString() : null;
+        String marcaSelec = cbMarca.getSelectionModel().getSelectedItem() != null ? cbMarca.getSelectionModel().getSelectedItem().toString() : null;
+        Integer precioMin = validarNumero(precioDesde.getText());
+        Integer precioMax = validarNumero(precioHasta.getText());
+        Integer kmMin = validarNumero(kmDesde.getText());
+        Integer kmMax = validarNumero(kmDesde.getText());
+
+        if(precioMin>precioMax){
+            mostrarAlerta("Error", "El precio mínimo no puede ser mayor al precio máximo");
+            return;
+        }
+        DoublyLinkedList<Vehicle> resultados = filtrarVehiculos(modeloSelec, marcaSelec, precioMin, precioMax, kmMin, kmMax);
+        mostrarResultados(resultados);
+        updatePagination();
+    }
+    private Integer validarNumero(String num) {
+        if(num == null || num.isEmpty()) return null;
+        try {
+            return Integer.parseInt(num);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     @FXML
