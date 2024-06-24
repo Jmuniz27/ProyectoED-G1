@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -96,7 +97,7 @@
                                  <children>
                                     <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="177.0">
                                        <children>
-                                          <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio de tu vehículo" textAlignment="CENTER" wrappingWidth="138.4629669189453">
+                                          <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio de tu Vehículo" textAlignment="CENTER" wrappingWidth="138.4629669189453">
                                              <font>
                                                 <Font name="Arial Rounded MT" size="14.0" />
                                              </font>
@@ -135,31 +136,31 @@
             </VBox>
                   <VBox alignment="CENTER" prefHeight="469.0" prefWidth="358.0" spacing="1.0">
                      <children>
-                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="358.0" spacing="20.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);">
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="358.0" spacing="20.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);">
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="100.0" prefWidth="358.0" spacing="20.0">
+                                    <VBox alignment="CENTER" prefHeight="154.0" prefWidth="358.0" spacing="25.0">
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="16.0" prefWidth="358.0" spacing="20.0">
                                              <children>
-                                                <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historial del tu Vehículo" textAlignment="CENTER" wrappingWidth="213.11875915527344">
+                                                <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historial de Accidentes y Servicios" textAlignment="CENTER" wrappingWidth="319.11875915527344">
                                                    <font>
-                                                      <Font name="Arial Rounded MT Bold" size="14.0" />
+                                                      <Font name="Arial Rounded MT Bold" size="16.0" />
                                                    </font>
                                                 </Text>
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="57.0" prefWidth="358.0" spacing="30.0">
                                              <children>
-                                                <Button fx:id="btnAnadirAccidente" mnemonicParsing="false" onAction="#clickEnAnadirAccidente" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: e0252d; -fx-background-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Añadir Accidente" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                                <Button fx:id="btnAnadirReparacion" mnemonicParsing="false" onAction="#clickEnAnadirReparacion" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: e0252d; -fx-background-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Añadir Reparación" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                                    <font>
-                                                      <Font name="Arial Rounded MT Bold" size="14.0" />
+                                                      <Font name="Arial Rounded MT Bold" size="13.0" />
                                                    </font>
                                                 </Button>
                                                 <Button fx:id="btnAnadirMantenimiento" mnemonicParsing="false" onAction="#clickEnAnadirMantenimiento" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: e0252d; -fx-background-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Añadir Mantenimiento" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                                    <font>
-                                                      <Font name="Arial Rounded MT Bold" size="14.0" />
+                                                      <Font name="Arial Rounded MT Bold" size="13.0" />
                                                    </font>
                                                 </Button>
                                              </children>
@@ -168,12 +169,12 @@
                                              <children>
                                                 <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="130.0">
                                                    <children>
-                                                      <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accidentes: " wrappingWidth="80.0">
+                                                      <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reparaciones:" wrappingWidth="99.0">
                                                          <font>
                                                             <Font name="Arial Rounded MT" size="14.0" />
                                                          </font>
                                                       </Text>
-                                                      <Label fx:id="lblCantAccidentes" text="0">
+                                                      <Label fx:id="lblCantReparaciones" text="0">
                                                          <font>
                                                             <Font name="Arial Rounded MT" size="13.0" />
                                                          </font>
@@ -204,16 +205,16 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="16.0" prefWidth="358.0" spacing="20.0">
                                        <children>
-                                          <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imágenes de tu Vehículo" textAlignment="CENTER" wrappingWidth="213.11875915527344">
+                                          <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imágenes de tu Vehículo" textAlignment="CENTER" wrappingWidth="254.11875915527344">
                                              <font>
-                                                <Font name="Arial Rounded MT Bold" size="14.0" />
+                                                <Font name="Arial Rounded MT Bold" size="16.0" />
                                              </font>
                                           </Text>
                                        </children>
                                     </HBox>
-                                    <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="118.0" prefWidth="288.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #dadada; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" vbarPolicy="ALWAYS">
+                                    <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="118.0" prefWidth="288.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #dadada; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" vbarPolicy="ALWAYS">
                                        <content>
-                                          <VBox fx:id="vbImagenes" alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="280.0" />
+                                          <FlowPane fx:id="fpImagenes" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="276.0" style="-fx-background-color: #FFFFFF;" vgap="10.0" />
                                        </content>
                                     </ScrollPane>
                                     <HBox alignment="CENTER" prefHeight="43.0" prefWidth="358.0" spacing="30.0">
@@ -235,7 +236,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="35.0" prefWidth="358.0">
                            <children>
-                              <Text lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de contacto" textAlignment="CENTER" wrappingWidth="213.11875915527344">
+                              <Text lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de Contacto" textAlignment="CENTER" wrappingWidth="213.11875915527344">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="18.0" />
                                  </font>
@@ -290,7 +291,7 @@
                                  <children>
                                     <VBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="140.0">
                                        <children>
-                                          <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de teléfono" wrappingWidth="138.4629669189453">
+                                          <Text fill="#070707" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de Teléfono" wrappingWidth="138.4629669189453">
                                              <font>
                                                 <Font name="Arial Rounded MT" size="14.0" />
                                              </font>

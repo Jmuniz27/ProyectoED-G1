@@ -4,6 +4,7 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -11,9 +12,10 @@ import java.util.Date;
  * @author isabella
  */
 public class AccidenteServicios{
-    private Date fecha;
+    private LocalDate fecha;
     private String descrip;
-    public AccidenteServicios(Date fecha, String descrip){
+    
+    public AccidenteServicios(LocalDate fecha, String descrip){
         this.fecha = fecha;
         this.descrip = descrip;
     }

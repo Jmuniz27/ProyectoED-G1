@@ -36,6 +36,16 @@ public class Utilitaria {
         alert.showAndWait();
     }
     
+    public static void mostrarAlerta2(String msg, Alert.AlertType a) {
+        Alert alert = new Alert(a);
+
+        alert.setTitle(null);
+        alert.setHeaderText(a + "");
+        alert.setContentText(msg);
+        Button okButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
+        alert.showAndWait();
+    }
+    
     public static void verificarComboBox(ComboBox cb) throws ComboBoxSinEleccion{
         if(cb.getValue() == null){
             throw new ComboBoxSinEleccion();
