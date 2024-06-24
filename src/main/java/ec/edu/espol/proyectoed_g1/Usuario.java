@@ -16,11 +16,11 @@ public class Usuario {
     private String mail;
     private DoublyLinkedList<Vehicle> misVehiculos;
 
-    public Usuario(String name, String number, String mail, DoublyLinkedList<Vehicle> misVehiculos) {
+    public Usuario(String name, String number, String mail) {
         this.name = name;
         this.number = number;
         this.mail = mail;
-        this.misVehiculos = misVehiculos;
+        this.misVehiculos = new DoublyLinkedList<>();
     }
 
     public String getName() {

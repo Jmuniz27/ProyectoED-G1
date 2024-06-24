@@ -9,15 +9,15 @@ package ec.edu.espol.proyectoed_g1;
  * @author creditos gonzalez
  */
 public class Precio {
-    private float cant;
+    private double cant;
     private boolean esNegociable;
 
-    public Precio(float cant, boolean esNegociable) {
+    public Precio(double cant, boolean esNegociable) {
         this.cant = cant;
         this.esNegociable = esNegociable;
     }
 
-    public float getCant() {
+    public double getCant() {
         return cant;
     }
 

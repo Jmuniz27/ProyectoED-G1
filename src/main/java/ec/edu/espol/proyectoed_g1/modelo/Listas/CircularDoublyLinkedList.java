@@ -238,5 +238,16 @@ public class CircularDoublyLinkedList<E> implements List<E>{
     public void setLast(DoublyNode<E> last) {
         this.last = last;
     }
+
+    @Override
+    public boolean addAll(List<E> list) {
+        if (list == null || list.isEmpty()) {
+            return false;
+        }
+        for (E element : list) {
+            this.addLast(element);
+        }
+        return true;
+    }
     
 }

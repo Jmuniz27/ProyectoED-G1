@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,6 +32,7 @@ public class InicioController implements Initializable {
     public static DoublyLinkedList<String> transmisiones = new DoublyLinkedList<>();
     public static DoublyLinkedList<Integer> pesos = new DoublyLinkedList<>();
     public static DoublyLinkedList<String> ciudades = new DoublyLinkedList<>();
+    
     @FXML
     private ImageView imgLogo;
     @FXML
@@ -87,6 +89,7 @@ public class InicioController implements Initializable {
 
     @FXML
     private void clickEnVerMisVehiculos(ActionEvent event) {
+        Utilitaria.mostrarAlerta("Todavía no se implementa la funcionalidad para editar y eliminar mis vehículos", Alert.AlertType.INFORMATION, "inicio");
     }
     
 }

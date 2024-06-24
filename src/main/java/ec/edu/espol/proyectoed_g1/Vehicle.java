@@ -13,20 +13,19 @@ import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
  */
 public class Vehicle {
     private Precio precio;
-    private String marca;
+    private Marca marca;
     private String modelo;
     private int year;
     private int km;
     private String transmisión;
-    private float peso;
+    private double peso;
     private String ubiAct;
     private Usuario dueno;
     private boolean esVendido;
-    private Historial HistReparacion;
-    private tipoVehiculo tipovehiculo;
-    private CircularDoublyLinkedList<Imagen> imagsCarro;
+    private Historial histReparacion;
+    private CircularDoublyLinkedList<String> imagsCarro;
 
-    public Vehicle(Precio precio, String marca, String modelo, int year, int km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, Historial HistReparacion, tipoVehiculo tipovehiculo, CircularDoublyLinkedList<Imagen> imagsCarro) {
+    public Vehicle(Precio precio, Marca marca, String modelo, int year, int km, String transmisión, double peso, String ubiAct, Usuario dueno, boolean esVendido, Historial HistReparacion, CircularDoublyLinkedList<String> imagsCarro) {
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;
@@ -37,8 +36,7 @@ public class Vehicle {
         this.ubiAct = ubiAct;
         this.dueno = dueno;
         this.esVendido = esVendido;
-        this.HistReparacion = HistReparacion;
-        this.tipovehiculo = tipovehiculo;
+        this.histReparacion = HistReparacion;
         this.imagsCarro = imagsCarro;
     }
 
@@ -50,11 +48,11 @@ public class Vehicle {
         this.precio = precio;
     }
 
-    public String getMarca() {
+    public Marca getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
+    public void setMarca(Marca marca) {
         this.marca = marca;
     }
 
@@ -90,7 +88,7 @@ public class Vehicle {
         this.transmisión = transmisión;
     }
 
-    public float getPeso() {
+    public double getPeso() {
         return peso;
     }
 
@@ -123,26 +121,18 @@ public class Vehicle {
     }
 
     public Historial getHistReparacion() {
-        return HistReparacion;
+        return histReparacion;
     }
 
     public void setHistReparacion(Historial HistReparacion) {
-        this.HistReparacion = HistReparacion;
+        this.histReparacion = HistReparacion;
     }
 
-    public tipoVehiculo getTipovehiculo() {
-        return tipovehiculo;
-    }
-
-    public void setTipovehiculo(tipoVehiculo tipovehiculo) {
-        this.tipovehiculo = tipovehiculo;
-    }
-
-    public CircularDoublyLinkedList<Imagen> getImagsCarro() {
+    public CircularDoublyLinkedList<String> getImagsCarro() {
         return imagsCarro;
     }
 
-    public void setImagsCarro(CircularDoublyLinkedList<Imagen> imagsCarro) {
+    public void setImagsCarro(CircularDoublyLinkedList<String> imagsCarro) {
         this.imagsCarro = imagsCarro;
     }
     

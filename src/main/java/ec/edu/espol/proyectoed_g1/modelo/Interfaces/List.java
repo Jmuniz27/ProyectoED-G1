@@ -29,4 +29,6 @@ public interface List<E> extends Iterable<E>{
     public int indexOf(E element); //retorna el indice de la primera ocurrencia de element
     
     public void sort(Comparator<E> comparator); //ordena la lista segun el comparador
+    
+     boolean addAll(List<E> list);
 }

@@ -230,4 +230,9 @@ public class DoublyLinkedList<E> implements List<E> {
     public void setLast(DoublyNode<E> last) {
         this.last = last;
     }
+
+    @Override
+    public boolean addAll(List<E> list) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
