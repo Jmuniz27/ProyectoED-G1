@@ -50,11 +50,15 @@ public class DoublyLinkedList<E> implements List<E> {
 
     @Override
     public boolean addLast(E e) {
-        if (e != null){
+        if (e != null) {
             DoublyNode<E> newNode = new DoublyNode<>(e);
-            newNode.setPrevious(last);
-            last.setNext(newNode);
-            this.setLast(newNode);
+            if (last != null) {
+                last.setNext(newNode);
+                newNode.setPrevious(last);
+            } else {
+                head = newNode;
+            }
+            last = newNode;
             return true;
         }
         return false;

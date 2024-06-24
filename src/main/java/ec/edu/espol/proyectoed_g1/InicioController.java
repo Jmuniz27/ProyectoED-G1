@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,7 +22,15 @@ import javafx.scene.shape.Rectangle;
  * @author isabella
  */
 public class InicioController implements Initializable {
-
+    
+    public static DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
+    public static DoublyLinkedList<Marca> marcas = new DoublyLinkedList<>();
+    public static DoublyLinkedList<Integer> anios = new DoublyLinkedList<>();
+    public static DoublyLinkedList<Integer> kilometrajes = new DoublyLinkedList<>();
+    public static DoublyLinkedList<String> motores = new DoublyLinkedList<>();
+    public static DoublyLinkedList<String> transmisiones = new DoublyLinkedList<>();
+    public static DoublyLinkedList<Integer> pesos = new DoublyLinkedList<>();
+    public static DoublyLinkedList<String> ciudades = new DoublyLinkedList<>();
     @FXML
     private ImageView imgLogo;
     @FXML
@@ -59,10 +69,20 @@ public class InicioController implements Initializable {
 
     @FXML
     private void clickEnBuscarVehiculos(ActionEvent event) {
+        try{
+            App.setRoot("buscarVehiculos");
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void clickEnVenderVehiculo(ActionEvent event) {
+        try{
+            App.setRoot("crearVehiculo");
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

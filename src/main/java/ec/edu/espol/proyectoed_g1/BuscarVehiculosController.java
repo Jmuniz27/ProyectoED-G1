@@ -4,6 +4,7 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -39,21 +41,46 @@ public class BuscarVehiculosController implements Initializable {
     private ComboBox<?> cbKiloHasta;
     @FXML
     private Button botonBuscar;
+    @FXML
+    private VBox gpCatalogo;
+    @FXML
+    private ImageView flechaAntes;
+    @FXML
+    private Label lblNumPagina;
+    @FXML
+    private ImageView flechaDespues;
+    @FXML
+    private ImageView imgLogo;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Image img1 = new Image("/imagenes/logo.png");
+        imgLogo.setImage(img1);
     }    
 
     @FXML
     private void irInicio(ActionEvent event) {
+        try{
+            App.setRoot("inicio");
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void buscarFiltros(ActionEvent event) {
+    }
+
+    @FXML
+    private void irPaginaAnterior(MouseEvent event) {
+        
+    }
+
+    @FXML
+    private void irPaginaDespues(MouseEvent event) {
     }
 
     

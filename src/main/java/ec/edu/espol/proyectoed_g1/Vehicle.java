@@ -16,17 +16,17 @@ public class Vehicle {
     private String marca;
     private String modelo;
     private int year;
-    private float km;
+    private int km;
     private String transmisión;
     private float peso;
     private String ubiAct;
     private Usuario dueno;
     private boolean esVendido;
-    private DoublyLinkedList<VehicleManagement> HistReparacion;
+    private Historial HistReparacion;
     private tipoVehiculo tipovehiculo;
     private CircularDoublyLinkedList<Imagen> imagsCarro;
 
-    public Vehicle(Precio precio, String marca, String modelo, int year, float km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, DoublyLinkedList<VehicleManagement> HistReparacion, tipoVehiculo tipovehiculo, CircularDoublyLinkedList<Imagen> imagsCarro) {
+    public Vehicle(Precio precio, String marca, String modelo, int year, int km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, Historial HistReparacion, tipoVehiculo tipovehiculo, CircularDoublyLinkedList<Imagen> imagsCarro) {
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;
@@ -78,7 +78,7 @@ public class Vehicle {
         return km;
     }
 
-    public void setKm(float km) {
+    public void setKm(int km) {
         this.km = km;
     }
 
@@ -122,11 +122,11 @@ public class Vehicle {
         this.esVendido = esVendido;
     }
 
-    public DoublyLinkedList<VehicleManagement> getHistReparacion() {
+    public Historial getHistReparacion() {
         return HistReparacion;
     }
 
-    public void setHistReparacion(DoublyLinkedList<VehicleManagement> HistReparacion) {
+    public void setHistReparacion(Historial HistReparacion) {
         this.HistReparacion = HistReparacion;
     }
 
