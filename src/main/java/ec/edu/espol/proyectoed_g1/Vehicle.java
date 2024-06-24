@@ -18,7 +18,7 @@ public class Vehicle {
     private int year;
     private int km;
     private String transmisión;
-    private float peso;
+    private int peso;
     private String ubiAct;
     private Usuario dueno;
     private boolean esVendido;
@@ -26,7 +26,7 @@ public class Vehicle {
     private tipoVehiculo tipovehiculo;
     private CircularDoublyLinkedList<Imagen> imagsCarro;
 
-    public Vehicle(Precio precio, String marca, String modelo, int year, int km, String transmisión, float peso, String ubiAct, Usuario dueno, boolean esVendido, Historial HistReparacion, tipoVehiculo tipovehiculo, CircularDoublyLinkedList<Imagen> imagsCarro) {
+    public Vehicle(Precio precio, String marca, String modelo, int year, int km, String transmisión, int peso, String ubiAct, Usuario dueno, boolean esVendido, Historial HistReparacion, tipoVehiculo tipovehiculo, CircularDoublyLinkedList<Imagen> imagsCarro) {
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;
@@ -74,7 +74,7 @@ public class Vehicle {
         this.year = year;
     }
 
-    public float getKm() {
+    public int getKm() {
         return km;
     }
 
@@ -90,11 +90,11 @@ public class Vehicle {
         this.transmisión = transmisión;
     }
 
-    public float getPeso() {
+    public int getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(int peso) {
         this.peso = peso;
     }
 

@@ -9,5 +9,5 @@ package ec.edu.espol.proyectoed_g1;
  * @author creditos gonzalez
  */
 public enum tipoVehiculo {
-    
+    SEDAN,HATCHBACK;
 }

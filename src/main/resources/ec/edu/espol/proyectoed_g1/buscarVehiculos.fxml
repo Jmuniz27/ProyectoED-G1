@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoed_g1.BuscarVehiculosController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoed_g1.BuscarVehiculosController">
    <top>
       <VBox alignment="CENTER" prefHeight="150.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,7 +28,7 @@
                      <children>
                         <ImageView fx:id="imgLogo" fitHeight="66.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../../../../Library/CloudStorage/OneDrive-EscuelaSuperiorPolitécnicadelLitoral/ESPOL/PAOI%20-%202024/Estructuras%20de%20Datos/ProyectoED-G1/src/main/resources/imagenes/logo.png" />
+                              <Image url="@../../../../imagenes/logo.png" />
                            </image>
                         </ImageView>
                         <Text fill="#e0252d" strokeType="OUTSIDE" strokeWidth="0.0" text="CarMatch" wrappingWidth="240.4574737548828">
@@ -39,6 +42,9 @@
                      <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
@@ -47,9 +53,9 @@
       </VBox>
    </top>
    <left>
-      <VBox alignment="CENTER" prefHeight="650.0" prefWidth="553.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="containerFAuto" alignment="CENTER" prefHeight="650.0" prefWidth="435.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="410.0" spacing="60.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);">
+            <VBox fx:id="filtroAuto" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="410.0" spacing="60.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);">
                <children>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="410.0">
                      <children>
@@ -64,20 +70,38 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                            <children>
-                              <ComboBox fx:id="cbModelo" prefWidth="150.0" promptText="Modelo" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
-                              <ComboBox fx:id="cbMarca" prefWidth="150.0" promptText="Marca" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
+                              <ComboBox fx:id="cbModelo" prefWidth="150.0" promptText="Modelo" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></ComboBox>
+                              <ComboBox fx:id="cbMarca" prefWidth="150.0" promptText="Marca" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></ComboBox>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                            <children>
-                              <ComboBox fx:id="cbPrecioDesde" prefWidth="150.0" promptText="Precio desde" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
-                              <ComboBox fx:id="cbPrecioHasta" prefWidth="150.0" promptText="Precio hasta" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
+                              <TextField fx:id="precioDesde" promptText="Precio desde">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor></TextField>
+                              <TextField fx:id="precioHasta" promptText="Precio hasta">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor></TextField>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                            <children>
-                              <ComboBox fx:id="cbKiloDesde" prefWidth="150.0" promptText="Kilometraje desde" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
-                              <ComboBox fx:id="cbKiloHasta" prefWidth="150.0" promptText="Kilometraje hasta" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
+                              <TextField fx:id="kmDesde" promptText="Km desde">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor></TextField>
+                              <TextField fx:id="kmDesde" promptText="Km hasta">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor></TextField>
                            </children>
                         </HBox>
                      </children>
@@ -86,56 +110,156 @@
                      <font>
                         <Font name="Arial Rounded MT Bold" size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </VBox>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
       </VBox>
    </left>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="650.0" prefWidth="723.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="65.0" prefWidth="650.0" />
-            <GridPane hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" style="-fx-background-color: #FFFFFF;" vgap="20.0">
+            <GridPane fx:id="gridCarros" hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" style="-fx-background-color: #FFFFFF;" vgap="20.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" GridPane.columnIndex="1" />
-                  <VBox fx:id="gpCatalogo" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" GridPane.columnIndex="2" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" GridPane.rowIndex="1" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 40; -fx-border-radius: 40; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <VBox fx:id="plantillaAutos" alignment="TOP_CENTER" prefHeight="207.0" prefWidth="315.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <children>
+                        <ImageView fx:id="planImg" fitHeight="141.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imagenes/default-car.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                           <children>
+                              <Text fx:id="plantVehName" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Auto">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="214.0" spacing="5.0">
+                                 <children>
+                                    <Label fx:id="planVehAnio" style="-fx-border-color: #727272; -fx-border-radius: 3.5;" text="anio" textFill="#727272">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Text fx:id="planVehKm" fill="#727272" strokeType="OUTSIDE" strokeWidth="0.0" text="kms" />
+                                    <Text fill="#727272" strokeType="OUTSIDE" strokeWidth="0.0" text="." />
+                                    <Text fx:id="planVehCiu" fill="#727272" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="1.5" top="1.5" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Text fx:id="planVehNego" fill="#727272" strokeType="OUTSIDE" strokeWidth="0.0" text="Negociable">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text fx:id="planVehPrecio" strokeType="OUTSIDE" strokeWidth="0.0" text="\$100000">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children></VBox>
+                  <VBox prefHeight="257.0" prefWidth="215.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" GridPane.columnIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></VBox>
+                  <VBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></VBox>
+                  <VBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #DADADA; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.6, 0, 0);" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></VBox>
                </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
             </GridPane>
-            <HBox prefHeight="35.0" prefWidth="650.0" />
-            <HBox alignment="CENTER" prefHeight="66.0" prefWidth="650.0" spacing="30.0">
+            <HBox fx:id="pestanias" alignment="CENTER" prefHeight="66.0" prefWidth="650.0" spacing="30.0">
                <children>
-                  <ImageView fx:id="flechaAntes" fitHeight="37.0" fitWidth="32.0" onMouseClicked="#irPaginaAnterior" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../../../Library/CloudStorage/OneDrive-EscuelaSuperiorPolitécnicadelLitoral/ESPOL/PAOI%20-%202024/Estructuras%20de%20Datos/ProyectoED-G1/src/main/resources/imagenes/flecha1.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="lblNumPagina" text="1">
+                  <Button mnemonicParsing="false" onAction="#prevPag" style="-fx-background-color: e0252d; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="&lt;" textFill="WHITE">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                        <Font name="Arial Black" size="12.0" />
                      </font>
-                  </Label>
-                  <ImageView fx:id="flechaDespues" fitHeight="37.0" fitWidth="32.0" onMouseClicked="#irPaginaDespues" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../../../Library/CloudStorage/OneDrive-EscuelaSuperiorPolitécnicadelLitoral/ESPOL/PAOI%20-%202024/Estructuras%20de%20Datos/ProyectoED-G1/src/main/resources/imagenes/flecha2.png" />
-                     </image>
-                  </ImageView>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <HBox fx:id="pagesInd" alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label fx:id="lblNumPagina" text="1">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label fx:id="lblNumPagina1" text="2">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label fx:id="lblNumPagina2" text="3">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#nextPag" style="-fx-background-color: e0252d; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="&gt;" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </HBox>
-            <HBox prefHeight="77.0" prefWidth="650.0" />
          </children>
       </VBox>
    </center>
