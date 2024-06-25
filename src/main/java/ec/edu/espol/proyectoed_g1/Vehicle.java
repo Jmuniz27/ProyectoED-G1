@@ -18,27 +18,29 @@ public class Vehicle {
     private String modelo;
     private int year;
     private int km;
-    private String transmisión;
+    private String transmision;
     private double peso;
     private String ubiAct;
+    private String motor;
     private Usuario dueno;
     private boolean esVendido;
     private Historial histReparacion;
     private CircularDoublyLinkedList<Image> imagsCarro;
 
-    public Vehicle(Precio precio, Marca marca, String modelo, int year, int km, String transmisión, double peso, String ubiAct, Usuario dueno, boolean esVendido, Historial HistReparacion, CircularDoublyLinkedList<Image> imagsCarro) {
+    public Vehicle(Precio precio, Marca marca, String modelo, int year, int km, String transmision, double peso, String ubiAct, String motor, Usuario dueno, boolean esVendido, Historial HistReparacion, CircularDoublyLinkedList<Image> imagsCarro) {
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;
         this.year = year;
         this.km = km;
-        this.transmisión = transmisión;
+        this.transmision = transmision;
         this.peso = peso;
         this.ubiAct = ubiAct;
         this.dueno = dueno;
         this.esVendido = esVendido;
         this.histReparacion = HistReparacion;
         this.imagsCarro = imagsCarro;
+        this.motor = motor;
     }
 
     public Precio getPrecio() {
@@ -59,6 +61,10 @@ public class Vehicle {
 
     public String getModelo() {
         return modelo;
+    }
+    
+    public String getMotor() {
+        return motor;
     }
 
     public void setModelo(String modelo) {
@@ -81,12 +87,12 @@ public class Vehicle {
         this.km = km;
     }
 
-    public String getTransmisión() {
-        return transmisión;
+    public String getTransmision() {
+        return transmision;
     }
 
-    public void setTransmisión(String transmisión) {
-        this.transmisión = transmisión;
+    public void setTransmision(String transmisión) {
+        this.transmision = transmisión;
     }
 
     public double getPeso() {

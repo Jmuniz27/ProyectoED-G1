@@ -20,6 +20,10 @@ public class Precio {
     public double getCant() {
         return cant;
     }
+    
+    public String toString() {
+        return cant+"";
+    }
 
     public void setCant(double cant) {
         this.cant = cant;

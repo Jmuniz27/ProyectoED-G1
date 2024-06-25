@@ -193,6 +193,8 @@ public class CrearVehiculoController implements Initializable {
             int km = cbKilo.getValue();
             Utilitaria.verificarComboBox(cbTransmision);
             String transmisión = cbTransmision.getValue();
+            Utilitaria.verificarComboBox(cbTransmision);
+            String motor = cbMotor.getValue();
             Utilitaria.verificarComboBox(cbPeso);
             double peso = cbPeso.getValue();
             Utilitaria.verificarComboBox(cbCiudad);
@@ -208,7 +210,7 @@ public class CrearVehiculoController implements Initializable {
             if(imagenes.isEmpty()){
                 throw new NoHayImagenes();
             }
-            Vehicle vehiculo = new Vehicle(precio,marca,modelo,year,km,transmisión,peso,ubiAct,dueno,esVendido,histReparacion,imagenes);
+            Vehicle vehiculo = new Vehicle(precio,marca,modelo,year,km,transmisión,peso,ubiAct,motor,dueno,esVendido,histReparacion,imagenes);
             Utilitaria.vehiculos.addLast(vehiculo);
             try{
                 App.setRoot("inicio");

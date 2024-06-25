@@ -6,14 +6,25 @@ package ec.edu.espol.proyectoed_g1;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
  *
  * @author isabella
  */
-public class PaginaVehiculoController implements Initializable {
+public class VerReparacionesController implements Initializable {
+
+    @FXML
+    private VBox vbReparaciones;
+    @FXML
+    private Button btnSalir;
 
     /**
      * Initializes the controller class.
@@ -22,5 +33,10 @@ public class PaginaVehiculoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+
+    @FXML
+    private void closePopup(ActionEvent event) {
+    }
     
 }

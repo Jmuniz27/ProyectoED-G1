@@ -62,7 +62,7 @@ public class BuscarVehiculosController implements Initializable {
     private TextField kmDesde;
 
     //Asumiendo que tengo una DoubleLinkedList de vehiculos
-    DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
+    DoublyLinkedList<Vehicle> vehiculos = Utilitaria.vehiculos;
     DoublyNode<Vehicle> currentNode;
     @FXML
     private VBox plantillaAutos;
@@ -80,6 +80,8 @@ public class BuscarVehiculosController implements Initializable {
     private Text planVehNego;
     @FXML
     private Text planVehPrecio;
+    
+    public static Vehicle vehiculoEscogido;
 
     //para paginacion
     private static final int ITEMS_PER_PAGE = 4;
@@ -101,9 +103,8 @@ public class BuscarVehiculosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        vehiculoEscogido = null;
         currentNode = vehiculos.getHead();
-        System.out.println(currentNode.toString());
         totalPages = (int) Math.ceil((double) vehiculos.size() / ITEMS_PER_PAGE);
         System.out.println("paginas>> " + totalPages);
         updateGrid();
@@ -175,9 +176,18 @@ public class BuscarVehiculosController implements Initializable {
 
         DoublyNode<Vehicle> tempNode = currentNode;        
         for (int i = 0; i < 2 && tempNode != null; i++) {
-            for(int j = 0; j < 2; j++){
+            for(int j = 0; j < 2 && tempNode != null; j++){
                 System.out.println(i + " " + j);
                 VBox auto = plantillaAuto(tempNode.getContent());
+                Vehicle v= tempNode.getContent();
+                auto.setOnMouseClicked(event -> {
+                    vehiculoEscogido = v;
+                    try{
+                        App.setRoot("verIndividualVehiculo");
+                    } catch(IOException e){
+                        e.printStackTrace();
+                    }
+                });
                 gridCarros.add(auto, i, j);
                 tempNode = tempNode.getNext();
             }
