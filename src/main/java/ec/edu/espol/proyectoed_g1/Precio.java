@@ -21,7 +21,7 @@ public class Precio {
         return cant;
     }
 
-    public void setCant(float cant) {
+    public void setCant(double cant) {
         this.cant = cant;
     }
 

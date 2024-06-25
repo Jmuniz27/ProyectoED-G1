@@ -18,7 +18,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("inicio"), 1280, 800);
+        scene = new Scene(loadFXML("buscarVehiculos"), 1280, 800);
         stage.setScene(scene);
         stage.show();
         //Creando Marcas
@@ -170,7 +170,7 @@ public class App extends Application {
         InicioController.ciudades.addLast("Quevedo");
         InicioController.ciudades.addLast("Babahoyo");
         InicioController.ciudades.addLast("Zaruma");
-       
+    
         
         //InicioController.vehiculos.addLast(new Vehicle(new Precio()))
     }

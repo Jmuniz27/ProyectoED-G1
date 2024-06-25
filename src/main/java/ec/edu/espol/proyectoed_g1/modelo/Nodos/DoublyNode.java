@@ -27,5 +27,9 @@ public class DoublyNode<E> {
     public void setPrevious(DoublyNode<E> previous) {
         this.previous = previous;
     }
+    @Override
+    public String toString() {
+        return "DoublyNode [content=" + content + "]";
+    }
     
 }

@@ -73,7 +73,7 @@ public class Vehicle {
         this.year = year;
     }
 
-    public float getKm() {
+    public int getKm() {
         return km;
     }
 
@@ -93,7 +93,7 @@ public class Vehicle {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(int peso) {
         this.peso = peso;
     }
 
