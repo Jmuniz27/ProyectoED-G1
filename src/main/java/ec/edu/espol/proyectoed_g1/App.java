@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,25 +23,23 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //instancias vehiculos
-        DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
 
-        vehiculos.addLast(new Vehicle(new Precio(12000, false), new Marca("Chevrolet"), "Spark", 2020, 80000, "Manual", 900, "Duran", new Usuario("Juan", "0987654321", "juan@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(15000, false), new Marca("Toyota"), "Corolla", 2018, 60000, "Automática", 1100, "Quito", new Usuario("Maria", "0987654321", "maria@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(18000, false), new Marca("Honda"), "Civic", 2019, 70000, "Manual", 1000, "Guayaquil", new Usuario("Pedro", "0987654321", "pedro@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(20000, false), new Marca("Ford"), "Mustang", 2017, 50000, "Automática", 1300, "Cuenca", new Usuario("Laura", "0987654321", "laura@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(22000, false), new Marca("Nissan"), "Sentra", 2021, 40000, "Manual", 1200, "Santo Domingo", new Usuario("Carlos", "0987654321", "carlos@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(25000, false), new Marca("BMW"), "X5", 2016, 90000, "Automática", 1500, "Machala", new Usuario("Ana", "0987654321", "ana@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(28000, false), new Marca("Mercedes-Benz"), "GLC", 2020, 80000, "Manual", 1400, "Durán", new Usuario("David", "0987654321", "david@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(30000, false), new Marca("Audi"), "Q5", 2019, 70000, "Automática", 1600, "Manta", new Usuario("Sofia", "0987654321", "sofia@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(32000, false), new Marca("Chevrolet"), "Malibu", 2018, 60000, "Manual", 1800, "Portoviejo", new Usuario("Diego", "0987654321", "diego@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(35000, false), new Marca("Toyota"), "Camry", 2017, 50000, "Automática", 1700, "Loja", new Usuario("Isabella", "0987654321", "isabella@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(38000, false), new Marca("Honda"), "Accord", 2021, 40000, "Manual", 1900, "Ambato", new Usuario("Andres", "0987654321", "andres@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(40000, false), new Marca("Ford"), "Explorer", 2016, 90000, "Automática", 2000, "Riobamba", new Usuario("Valeria", "0987654321", "valeria@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(42000, false), new Marca("Nissan"), "Rogue", 2020, 80000, "Manual", 2200, "Esmeraldas", new Usuario("Gabriel", "0987654321", "gabriel@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(45000, false), new Marca("BMW"), "3 Series", 2019, 70000, "Automática", 2400, "Ibarra", new Usuario("Valentina", "0987654321", "valentina@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        vehiculos.addLast(new Vehicle(new Precio(48000, false), new Marca("Mercedes-Benz"), "E-Class", 2018, 60000, "Manual", 2600, "Quevedo", new Usuario("Javier", "0987654321", "javier@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
-        BuscarVehiculosController.setVehiculos(vehiculos);
-        System.out.println(vehiculos.size());
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(12000, false), new Marca("Chevrolet"), "Spark", 2020, 80000, "Manual", 900, "Duran", new Usuario("Juan", "0987654321", "juan@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(15000, false), new Marca("Toyota"), "Corolla", 2018, 60000, "Automática", 1100, "Quito", new Usuario("Maria", "0987654321", "maria@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(18000, false), new Marca("Honda"), "Civic", 2019, 70000, "Manual", 1000, "Guayaquil", new Usuario("Pedro", "0987654321", "pedro@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(20000, false), new Marca("Ford"), "Mustang", 2017, 50000, "Automática", 1300, "Cuenca", new Usuario("Laura", "0987654321", "laura@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(22000, false), new Marca("Nissan"), "Sentra", 2021, 40000, "Manual", 1200, "Santo Domingo", new Usuario("Carlos", "0987654321", "carlos@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(25000, false), new Marca("BMW"), "X5", 2016, 90000, "Automática", 1500, "Machala", new Usuario("Ana", "0987654321", "ana@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(28000, false), new Marca("Mercedes-Benz"), "GLC", 2020, 80000, "Manual", 1400, "Durán", new Usuario("David", "0987654321", "david@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(30000, false), new Marca("Audi"), "Q5", 2019, 70000, "Automática", 1600, "Manta", new Usuario("Sofia", "0987654321", "sofia@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(32000, false), new Marca("Chevrolet"), "Malibu", 2018, 60000, "Manual", 1800, "Portoviejo", new Usuario("Diego", "0987654321", "diego@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(35000, false), new Marca("Toyota"), "Camry", 2017, 50000, "Automática", 1700, "Loja", new Usuario("Isabella", "0987654321", "isabella@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(38000, false), new Marca("Honda"), "Accord", 2021, 40000, "Manual", 1900, "Ambato", new Usuario("Andres", "0987654321", "andres@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(40000, false), new Marca("Ford"), "Explorer", 2016, 90000, "Automática", 2000, "Riobamba", new Usuario("Valeria", "0987654321", "valeria@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(42000, false), new Marca("Nissan"), "Rogue", 2020, 80000, "Manual", 2200, "Esmeraldas", new Usuario("Gabriel", "0987654321", "gabriel@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(45000, false), new Marca("BMW"), "3 Series", 2019, 70000, "Automática", 2400, "Ibarra", new Usuario("Valentina", "0987654321", "valentina@mail.co"), true, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(48000, false), new Marca("Mercedes-Benz"), "E-Class", 2018, 60000, "Manual", 2600, "Quevedo", new Usuario("Javier", "0987654321", "javier@mail.co"), false, new Historial(null, null), new CircularDoublyLinkedList<>()));
+        System.out.println(Utilitaria.vehiculos.size());
 
 
         scene = new Scene(loadFXML("buscarVehiculos"), 1280, 800);

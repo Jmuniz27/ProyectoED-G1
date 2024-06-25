@@ -70,11 +70,11 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                            <children>
-                              <ComboBox fx:id="cbModelo" prefWidth="150.0" promptText="Modelo" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
+                              <ComboBox fx:id="cbMarca" onAction="#cbMarcaClicked" prefWidth="150.0" promptText="Marca" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></ComboBox>
-                              <ComboBox fx:id="cbMarca" prefWidth="150.0" promptText="Marca" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
+                              <ComboBox fx:id="cbModelo" onAction="#cbModeloClick" prefWidth="150.0" promptText="Modelo" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></ComboBox>
