@@ -17,6 +17,9 @@ public class Marca {
         this.nombre = nombre;
         this.modelos = modelos;
     }
+    public Marca(String nombre){
+        this.nombre = nombre;
+    }
     public LinkedList<String> getModelos(){
         return modelos;
     }

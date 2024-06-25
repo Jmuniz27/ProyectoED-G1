@@ -62,7 +62,7 @@ public class BuscarVehiculosController implements Initializable {
     private TextField kmDesde;
 
     //Asumiendo que tengo una DoubleLinkedList de vehiculos
-    DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
+    static DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
     DoublyNode<Vehicle> currentNode;
     @FXML
     private VBox plantillaAutos;
@@ -80,7 +80,6 @@ public class BuscarVehiculosController implements Initializable {
     private Text planVehNego;
     @FXML
     private Text planVehPrecio;
-
     //para paginacion
     private static final int ITEMS_PER_PAGE = 4;
     private int currentPage = 1;
@@ -95,13 +94,18 @@ public class BuscarVehiculosController implements Initializable {
     private VBox containerFAuto;
     @FXML
     private VBox filtroAuto;
+    @FXML
+    private TextField kmHasta;
+    
+    public static void setVehiculos(DoublyLinkedList<Vehicle> vehiculos) {
+        BuscarVehiculosController.vehiculos = vehiculos;
+    }
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         currentNode = vehiculos.getHead();
         System.out.println(currentNode.toString());
         totalPages = (int) Math.ceil((double) vehiculos.size() / ITEMS_PER_PAGE);
@@ -175,7 +179,7 @@ public class BuscarVehiculosController implements Initializable {
 
         DoublyNode<Vehicle> tempNode = currentNode;        
         for (int i = 0; i < 2 && tempNode != null; i++) {
-            for(int j = 0; j < 2; j++){
+            for(int j = 0; j < 2 && tempNode != null; j++){
                 System.out.println(i + " " + j);
                 VBox auto = plantillaAuto(tempNode.getContent());
                 gridCarros.add(auto, i, j);
@@ -226,7 +230,7 @@ public class BuscarVehiculosController implements Initializable {
             pageButton.setStyle("-fx-font-family: 'Arial Black';");
             pageButton.setStyle("-fx-background-color: #FFFFFF;");
             if (i == currentPage) {
-                pageButton.setCursor(javafx.scene.Cursor.HAND);
+                pageButton.setCursor(javafx.scene.Cursor.DEFAULT);
                 pageButton.setStyle("-fx-background-radius: 40;");
                 pageButton.setStyle("-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);"); 
                 pageButton.setStyle("-fx-background-color:#e0252d;"); // Estilo para la página activa
@@ -239,6 +243,7 @@ public class BuscarVehiculosController implements Initializable {
     }
 
     private void goToPage(int pageIndex) {
+        System.out.println("goToPage " + pageIndex);
         currentPage = pageIndex;
 
         // Calcular el nodo inicial para la nueva página
@@ -267,7 +272,7 @@ public class BuscarVehiculosController implements Initializable {
 
             boolean coincide = true;
             if (modelo != null && !modelo.equals(vehiculo.getModelo())) coincide = false;
-            if (marca != null && !marca.equals(vehiculo.getMarca())) coincide = false;
+            if (marca != null && !marca.equals(vehiculo.getMarca().getNombre())) coincide = false;
             if (precioMin != null && vehiculo.getPrecio().getCant() < precioMin) coincide = false;
             if (precioMax != null && vehiculo.getPrecio().getCant() > precioMax) coincide = false;
             if (kmMin != null && vehiculo.getKm() < kmMin) coincide = false;
@@ -286,7 +291,7 @@ public class BuscarVehiculosController implements Initializable {
         gridCarros.getChildren().clear();
         DoublyNode<Vehicle> tempNode = resultados.getHead();
         for (int i = 0; i < 2 && tempNode != null; i++) {
-            for(int j = 0; j < 2; j++){
+            for(int j = 0; j < 2 && tempNode != null; j++){
                 System.out.println(i + " " + j);
                 VBox auto = plantillaAuto(tempNode.getContent());
                 gridCarros.add(auto, i, j);
