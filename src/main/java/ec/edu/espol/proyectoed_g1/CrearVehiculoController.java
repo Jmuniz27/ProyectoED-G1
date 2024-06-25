@@ -9,6 +9,7 @@ import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
 import excepciones.ComboBoxSinEleccion;
 import excepciones.NoEsNumero;
+import excepciones.NoHayImagenes;
 import excepciones.NoSeCreoAccidenteServicio;
 import excepciones.StringVacio;
 import java.io.File;
@@ -114,25 +115,25 @@ public class CrearVehiculoController implements Initializable {
         Image img1 = new Image("/imagenes/logo.png");
         imgLogo.setImage(img1);
         //VBox.setVgrow(fpImagenes, Priority.ALWAYS);
-        for(Marca m: InicioController.marcas){
+        for(Marca m: Utilitaria.marcas){
             cbMarca.getItems().add(m);
         }
-        for(Integer a: InicioController.anios){
+        for(Integer a: Utilitaria.anios){
             cbAnio.getItems().add(a);
         }
-        for(Integer k: InicioController.kilometrajes){
+        for(Integer k: Utilitaria.kilometrajes){
             cbKilo.getItems().add(k);
         }
-        for(String mo : InicioController.motores){
+        for(String mo : Utilitaria.motores){
             cbMotor.getItems().add(mo);
         }
-        for(String t: InicioController.transmisiones){
+        for(String t: Utilitaria.transmisiones){
             cbTransmision.getItems().add(t);
         }
-        for(Integer p: InicioController.pesos){
+        for(Integer p: Utilitaria.pesos){
             cbPeso.getItems().add(p);
         }
-        for(String c: InicioController.ciudades){
+        for(String c: Utilitaria.ciudades){
             cbCiudad.getItems().add(c);
         }
         
@@ -204,7 +205,11 @@ public class CrearVehiculoController implements Initializable {
             //Creando Historial
             Historial histReparacion = new Historial(reparaciones,mantenimientos);
             System.out.println(imagenes);
+            if(imagenes.isEmpty()){
+                throw new NoHayImagenes();
+            }
             Vehicle vehiculo = new Vehicle(precio,marca,modelo,year,km,transmisión,peso,ubiAct,dueno,esVendido,histReparacion,imagenes);
+            Utilitaria.vehiculos.addLast(vehiculo);
             try{
                 App.setRoot("inicio");
             } catch(IOException e){
@@ -212,11 +217,13 @@ public class CrearVehiculoController implements Initializable {
             }
            
         } catch(StringVacio s){
-            Utilitaria.mostrarAlerta2("No puede dejar campos vacíos", Alert.AlertType.ERROR);
+            Utilitaria.mostrarAlerta2("No puede dejar campos vacíos.", Alert.AlertType.ERROR);
         } catch(NoEsNumero n){
-            Utilitaria.mostrarAlerta2("El precio ingresado no es un número", Alert.AlertType.ERROR);
+            Utilitaria.mostrarAlerta2("El precio ingresado no es un número.", Alert.AlertType.ERROR);
         } catch(ComboBoxSinEleccion co){
-            Utilitaria.mostrarAlerta2("Por favor escoja una opción en todos los campos", Alert.AlertType.ERROR);
+            Utilitaria.mostrarAlerta2("Por favor escoja una opción en todos los campos.", Alert.AlertType.ERROR);
+        } catch(NoHayImagenes nhi){
+            Utilitaria.mostrarAlerta2("Debe subir al menos una imagen.", Alert.AlertType.ERROR);
         }
         
     }

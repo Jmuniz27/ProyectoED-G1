@@ -24,14 +24,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class InicioController implements Initializable {
     
-    public static DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
-    public static DoublyLinkedList<Marca> marcas = new DoublyLinkedList<>();
-    public static DoublyLinkedList<Integer> anios = new DoublyLinkedList<>();
-    public static DoublyLinkedList<Integer> kilometrajes = new DoublyLinkedList<>();
-    public static DoublyLinkedList<String> motores = new DoublyLinkedList<>();
-    public static DoublyLinkedList<String> transmisiones = new DoublyLinkedList<>();
-    public static DoublyLinkedList<Integer> pesos = new DoublyLinkedList<>();
-    public static DoublyLinkedList<String> ciudades = new DoublyLinkedList<>();
+    
     
     @FXML
     private ImageView imgLogo;

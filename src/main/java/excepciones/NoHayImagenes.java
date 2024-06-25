@@ -8,11 +8,11 @@ package excepciones;
  *
  * @author isabella
  */
-public class ComboBoxSinEleccion extends Exception {
-    public ComboBoxSinEleccion() {
-        super("Debe elegir una opción.");
+public class NoHayImagenes extends Exception{
+    public NoHayImagenes() {
+        super("Debe subir al menos una foto.");
     }
-    public ComboBoxSinEleccion(String msg) {
+    public NoHayImagenes(String msg) {
         super(msg);
     }
 }
