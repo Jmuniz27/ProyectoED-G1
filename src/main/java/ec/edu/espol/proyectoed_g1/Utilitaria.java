@@ -4,6 +4,7 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
 import excepciones.ComboBoxSinEleccion;
 import excepciones.NoEsNumero;
 import java.io.IOException;
@@ -18,6 +19,16 @@ import javafx.scene.control.TextField;
  * @author isabella
  */
 public class Utilitaria {
+    
+    public static DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
+    public static DoublyLinkedList<Marca> marcas = new DoublyLinkedList<>();
+    public static DoublyLinkedList<Integer> anios = new DoublyLinkedList<>();
+    public static DoublyLinkedList<Integer> kilometrajes = new DoublyLinkedList<>();
+    public static DoublyLinkedList<String> motores = new DoublyLinkedList<>();
+    public static DoublyLinkedList<String> transmisiones = new DoublyLinkedList<>();
+    public static DoublyLinkedList<Integer> pesos = new DoublyLinkedList<>();
+    public static DoublyLinkedList<String> ciudades = new DoublyLinkedList<>();
+    
     
     public static void mostrarAlerta(String msg, Alert.AlertType a, String fxml) {
         Alert alert = new Alert(a);
