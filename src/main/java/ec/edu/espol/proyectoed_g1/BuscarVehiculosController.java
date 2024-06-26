@@ -209,8 +209,13 @@ public class BuscarVehiculosController implements Initializable {
             Text planVehCiu = (Text) auto.lookup("#planVehCiu");
             Text planVehNego = (Text) auto.lookup("#planVehNego");
             Text planVehPrecio = (Text) auto.lookup("#planVehPrecio");
+            ImageView planImg = (ImageView) auto.lookup("#planImg");
 
             //planImg.setImage(new Image(getClass().getResourceAsStream("/resources/default-car.png")));
+            CircularDoublyLinkedList<Image> imagsCarro = vehiculo.getImagsCarro();
+            if(!imagsCarro.isEmpty()){
+                planImg.setImage(imagsCarro.get(0));
+            }
             plantVehName.setText(vehiculo.getMarca() + " " + vehiculo.getModelo());
             planVehAnio.setText(String.valueOf(vehiculo.getYear()));
             planVehKm.setText(String.valueOf(vehiculo.getKm()));

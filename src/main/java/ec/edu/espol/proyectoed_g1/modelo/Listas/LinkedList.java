@@ -216,7 +216,44 @@ public class LinkedList<E> implements List<E>{
 
     @Override
     public void sort(Comparator<E> comparator) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    if (header == null || header.getNext() == null) {
+        return; // La lista está vacía o tiene un solo elemento
+    }
+
+    NodeList<E> sorted = null; // Lista donde se almacenarán los nodos ordenados
+    NodeList<E> current = header; // Comenzar con el primer elemento de la lista original
+
+    while (current != null) {
+        NodeList<E> next = current.getNext(); // Guardar el siguiente nodo
+        sorted = insertSorted(sorted, current, comparator); // Insertar el nodo actual en la lista ordenada
+        current = next; // Mover al siguiente nodo
+    }
+
+    header = sorted; // Actualizar el encabezado de la lista con la lista ordenada
+    // Reconstruir el último nodo
+    last = header;
+    if (last != null) {
+        while (last.getNext() != null) {
+            last = last.getNext(); // Actualizar el último nodo
+        }
+    }
+}
+
+    private NodeList<E> insertSorted(NodeList<E> sorted, NodeList<E> newNode, Comparator<E> comparator) {
+        if (sorted == null || comparator.compare(newNode.getContent(), sorted.getContent()) < 0) {
+            newNode.setNext(sorted);
+            return newNode;
+        }
+
+        NodeList<E> current = sorted;
+        while (current.getNext() != null && comparator.compare(newNode.getContent(), current.getNext().getContent()) >= 0) {
+            current = current.getNext();
+        }
+
+        newNode.setNext(current.getNext());
+        current.setNext(newNode);
+
+        return sorted;
     }
 
     @Override

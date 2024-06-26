@@ -8,6 +8,7 @@ import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
 import excepciones.ComboBoxSinEleccion;
 import excepciones.NoEsNumero;
 import java.io.IOException;
+import java.io.Serializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -18,7 +19,7 @@ import javafx.scene.control.TextField;
  *
  * @author isabella
  */
-public class Utilitaria {
+public class Utilitaria implements Serializable {
     
     public static DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
     public static DoublyLinkedList<Marca> marcas = new DoublyLinkedList<>();

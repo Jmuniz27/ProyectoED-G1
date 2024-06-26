@@ -4,7 +4,6 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
-import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
 import java.io.IOException;
 import java.net.URL;
@@ -15,14 +14,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -30,10 +24,10 @@ import javafx.stage.Stage;
  *
  * @author isabella
  */
-public class VerReparacionesController implements Initializable {
+public class VerMantenimientosController implements Initializable {
 
     @FXML
-    private VBox vbReparaciones;
+    private VBox vbMantenimientos;
     @FXML
     private Button btnSalir;
 
@@ -42,29 +36,28 @@ public class VerReparacionesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        vbReparaciones.getChildren().clear();
-        LinkedList<AccidenteServicios> reparaciones = BuscarVehiculosController.vehiculoEscogido.getHistorial().getAccidentes();
+        vbMantenimientos.getChildren().clear();
+        LinkedList<AccidenteServicios> mantenimientos = BuscarVehiculosController.vehiculoEscogido.getHistorial().getMantenimiento();
         Comparator<AccidenteServicios> cmp1 = new Comparator<>(){
             @Override
             public int compare(AccidenteServicios a1, AccidenteServicios a2){
                 return a1.getFecha().compareTo(a2.getFecha());
             }
         };
-        reparaciones.sort(cmp1);
+        mantenimientos.sort(cmp1);
         HBox hbIni = new HBox();
         hbIni.setPrefWidth(100);
         hbIni.setPrefHeight(10);
-        vbReparaciones.getChildren().add(hbIni);
-        for(AccidenteServicios rep: reparaciones){
-            HBox hbRep = plantillaReparacion(rep);
-            vbReparaciones.getChildren().add(hbRep);
+        vbMantenimientos.getChildren().add(hbIni);
+        for(AccidenteServicios man: mantenimientos){
+            HBox hbMan = plantillaMantenimiento(man);
+            vbMantenimientos.getChildren().add(hbMan);
         }
         HBox hbFin = new HBox();
         hbFin.setPrefWidth(100);
         hbFin.setPrefHeight(10);
-        vbReparaciones.getChildren().add(hbFin);
+        vbMantenimientos.getChildren().add(hbFin);
     }    
-
 
     @FXML
     private void closePopup(ActionEvent event) {
@@ -72,19 +65,19 @@ public class VerReparacionesController implements Initializable {
         stage.close();
     }
     
-    private HBox plantillaReparacion(AccidenteServicios reparacion) {
+    private HBox plantillaMantenimiento(AccidenteServicios mante) {
         try {
             // Cargar la plantilla de celda desde el archivo FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("plantillaServicios.fxml"));
-            HBox rep = loader.load();
+            HBox mantenimiento = loader.load();
 
             // Actualizar el contenido de la celda
-            Button btnFecha = (Button) rep.lookup("#btnFecha");
-            Label lblDescri = (Label) rep.lookup("#lblDescri");
+            Button btnFecha = (Button) mantenimiento.lookup("#btnFecha");
+            Label lblDescri = (Label) mantenimiento.lookup("#lblDescri");
                  
-            btnFecha.setText(reparacion.getFecha().toString());
-            lblDescri.setText(reparacion.getDescrip());
-            return rep;
+            btnFecha.setText(mante.getFecha().toString());
+            lblDescri.setText(mante.getDescrip());
+            return mantenimiento;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
