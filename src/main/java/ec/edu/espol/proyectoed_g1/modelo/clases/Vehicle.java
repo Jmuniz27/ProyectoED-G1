@@ -24,7 +24,7 @@ public class Vehicle {
     private String motor;
     private Usuario dueno;
     private boolean esVendido;
-    private Historial histReparacion;
+    private Historial historial;
     private CircularDoublyLinkedList<Image> imagsCarro;
 
     public Vehicle(Precio precio, Marca marca, String modelo, int year, int km, String transmision, double peso, String ubiAct, String motor, Usuario dueno, boolean esVendido, Historial HistReparacion, CircularDoublyLinkedList<Image> imagsCarro) {
@@ -38,7 +38,7 @@ public class Vehicle {
         this.ubiAct = ubiAct;
         this.dueno = dueno;
         this.esVendido = esVendido;
-        this.histReparacion = HistReparacion;
+        this.historial = HistReparacion;
         this.imagsCarro = imagsCarro;
         this.motor = motor;
     }
@@ -127,12 +127,12 @@ public class Vehicle {
         this.esVendido = esVendido;
     }
 
-    public Historial getHistReparacion() {
-        return histReparacion;
+    public Historial getHistorial() {
+        return historial;
     }
 
-    public void setHistReparacion(Historial HistReparacion) {
-        this.histReparacion = HistReparacion;
+    public void setHistorial(Historial historial) {
+        this.historial = historial;
     }
 
     public CircularDoublyLinkedList<Image> getImagsCarro() {
@@ -143,8 +143,5 @@ public class Vehicle {
         this.imagsCarro = imagsCarro;
     }
     
-    public void venderVehiculo(){
-        
-    }
     
 }

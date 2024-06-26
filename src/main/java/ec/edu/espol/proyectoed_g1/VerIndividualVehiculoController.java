@@ -11,12 +11,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -128,10 +133,38 @@ public class VerIndividualVehiculoController implements Initializable {
     
     @FXML
     private void verReparaciones(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("verReparaciones.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Ver Reparaciones");
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void verMantenimientos(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("verMantenimientos.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Ver Mantenimientos");
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

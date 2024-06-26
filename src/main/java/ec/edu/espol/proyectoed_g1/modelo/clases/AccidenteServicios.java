@@ -19,4 +19,13 @@ public class AccidenteServicios{
         this.fecha = fecha;
         this.descrip = descrip;
     }
+    
+    public LocalDate getFecha(){
+        return fecha;
+        
+    }
+    
+    public String getDescrip(){
+        return descrip;
+    }
 }

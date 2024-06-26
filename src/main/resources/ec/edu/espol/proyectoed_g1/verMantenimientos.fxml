@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" spacing="30.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoed_g1.VerReparacionesController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" spacing="30.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoed_g1.VerMantenimientosController">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
@@ -17,7 +17,7 @@
       <children>
          <HBox alignment="CENTER" prefHeight="59.0" prefWidth="580.0">
             <children>
-               <Label style="-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Reparaciones" textFill="#e0252d">
+               <Label style="-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Mantenimientos" textFill="#e0252d">
                   <font>
                      <Font name="Arial Rounded MT Bold" size="22.0" />
                   </font>
@@ -28,7 +28,7 @@
          <VBox prefHeight="200.0" prefWidth="100.0" />
          <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="528.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" vbarPolicy="ALWAYS">
             <content>
-               <VBox fx:id="vbReparaciones" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="510.0" spacing="50.0" />
+               <VBox fx:id="vbMantenimientos" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="510.0" spacing="50.0" />
             </content>
          </ScrollPane>
       </children>

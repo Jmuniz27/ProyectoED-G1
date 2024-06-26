@@ -241,7 +241,7 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private void clickEnSubirImagen(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg","*.jpeg"));
         File file = fileChooser.showOpenDialog(new Stage());
             if (file != null) {
                 try {
