@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.clases.Marca;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Vehicle;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
 import excepciones.ComboBoxSinEleccion;
 import excepciones.NoEsNumero;

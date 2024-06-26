@@ -1,16 +1,25 @@
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.clases.Marca;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Historial;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Usuario;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Vehicle;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Precio;
+import ec.edu.espol.proyectoed_g1.modelo.clases.*;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
+import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Comparator;
 import javafx.scene.image.Image;
 
 /**
@@ -19,9 +28,26 @@ import javafx.scene.image.Image;
 public class App extends Application {
 
     private static Scene scene;
+        
 
     @Override
     public void start(Stage stage) throws IOException {
+        /*
+        Comparator<Vehicle> cmp1 = new Comparator<>(){
+            @Override
+            public int compare(Vehicle v1, Vehicle v2){
+                int resultado = (int) (v2.getPrecio().getCant()-v1.getPrecio().getCant());
+                return resultado;
+            }
+        };
+        Comparator<Vehicle> cmp2 = new Comparator<>(){
+            @Override
+            public int compare(Vehicle v1, Vehicle v2){
+                return v1.getModelo().compareTo(v2.getModelo());
+            }
+        };
+        Utilitaria.vehiculos.sort(cmp1);*/
+
         scene = new Scene(loadFXML("inicio"), 1280, 800);
         stage.setScene(scene);
         stage.show();
@@ -94,52 +120,12 @@ public class App extends Application {
         for(int i = 2024; i>=1990; i--){
             Utilitaria.anios.addLast(i);
         }
-        /*
-        InicioController.anios.addLast(2024);
-        InicioController.anios.addLast(2023);
-        InicioController.anios.addLast(2022);
-        InicioController.anios.addLast(2021);
-        InicioController.anios.addLast(2020);
-        InicioController.anios.addLast(2019);
-        InicioController.anios.addLast(2018);
-        InicioController.anios.addLast(2017);
-        InicioController.anios.addLast(2016);
-        InicioController.anios.addLast(2015);
-        InicioController.anios.addLast(2014);
-        InicioController.anios.addLast(2013);
-        InicioController.anios.addLast(2012);
-        InicioController.anios.addLast(2011);
-        InicioController.anios.addLast(2010);
-        InicioController.anios.addLast(2009);
-        InicioController.anios.addLast(2008);
-        InicioController.anios.addLast(2007);
-        InicioController.anios.addLast(2006);
-        InicioController.anios.addLast(2005);
-        InicioController.anios.addLast(2004);
-        InicioController.anios.addLast(2003);
-        InicioController.anios.addLast(2002);
-        InicioController.anios.addLast(2001);
-        InicioController.anios.addLast(2000);*/
         
         //Creando lista kilometrajes
         for(int i = 0; i<=300000; i+=10000){
             Utilitaria.kilometrajes.addLast(i);
         }
-        /*
-        InicioController.kilometrajes.addLast(0);
-        InicioController.kilometrajes.addLast(10000);
-        InicioController.kilometrajes.addLast(20000);
-        InicioController.kilometrajes.addLast(30000);
-        InicioController.kilometrajes.addLast(40000);
-        InicioController.kilometrajes.addLast(50000);
-        InicioController.kilometrajes.addLast(60000);
-        InicioController.kilometrajes.addLast(70000);
-        InicioController.kilometrajes.addLast(80000);
-        InicioController.kilometrajes.addLast(90000);
-        InicioController.kilometrajes.addLast(100000);
-        InicioController.kilometrajes.addLast(150000);
-        InicioController.kilometrajes.addLast(200000);
-        */
+        
         
         //Creando lista motores
         Utilitaria.motores.addLast("Gasolina");
@@ -157,18 +143,6 @@ public class App extends Application {
         for(int i = 1000; i<=3000; i+=100){
             Utilitaria.pesos.addLast(i);
         }
-        /*
-        InicioController.pesos.addLast(1000);
-        InicioController.pesos.addLast(1100);
-        InicioController.pesos.addLast(1200);
-        InicioController.pesos.addLast(1300);
-        InicioController.pesos.addLast(1400);
-        InicioController.pesos.addLast(1500);
-        InicioController.pesos.addLast(1600);
-        InicioController.pesos.addLast(1700);
-        InicioController.pesos.addLast(1800);
-        InicioController.pesos.addLast(1900);
-        InicioController.pesos.addLast(2000);*/
         
         //Creando lista ciudades ec
         Utilitaria.ciudades.addLast("Quito");
@@ -188,13 +162,7 @@ public class App extends Application {
         Utilitaria.ciudades.addLast("Babahoyo");
         Utilitaria.ciudades.addLast("Zaruma");
         
-        CircularDoublyLinkedList<Image> imgSpark = new CircularDoublyLinkedList<>();
-        imgSpark.addLast(new Image("/imagenes/spark1.jpeg"));
-        imgSpark.addLast(new Image("/imagenes/spark2.jpeg"));
-        
-        CircularDoublyLinkedList<Image> imgCivic = new CircularDoublyLinkedList<>();
-        imgCivic.addLast(new Image("/imagenes/civic1.jpeg"));
-        
+        //Historial de los vehiculos
         // Chevrolet Spark
         LinkedList<AccidenteServicios> accidentesSpark = new LinkedList<>();
         LinkedList<AccidenteServicios> mantenimientosSpark = new LinkedList<>();
@@ -375,22 +343,106 @@ public class App extends Application {
         mantenimientosEClass.addLast(new AccidenteServicios(LocalDate.of(2021, 5, 20), "Cambio de batería y revisión del sistema eléctrico."));
         Historial historialEClass = new Historial(accidentesEClass, mantenimientosEClass);
 
-        //instancias vehiculos
+        
+        //Imagenes de los vehiculos
+        //Chevrolet Spark
+        CircularDoublyLinkedList<Image> imgSpark = new CircularDoublyLinkedList<>();
+        imgSpark.addLast(new Image("/imagenes/spark1.jpeg"));
+        imgSpark.addLast(new Image("/imagenes/spark2.jpeg"));
+        
+        //Toyota Corolla
+        CircularDoublyLinkedList<Image> imgCorolla = new CircularDoublyLinkedList<>();
+        imgCorolla.addLast(new Image("/imagenes/Toyota_Corolla_1.jpg"));
+        imgCorolla.addLast(new Image("/imagenes/Toyota_Corolla_2.jpg"));
+        imgCorolla.addLast(new Image("/imagenes/Toyota_Corolla_3.jpg"));
+        imgCorolla.addLast(new Image("/imagenes/Toyota_Corolla_4.jpg"));
+        
+        //Honda Civic
+        CircularDoublyLinkedList<Image> imgCivic = new CircularDoublyLinkedList<>();
+        imgCivic.addLast(new Image("/imagenes/Honda_Civic_1.png"));
+        imgCivic.addLast(new Image("/imagenes/Honda_Civic_2.png"));
+        imgCivic.addLast(new Image("/imagenes/Honda_Civic_3.png"));
+        
+        //FordMustang
+        CircularDoublyLinkedList<Image> imgMustang = new CircularDoublyLinkedList<>();
+        imgMustang.addLast(new Image("/imagenes/Ford_Mustang_1.jpeg"));
+        imgMustang.addLast(new Image("/imagenes/Ford_Mustang_2.jpeg"));
+        imgMustang.addLast(new Image("/imagenes/Ford_Mustang_3.jpeg"));
+        imgMustang.addLast(new Image("/imagenes/Ford_Mustang_4.jpeg"));
+        
+        //BMW X5
+        CircularDoublyLinkedList<Image> imgX5 = new CircularDoublyLinkedList<>();
+        imgX5.addLast(new Image("/imagenes/BMW_X5_1.jpg"));
+        imgX5.addLast(new Image("/imagenes/BMW_X5_2.jpg"));
+        imgX5.addLast(new Image("/imagenes/BMW_X5_3.jpg"));
+        imgX5.addLast(new Image("/imagenes/BMW_X5_4.jpg"));
+        
+        //Mercedes GLC
+        CircularDoublyLinkedList<Image> imgGLC = new CircularDoublyLinkedList<>();
+        imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_1.jpeg"));
+        imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_2.jpeg"));
+        imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_3.jpeg"));
+        imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_4.jpeg"));
+        
+        //Audi Q5
+        CircularDoublyLinkedList<Image> imgQ5 = new CircularDoublyLinkedList<>();
+        imgQ5.addLast(new Image("/imagenes/Audi_Q5_1.webp"));
+        imgQ5.addLast(new Image("/imagenes/Audi_Q5_2.webp"));
+        imgQ5.addLast(new Image("/imagenes/Audi_Q5_3.webp"));
+        imgQ5.addLast(new Image("/imagenes/Audi_Q5_4.webp"));
+        
+        //Toyota Camry
+        CircularDoublyLinkedList<Image> imgCamry = new CircularDoublyLinkedList<>();
+        imgCamry.addLast(new Image("/imagenes/Toyota_Camry_1.jpeg"));
+        imgCamry.addLast(new Image("/imagenes/Toyota_Camry_2.jpeg"));
+        imgCamry.addLast(new Image("/imagenes/Toyota_Camry_3.jpeg"));
+        imgCamry.addLast(new Image("/imagenes/Toyota_Camry_4.jpeg"));
+        
+        //Ford Explorer
+        CircularDoublyLinkedList<Image> imgExplorer = new CircularDoublyLinkedList<>();
+        imgExplorer.addLast(new Image("/imagenes/Ford_Explorer_1.jpg"));
+        imgExplorer.addLast(new Image("/imagenes/Ford_Explorer_2.jpg"));
+        imgExplorer.addLast(new Image("/imagenes/Ford_Explorer_3.jpg"));
+        imgExplorer.addLast(new Image("/imagenes/Ford_Explorer_4.jpg"));
+        
+        //Nissan Rogue
+        CircularDoublyLinkedList<Image> imgRogue = new CircularDoublyLinkedList<>();
+        imgRogue.addLast(new Image("/imagenes/Nissan_Rogue_1.jpeg"));
+        imgRogue.addLast(new Image("/imagenes/Nissan_Rogue_2.jpeg"));
+        imgRogue.addLast(new Image("/imagenes/Nissan_Rogue_3.jpeg"));
+        imgRogue.addLast(new Image("/imagenes/Nissan_Rogue_4.jpeg"));
+        
+        //BMW 3 Series
+        CircularDoublyLinkedList<Image> img3Series = new CircularDoublyLinkedList<>();
+        img3Series.addLast(new Image("/imagenes/BMW_3SERIES_1.jpeg"));
+        img3Series.addLast(new Image("/imagenes/BMW_3SERIES_2.jpeg"));
+        img3Series.addLast(new Image("/imagenes/BMW_3SERIES_3.jpeg"));
+        img3Series.addLast(new Image("/imagenes/BMW_3SERIES_4.jpeg"));
+        
+        //Mercedes-Benz E-Class
+        CircularDoublyLinkedList<Image> imgEClass = new CircularDoublyLinkedList<>();
+        imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_1.jpeg"));
+        imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_2.jpeg"));
+        imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_3.jpeg"));
+        imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_4.jpeg"));
+        
+        
+        //Instancias vehiculos
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(12000, false), new Marca("Chevrolet",mChevrolet), "Spark", 2020, 80000, "Manual", 900, "Duran", "Diésel",new Usuario("Juan", "0987654321", "juan@mail.co"), false, historialSpark, imgSpark));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(15000, false), new Marca("Toyota",mToyota), "Corolla", 2018, 60000, "Automática", 1100, "Quito", "Gasolina", new Usuario("Maria", "0987654321", "maria@mail.co"), true, historialCorolla, new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(15000, false), new Marca("Toyota",mToyota), "Corolla", 2018, 60000, "Automática", 1100, "Quito", "Gasolina", new Usuario("Maria", "0987654321", "maria@mail.co"), true, historialCorolla, imgCorolla));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(18000, false), new Marca("Honda",mHonda), "Civic", 2019, 70000, "Manual", 1000, "Guayaquil", "Híbrido",new Usuario("Pedro", "0987654321", "pedro@mail.co"), false,historialCivic, imgCivic));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(20000, false), new Marca("Ford",mFord), "Mustang", 2017, 50000, "Automática", 1300, "Cuenca","Eléctrico", new Usuario("Laura", "0987654321", "laura@mail.co"), true, historialMustang, new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(20000, false), new Marca("Ford",mFord), "Mustang", 2017, 50000, "Automática", 1300, "Cuenca","Eléctrico", new Usuario("Laura", "0987654321", "laura@mail.co"), true, historialMustang, imgMustang));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(22000, false), new Marca("Nissan",mNissan), "Sentra", 2021, 40000, "Manual", 1200, "Santo Domingo", "Diésel",new Usuario("Carlos", "0987654321", "carlos@mail.co"), false, historialSentra, new CircularDoublyLinkedList<>()));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(25000, false), new Marca("BMW",mBMW), "X5", 2016, 90000, "Automática", 1500, "Machala", "Gasolina", new Usuario("Ana", "0987654321", "ana@mail.co"), true, historialX5, new CircularDoublyLinkedList<>()));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(28000, false), new Marca("Mercedes-Benz",mMercedes), "GLC", 2020, 80000, "Manual", 1400, "Durán", "Híbrido",new Usuario("David", "0987654321", "david@mail.co"), false, historialGLC, new CircularDoublyLinkedList<>()));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(30000, false), new Marca("Audi",mAudi), "Q5", 2019, 70000, "Automática", 1600, "Manta", "Eléctrico",new Usuario("Sofia", "0987654321", "sofia@mail.co"), true, historialQ5, new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(25000, false), new Marca("BMW",mBMW), "X5", 2016, 90000, "Automática", 1500, "Machala", "Gasolina", new Usuario("Ana", "0987654321", "ana@mail.co"), true, historialX5, imgX5));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(28000, false), new Marca("Mercedes-Benz",mMercedes), "GLC", 2020, 80000, "Manual", 1400, "Durán", "Híbrido",new Usuario("David", "0987654321", "david@mail.co"), false, historialGLC, imgGLC));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(30000, false), new Marca("Audi",mAudi), "Q5", 2019, 70000, "Automática", 1600, "Manta", "Eléctrico",new Usuario("Sofia", "0987654321", "sofia@mail.co"), true, historialQ5, imgQ5));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(32000, false), new Marca("Chevrolet",mChevrolet), "Malibu", 2018, 60000, "Manual", 1800, "Portoviejo", "Diésel", new Usuario("Diego", "0987654321", "diego@mail.co"), false, historialMalibu, new CircularDoublyLinkedList<>()));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(35000, false), new Marca("Toyota",mToyota), "Camry", 2017, 50000, "Automática", 1700, "Loja","Gasolina",  new Usuario("Isabella", "0987654321", "isabella@mail.co"), true,historialCamry, new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(35000, false), new Marca("Toyota",mToyota), "Camry", 2017, 50000, "Automática", 1700, "Loja","Gasolina",  new Usuario("Isabella", "0987654321", "isabella@mail.co"), true,historialCamry, imgCamry));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(38000, false), new Marca("Honda",mHonda), "Accord", 2021, 40000, "Manual", 1900, "Ambato", "Híbrido",new Usuario("Andres", "0987654321", "andres@mail.co"), false, historialAccord, new CircularDoublyLinkedList<>()));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(40000, false), new Marca("Ford",mFord), "Explorer", 2016, 90000, "Automática", 2000, "Riobamba", "Eléctrico",new Usuario("Valeria", "0987654321", "valeria@mail.co"), true, historialExplorer, new CircularDoublyLinkedList<>()));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(42000, false), new Marca("Nissan",mNissan), "Rogue", 2020, 80000, "Manual", 2200, "Esmeraldas","Diésel", new Usuario("Gabriel", "0987654321", "gabriel@mail.co"), false, historialRogue, new CircularDoublyLinkedList<>()));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(45000, false), new Marca("BMW",mBMW), "3 Series", 2019, 70000, "Automática", 2400, "Ibarra", "Gasolina", new Usuario("Valentina", "0987654321", "valentina@mail.co"), true, historial3Series, new CircularDoublyLinkedList<>()));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(48000, false), new Marca("Mercedes-Benz",mMercedes), "E-Class", 2018, 60000, "Manual", 2600, "Quevedo","Híbrido", new Usuario("Javier", "0987654321", "javier@mail.co"), false, historialEClass, new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(40000, false), new Marca("Ford",mFord), "Explorer", 2016, 90000, "Automática", 2000, "Riobamba", "Eléctrico",new Usuario("Valeria", "0987654321", "valeria@mail.co"), true, historialExplorer, imgExplorer));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(42000, false), new Marca("Nissan",mNissan), "Rogue", 2020, 80000, "Manual", 2200, "Esmeraldas","Diésel", new Usuario("Gabriel", "0987654321", "gabriel@mail.co"), false, historialRogue, imgRogue));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(45000, false), new Marca("BMW",mBMW), "3 Series", 2019, 70000, "Automática", 2400, "Ibarra", "Gasolina", new Usuario("Valentina", "0987654321", "valentina@mail.co"), true, historial3Series,img3Series));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(48000, false), new Marca("Mercedes-Benz",mMercedes), "E-Class", 2018, 60000, "Manual", 2600, "Quevedo","Híbrido", new Usuario("Javier", "0987654321", "javier@mail.co"), false, historialEClass, imgEClass));
     }
 
     static void setRoot(String fxml) throws IOException {

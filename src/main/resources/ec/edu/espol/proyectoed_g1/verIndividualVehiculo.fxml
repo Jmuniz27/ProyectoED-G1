@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="ec.edu.espol.proyectoed_g1.VerIndividualVehiculoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoed_g1.VerIndividualVehiculoController">
     <top>
       <VBox alignment="CENTER" prefHeight="150.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
          <children>
@@ -71,7 +71,7 @@
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                      <cursor>
-                        <Cursor fx:constant="HAND" />
+                        <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Button>
                   <Button fx:id="btnCorreo" mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" style="-fx-border-radius: 15; -fx-background-color: #ffff; -fx-border-color: #e0252d; -fx-background-radius: 15;" text="user@gmail.com" textFill="#e0252d">
@@ -79,7 +79,7 @@
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                      <cursor>
-                        <Cursor fx:constant="HAND" />
+                        <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Button>
                </children>
@@ -91,7 +91,7 @@
       </VBox>
    </right>
    <center>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="867.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="806.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="783.0" spacing="100.0">
                <children>

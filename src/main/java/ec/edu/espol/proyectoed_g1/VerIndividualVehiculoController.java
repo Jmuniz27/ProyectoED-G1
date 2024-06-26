@@ -4,6 +4,7 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.clases.Vehicle;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import java.io.IOException;
 import java.net.URL;

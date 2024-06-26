@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package ec.edu.espol.proyectoed_g1;
-
+import ec.edu.espol.proyectoed_g1.modelo.clases.*;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
 import java.io.IOException;
