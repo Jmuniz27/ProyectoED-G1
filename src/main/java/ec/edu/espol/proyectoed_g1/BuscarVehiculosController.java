@@ -104,6 +104,8 @@ public class BuscarVehiculosController implements Initializable {
     private TextField kmHasta;
 
     private DoublyLinkedList<Vehicle> listaMostrada;
+    @FXML
+    private ComboBox<String> cbRelev;
     
 
     /**
@@ -111,10 +113,17 @@ public class BuscarVehiculosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // relevancia
+        cbRelev.getItems().add("Relevancia");
+        cbRelev.getItems().add("Menor Precio");
+        cbRelev.getItems().add("Mayor Precio");
+        cbRelev.getItems().add("Menor Recorrido");
+        cbRelev.getItems().add("Mayor Recorrido");
         vehiculoEscogido = null;
         //cbox marca
         for(Marca m: Utilitaria.marcas){
             System.out.println(m.getNombre());
+            cbMarca.getItems().add(new Marca("Marca"));
             cbMarca.getItems().add(m);
         }
         listaMostrada = vehiculos;
@@ -152,6 +161,12 @@ public class BuscarVehiculosController implements Initializable {
         // Obtener valores de los filtros
         Marca marca = (Marca) cbMarca.getValue();
         String modelo = (String) cbModelo.getValue();
+        if(marca.getNombre().equals("Marca")){
+            marca = null;
+        }
+        if (modelo.equals("Modelo")) {
+            modelo = null;
+        }
         Integer precioMin = precioDesde.getText().isEmpty() ? null : Integer.parseInt(precioDesde.getText());
         Integer precioMax = precioHasta.getText().isEmpty() ? null : Integer.parseInt(precioHasta.getText());
         Integer kmMin = kmDesde.getText().isEmpty() ? null : Integer.parseInt(kmDesde.getText());
@@ -403,6 +418,7 @@ public class BuscarVehiculosController implements Initializable {
     private void cbMarcaClicked(ActionEvent event) {
         cbModelo.getItems().clear();
         Marca marca =  cbMarca.getValue();
+        cbModelo.getItems().add("Modelo");
         for(String modelo: marca.getModelos()){
             cbModelo.getItems().add(modelo);
         }
