@@ -1,11 +1,18 @@
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.clases.Marca;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Historial;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Usuario;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Vehicle;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Precio;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
+import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +24,7 @@ import javafx.scene.image.Image;
 public class App extends Application {
 
     private static Scene scene;
+
 
     @Override
     public void start(Stage stage) throws IOException {

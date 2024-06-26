@@ -235,4 +235,31 @@ public class DoublyLinkedList<E> implements List<E> {
     public boolean addAll(List<E> list) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    public DoublyLinkedList<E> findInterseccion(DoublyLinkedList<E> otraL) {
+        DoublyLinkedList<E> interseccion = new DoublyLinkedList<>();
+
+        // Recorrer la lista actual
+        Iterator<E> it1 = this.iterator();
+        while (it1.hasNext()) {
+            E element1 = it1.next();
+
+            // Recorrer la otra lista para comparar elementos
+            Iterator<E> it2 = otraL.iterator();
+            while (it2.hasNext()) {
+                E element2 = it2.next();
+
+                // Si encontramos una coincidencia, agregar a la lista de intersección
+                if (element1.equals(element2)) {
+                    // Verificar si el elemento ya está en la lista de intersección para evitar duplicados
+                    if (interseccion.indexOf(element1) == -1) {
+                        interseccion.addLast(element1);
+                    }
+                    break;
+                }
+            }
+        }
+
+        return interseccion;
+    }
 }

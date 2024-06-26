@@ -70,38 +70,78 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                            <children>
-                              <ComboBox fx:id="cbModelo" prefWidth="150.0" promptText="Modelo" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
+                              <ComboBox fx:id="cbMarca" onAction="#cbMarcaClicked" prefWidth="150.0" promptText="Marca" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></ComboBox>
-                              <ComboBox fx:id="cbMarca" prefWidth="150.0" promptText="Marca" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
+                              <ComboBox fx:id="cbModelo" onAction="#cbModeloClick" prefWidth="150.0" promptText="Modelo" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></ComboBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="410.0" spacing="40.0">
                            <children>
-                              <TextField fx:id="precioDesde" promptText="Precio desde">
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor></TextField>
-                              <TextField fx:id="precioHasta" promptText="Precio hasta">
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor></TextField>
+                              <VBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="150.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precio desde: ">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="precioDesde" promptText="Precio desde">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precio hasta: ">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="precioHasta" promptText="Precio hasta">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                    </TextField>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                            <children>
-                              <TextField fx:id="kmDesde" promptText="Km desde">
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor></TextField>
-                              <TextField fx:id="kmDesde" promptText="Km hasta">
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor></TextField>
+                              <VBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Km desde:">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="kmDesde" promptText="Km desde">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Km hasta: ">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="kmHasta" promptText="Km hasta">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                    </TextField>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                      </children>

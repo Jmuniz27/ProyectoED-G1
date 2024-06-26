@@ -4,6 +4,12 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.clases.Marca;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Historial;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Usuario;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Vehicle;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Precio;
+import ec.edu.espol.proyectoed_g1.modelo.clases.AccidenteServicios;
 import ec.edu.espol.proyectoed_g1.modelo.Interfaces.List;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
@@ -107,6 +113,8 @@ public class CrearVehiculoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         imagenes.clear();
+        setNumericTextField(tfPrecio);
+        setNumericTextField(tfTelefono);
         /*Image loadingCar = new Image("/imagenes/default.png");
         imagenes.addLast(loadingCar);
         ImageView ivLoadingCar = new ImageView(loadingCar);
@@ -319,6 +327,12 @@ public class CrearVehiculoController implements Initializable {
             e.printStackTrace();
         }
     }
-
-    
+    //para que los textfields solo acepten numeros
+    private void setNumericTextField(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                textField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+    }
 }

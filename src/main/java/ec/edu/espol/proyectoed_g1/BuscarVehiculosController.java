@@ -4,9 +4,10 @@
  */
 package ec.edu.espol.proyectoed_g1;
 
+import ec.edu.espol.proyectoed_g1.modelo.clases.Marca;
+import ec.edu.espol.proyectoed_g1.modelo.clases.Vehicle;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
@@ -41,9 +42,9 @@ public class BuscarVehiculosController implements Initializable {
     @FXML
     private Button botonInicio;
     @FXML
-    private ComboBox<?> cbModelo;
+    private ComboBox<String> cbModelo;
     @FXML
-    private ComboBox<?> cbMarca;
+    private ComboBox<Marca> cbMarca;
     @FXML
     private Button botonBuscar;
     @FXML
@@ -97,6 +98,11 @@ public class BuscarVehiculosController implements Initializable {
     private VBox containerFAuto;
     @FXML
     private VBox filtroAuto;
+    @FXML
+    private TextField kmHasta;
+
+    private DoublyLinkedList<Vehicle> listaMostrada;
+    
 
     /**
      * Initializes the controller class.
@@ -104,8 +110,17 @@ public class BuscarVehiculosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         vehiculoEscogido = null;
-        currentNode = vehiculos.getHead();
-        totalPages = (int) Math.ceil((double) vehiculos.size() / ITEMS_PER_PAGE);
+        //cbox marca
+        for(Marca m: Utilitaria.marcas){
+            System.out.println(m.getNombre());
+            cbMarca.getItems().add(m);
+        }
+        listaMostrada = vehiculos;
+        // Añadir listeners a los textfields para permitir solo números
+        setNumericTextField(precioDesde);
+        setNumericTextField(precioHasta);
+        setNumericTextField(kmDesde);
+        setNumericTextField(kmHasta); 
         System.out.println("paginas>> " + totalPages);
         updateGrid();
         updatePagination();
@@ -123,21 +138,87 @@ public class BuscarVehiculosController implements Initializable {
 
     @FXML
     private void buscarFiltros(ActionEvent event) {
-        String modeloSelec = cbModelo.getSelectionModel().getSelectedItem() != null ? cbModelo.getSelectionModel().getSelectedItem().toString() : null;
-        String marcaSelec = cbMarca.getSelectionModel().getSelectedItem() != null ? cbMarca.getSelectionModel().getSelectedItem().toString() : null;
-        Integer precioMin = validarNumero(precioDesde.getText());
-        Integer precioMax = validarNumero(precioHasta.getText());
-        Integer kmMin = validarNumero(kmDesde.getText());
-        Integer kmMax = validarNumero(kmDesde.getText());
+        // Obtener valores de los filtros
+        Marca marca = (Marca) cbMarca.getValue();
+        String modelo = (String) cbModelo.getValue();
+        Integer precioMin = precioDesde.getText().isEmpty() ? null : Integer.parseInt(precioDesde.getText());
+        Integer precioMax = precioHasta.getText().isEmpty() ? null : Integer.parseInt(precioHasta.getText());
+        Integer kmMin = kmDesde.getText().isEmpty() ? null : Integer.parseInt(kmDesde.getText());
+        Integer kmMax = kmHasta.getText().isEmpty() ? null : Integer.parseInt(kmHasta.getText());
 
-        if(precioMin>precioMax){
-            mostrarAlerta("Error", "El precio mínimo no puede ser mayor al precio máximo");
+          // Validar los rangos de precio y kilometraje
+        if (!validarRangos(precioMin, precioMax, kmMin, kmMax)) {
+            mostrarAlerta("Error de validación", "Los rangos de precio y kilometraje deben ser válidos.");
             return;
         }
-        DoublyLinkedList<Vehicle> resultados = filtrarVehiculos(modeloSelec, marcaSelec, precioMin, precioMax, kmMin, kmMax);
-        mostrarResultados(resultados);
+        // Aplicar filtros y obtener resultados
+        DoublyLinkedList<Vehicle> resultados = filtrarVehiculos(marca, modelo, precioMin, precioMax, kmMin, kmMax);
+        listaMostrada = resultados;
+        updateGrid();
         updatePagination();
     }
+
+    private boolean validarRangos(Integer precioMin, Integer precioMax, Integer kmMin, Integer kmMax) {
+        if ((precioMin == null && precioMax != null) || (precioMin != null && precioMax == null)) {
+            return false;
+        }
+        if ((kmMin == null && kmMax != null) || (kmMin != null && kmMax == null)) {
+            return false;
+        }
+        if (precioMin != null && precioMax != null && precioMax < precioMin) {
+            return false;
+        }
+        if (kmMin != null && kmMax != null && kmMax < kmMin) {
+            return false;
+        }
+        return true;
+    }
+
+    private DoublyLinkedList<Vehicle> filtrarVehiculos(Marca marca, String modelo, Integer precioMin, Integer precioMax, Integer kmMin, Integer kmMax) {
+        DoublyLinkedList<Vehicle> filtradoPorMarcaYModelo = filtrarPorMarcaYModelo(marca, modelo);
+        DoublyLinkedList<Vehicle> filtradoPorPrecio = filtrarPorRangoDePrecios(precioMin, precioMax);
+        DoublyLinkedList<Vehicle> filtradoPorKilometraje = filtrarPorRangoDeKilometraje(kmMin, kmMax);
+
+        // Intersección de listas para obtener los resultados finales
+        DoublyLinkedList<Vehicle> comp1 = filtradoPorMarcaYModelo.findInterseccion(filtradoPorPrecio);
+        DoublyLinkedList<Vehicle> comp2 = comp1.findInterseccion(filtradoPorKilometraje);
+        return comp2;
+    } 
+
+    private DoublyLinkedList<Vehicle> filtrarPorMarcaYModelo(Marca marca, String modelo) {
+        DoublyLinkedList<Vehicle> resultado = new DoublyLinkedList<>();
+        for (Vehicle vehiculo : vehiculos) {
+            if ((marca == null || vehiculo.getMarca().getNombre().equals(marca.getNombre())) &&
+                (modelo == null || vehiculo.getModelo().equals(modelo))) {
+                resultado.addLast(vehiculo);
+            }
+        }
+        return resultado;
+    }
+
+    private DoublyLinkedList<Vehicle> filtrarPorRangoDePrecios(Integer precioMin, Integer precioMax) {
+        DoublyLinkedList<Vehicle> resultado = new DoublyLinkedList<>();
+        for (Vehicle vehiculo : vehiculos) {
+            if ((precioMin == null || vehiculo.getPrecio().getCant() >= precioMin) &&
+                (precioMax == null || vehiculo.getPrecio().getCant() <= precioMax)) {
+                resultado.addLast(vehiculo);
+            }
+        }
+        return resultado;
+    }
+
+    private DoublyLinkedList<Vehicle> filtrarPorRangoDeKilometraje(Integer kmMin, Integer kmMax) {
+        DoublyLinkedList<Vehicle> resultado = new DoublyLinkedList<>();
+        for (Vehicle vehiculo : vehiculos) {
+            if ((kmMin == null || vehiculo.getKm() >= kmMin) &&
+                (kmMax == null || vehiculo.getKm() <= kmMax)) {
+                resultado.addLast(vehiculo);
+            }
+        }
+        return resultado;
+    }
+    
+
     private Integer validarNumero(String num) {
         if(num == null || num.isEmpty()) return null;
         try {
@@ -173,11 +254,13 @@ public class BuscarVehiculosController implements Initializable {
     }
     private void updateGrid() {
         gridCarros.getChildren().clear();
-
-        DoublyNode<Vehicle> tempNode = currentNode;        
+        DoublyNode<Vehicle> tempNode = listaMostrada.getHead();
+        int startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        for (int i = 0; i < startIndex && tempNode != null; i++) {
+            tempNode = tempNode.getNext();
+        }
         for (int i = 0; i < 2 && tempNode != null; i++) {
-            for(int j = 0; j < 2 && tempNode != null; j++){
-                System.out.println(i + " " + j);
+            for (int j = 0; j < 2 && tempNode != null; j++) {
                 VBox auto = plantillaAuto(tempNode.getContent());
                 Vehicle v= tempNode.getContent();
                 auto.setOnMouseClicked(event -> {
@@ -211,7 +294,7 @@ public class BuscarVehiculosController implements Initializable {
             Text planVehPrecio = (Text) auto.lookup("#planVehPrecio");
 
             //planImg.setImage(new Image(getClass().getResourceAsStream("/resources/default-car.png")));
-            plantVehName.setText(vehiculo.getMarca() + " " + vehiculo.getModelo());
+            plantVehName.setText(vehiculo.getMarca().getNombre() + " " + vehiculo.getModelo());
             planVehAnio.setText(String.valueOf(vehiculo.getYear()));
             planVehKm.setText(String.valueOf(vehiculo.getKm()));
             planVehCiu.setText(vehiculo.getUbiAct());
@@ -227,7 +310,7 @@ public class BuscarVehiculosController implements Initializable {
     //paginacion
     private void updatePagination() {
         pagesInd.getChildren().clear();
-
+        totalPages = (int) Math.ceil((double) listaMostrada.size() / ITEMS_PER_PAGE);
         for (int i = 1; i <= totalPages; i++) {
             Button pageButton = new Button(String.valueOf(i));
             pageButton.setCursor(javafx.scene.Cursor.HAND);
@@ -236,7 +319,7 @@ public class BuscarVehiculosController implements Initializable {
             pageButton.setStyle("-fx-font-family: 'Arial Black';");
             pageButton.setStyle("-fx-background-color: #FFFFFF;");
             if (i == currentPage) {
-                pageButton.setCursor(javafx.scene.Cursor.HAND);
+                pageButton.setCursor(javafx.scene.Cursor.DEFAULT);
                 pageButton.setStyle("-fx-background-radius: 40;");
                 pageButton.setStyle("-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);"); 
                 pageButton.setStyle("-fx-background-color:#e0252d;"); // Estilo para la página activa
@@ -249,6 +332,7 @@ public class BuscarVehiculosController implements Initializable {
     }
 
     private void goToPage(int pageIndex) {
+        System.out.println("goToPage " + pageIndex);
         currentPage = pageIndex;
 
         // Calcular el nodo inicial para la nueva página
@@ -268,40 +352,37 @@ public class BuscarVehiculosController implements Initializable {
             alerta.showAndWait();
     }
     //filtros
-        private DoublyLinkedList<Vehicle> filtrarVehiculos(String modelo, String marca, Integer precioMin, Integer precioMax, Integer kmMin, Integer kmMax) {
-        DoublyLinkedList<Vehicle> resultados = new DoublyLinkedList<>();
-        DoublyNode<Vehicle> nodo = vehiculos.getHead();
-
-        while (nodo != null) {
-            Vehicle vehiculo = nodo.getContent();
-
-            boolean coincide = true;
-            if (modelo != null && !modelo.equals(vehiculo.getModelo())) coincide = false;
-            if (marca != null && !marca.equals(vehiculo.getMarca())) coincide = false;
-            if (precioMin != null && vehiculo.getPrecio().getCant() < precioMin) coincide = false;
-            if (precioMax != null && vehiculo.getPrecio().getCant() > precioMax) coincide = false;
-            if (kmMin != null && vehiculo.getKm() < kmMin) coincide = false;
-            if (kmMax != null && vehiculo.getKm() > kmMax) coincide = false;
-
-            if (coincide) {
-                resultados.addFirst(vehiculo);
-            }
-            nodo = nodo.getNext();
-        }
-
-        return resultados;
-    }
-
     private void mostrarResultados(DoublyLinkedList<Vehicle> resultados) {
         gridCarros.getChildren().clear();
         DoublyNode<Vehicle> tempNode = resultados.getHead();
         for (int i = 0; i < 2 && tempNode != null; i++) {
-            for(int j = 0; j < 2; j++){
+            for(int j = 0; j < 2 && tempNode != null; j++){
                 System.out.println(i + " " + j);
                 VBox auto = plantillaAuto(tempNode.getContent());
                 gridCarros.add(auto, i, j);
                 tempNode = tempNode.getNext();
             }
+        }
+    }
+    private void setNumericTextField(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                textField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+    }
+
+    @FXML
+    private void cbMarcaClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void cbModeloClick(ActionEvent event) {
+        cbModelo.getItems().clear();
+        Marca marca =  cbMarca.getValue();
+        for(String modelo: marca.getModelos()){
+            cbModelo.getItems().add(modelo);
         }
     }
 }

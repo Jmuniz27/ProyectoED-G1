@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ec.edu.espol.proyectoed_g1;
+package ec.edu.espol.proyectoed_g1.modelo.clases;
 
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
@@ -146,6 +146,5 @@ public class Vehicle {
     public void venderVehiculo(){
         
     }
-    
     
 }
