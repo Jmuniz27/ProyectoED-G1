@@ -370,6 +370,11 @@ public class App extends Application {
         imgMustang.addLast(new Image("/imagenes/Ford_Mustang_3.jpeg"));
         imgMustang.addLast(new Image("/imagenes/Ford_Mustang_4.jpeg"));
         
+        //Audi Q5
+        CircularDoublyLinkedList<Image> imgQ5 = new CircularDoublyLinkedList<>();
+        imgQ5.addLast(new Image("/imagenes/audi_q5_1.jpeg"));
+        imgQ5.addLast(new Image("/imagenes/audi_q5_2.jpeg"));
+        
         //BMW X5
         CircularDoublyLinkedList<Image> imgX5 = new CircularDoublyLinkedList<>();
         imgX5.addLast(new Image("/imagenes/BMW_X5_1.jpg"));
@@ -384,12 +389,15 @@ public class App extends Application {
         imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_3.jpeg"));
         imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_4.jpeg"));
         
-        //Audi Q5
-        CircularDoublyLinkedList<Image> imgQ5 = new CircularDoublyLinkedList<>();
-        imgQ5.addLast(new Image("/imagenes/Audi_Q5_1.webp"));
-        imgQ5.addLast(new Image("/imagenes/Audi_Q5_2.webp"));
-        imgQ5.addLast(new Image("/imagenes/Audi_Q5_3.webp"));
-        imgQ5.addLast(new Image("/imagenes/Audi_Q5_4.webp"));
+        //Nissan Sentra
+        CircularDoublyLinkedList<Image> imgSentra = new CircularDoublyLinkedList<>();
+        imgSentra.addLast(new Image("/imagenes/nissan_sentra_1.jpeg"));
+        imgSentra.addLast(new Image("/imagenes/nissan_sentra_2.jpg"));
+        
+        //Chevrolet Malubu
+        CircularDoublyLinkedList<Image> imgMalibu = new CircularDoublyLinkedList<>();
+        imgMalibu.addLast(new Image("/imagenes/chevrolet_malibu1.jpeg"));
+        imgMalibu.addLast(new Image("/imagenes/chevrolet_malibu2.jpg"));
         
         //Toyota Camry
         CircularDoublyLinkedList<Image> imgCamry = new CircularDoublyLinkedList<>();
@@ -397,6 +405,11 @@ public class App extends Application {
         imgCamry.addLast(new Image("/imagenes/Toyota_Camry_2.jpeg"));
         imgCamry.addLast(new Image("/imagenes/Toyota_Camry_3.jpeg"));
         imgCamry.addLast(new Image("/imagenes/Toyota_Camry_4.jpeg"));
+        
+        //Honda Accord
+        CircularDoublyLinkedList<Image> imgAccord = new CircularDoublyLinkedList<>();
+        imgAccord.addLast(new Image("/imagenes/honda_accord_1.jpeg"));
+        imgAccord.addLast(new Image("/imagenes/honda_accord_2.jpeg"));
         
         //Ford Explorer
         CircularDoublyLinkedList<Image> imgExplorer = new CircularDoublyLinkedList<>();
@@ -427,18 +440,20 @@ public class App extends Application {
         imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_4.jpeg"));
         
         
+        
+        
         //Instancias vehiculos
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(12000, false), new Marca("Chevrolet",mChevrolet), "Spark", 2020, 80000, "Manual", 900, "Duran", "Diésel",new Usuario("Juan", "0987654321", "juan@mail.co"), false, historialSpark, imgSpark));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(15000, false), new Marca("Toyota",mToyota), "Corolla", 2018, 60000, "Automática", 1100, "Quito", "Gasolina", new Usuario("Maria", "0987654321", "maria@mail.co"), true, historialCorolla, imgCorolla));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(18000, false), new Marca("Honda",mHonda), "Civic", 2019, 70000, "Manual", 1000, "Guayaquil", "Híbrido",new Usuario("Pedro", "0987654321", "pedro@mail.co"), false,historialCivic, imgCivic));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(20000, false), new Marca("Ford",mFord), "Mustang", 2017, 50000, "Automática", 1300, "Cuenca","Eléctrico", new Usuario("Laura", "0987654321", "laura@mail.co"), true, historialMustang, imgMustang));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(22000, false), new Marca("Nissan",mNissan), "Sentra", 2021, 40000, "Manual", 1200, "Santo Domingo", "Diésel",new Usuario("Carlos", "0987654321", "carlos@mail.co"), false, historialSentra, new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(22000, false), new Marca("Nissan",mNissan), "Sentra", 2021, 40000, "Manual", 1200, "Santo Domingo", "Diésel",new Usuario("Carlos", "0987654321", "carlos@mail.co"), false, historialSentra, imgSentra));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(25000, false), new Marca("BMW",mBMW), "X5", 2016, 90000, "Automática", 1500, "Machala", "Gasolina", new Usuario("Ana", "0987654321", "ana@mail.co"), true, historialX5, imgX5));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(28000, false), new Marca("Mercedes-Benz",mMercedes), "GLC", 2020, 80000, "Manual", 1400, "Durán", "Híbrido",new Usuario("David", "0987654321", "david@mail.co"), false, historialGLC, imgGLC));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(30000, false), new Marca("Audi",mAudi), "Q5", 2019, 70000, "Automática", 1600, "Manta", "Eléctrico",new Usuario("Sofia", "0987654321", "sofia@mail.co"), true, historialQ5, imgQ5));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(32000, false), new Marca("Chevrolet",mChevrolet), "Malibu", 2018, 60000, "Manual", 1800, "Portoviejo", "Diésel", new Usuario("Diego", "0987654321", "diego@mail.co"), false, historialMalibu, new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(32000, false), new Marca("Chevrolet",mChevrolet), "Malibu", 2018, 60000, "Manual", 1800, "Portoviejo", "Diésel", new Usuario("Diego", "0987654321", "diego@mail.co"), false, historialMalibu, imgMalibu));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(35000, false), new Marca("Toyota",mToyota), "Camry", 2017, 50000, "Automática", 1700, "Loja","Gasolina",  new Usuario("Isabella", "0987654321", "isabella@mail.co"), true,historialCamry, imgCamry));
-        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(38000, false), new Marca("Honda",mHonda), "Accord", 2021, 40000, "Manual", 1900, "Ambato", "Híbrido",new Usuario("Andres", "0987654321", "andres@mail.co"), false, historialAccord, new CircularDoublyLinkedList<>()));
+        Utilitaria.vehiculos.addLast(new Vehicle(new Precio(38000, false), new Marca("Honda",mHonda), "Accord", 2021, 40000, "Manual", 1900, "Ambato", "Híbrido",new Usuario("Andres", "0987654321", "andres@mail.co"), false, historialAccord, imgAccord));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(40000, false), new Marca("Ford",mFord), "Explorer", 2016, 90000, "Automática", 2000, "Riobamba", "Eléctrico",new Usuario("Valeria", "0987654321", "valeria@mail.co"), true, historialExplorer, imgExplorer));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(42000, false), new Marca("Nissan",mNissan), "Rogue", 2020, 80000, "Manual", 2200, "Esmeraldas","Diésel", new Usuario("Gabriel", "0987654321", "gabriel@mail.co"), false, historialRogue, imgRogue));
         Utilitaria.vehiculos.addLast(new Vehicle(new Precio(45000, false), new Marca("BMW",mBMW), "3 Series", 2019, 70000, "Automática", 2400, "Ibarra", "Gasolina", new Usuario("Valentina", "0987654321", "valentina@mail.co"), true, historial3Series,img3Series));

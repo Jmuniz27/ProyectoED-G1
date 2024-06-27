@@ -65,7 +65,7 @@ public class BuscarVehiculosController implements Initializable {
     private TextField kmDesde;
 
     //Asumiendo que tengo una DoubleLinkedList de vehiculos
-    DoublyLinkedList<Vehicle> vehiculos = Utilitaria.vehiculos;
+    DoublyLinkedList<Vehicle> vehiculos;
     DoublyLinkedList<Vehicle> old = Utilitaria.vehiculos;
     DoublyNode<Vehicle> currentNode;
     @FXML
@@ -115,9 +115,10 @@ public class BuscarVehiculosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // relevancia
-        cbRelev.getItems().add("Relevancia");
-        cbRelev.setValue("Relevancia");
+        vehiculos = Utilitaria.vehiculos.copy();
         cbRelev.getItems().add("Menor Precio");
+        cbRelev.setValue("Menor Precio");
+        vehiculos.sort((v1, v2) -> (int) (v1.getPrecio().getCant() - v2.getPrecio().getCant()));
         cbRelev.getItems().add("Mayor Precio");
         cbRelev.getItems().add("Menor Recorrido");
         cbRelev.getItems().add("Mayor Recorrido");
@@ -132,14 +133,6 @@ public class BuscarVehiculosController implements Initializable {
             cbMarca.getItems().add(m);
         }
         listaMostrada = vehiculos;
-        Comparator<Vehicle> cmp1 = new Comparator<>(){
-            @Override
-            public int compare(Vehicle v1, Vehicle v2){
-                int resultado = (int) (v2.getPrecio().getCant()-v1.getPrecio().getCant());
-                return resultado;
-            }
-        };
-        listaMostrada.sort(cmp1);
         
         // Añadir listeners a los textfields para permitir solo números
         setNumericTextField(precioDesde);
@@ -185,6 +178,7 @@ public class BuscarVehiculosController implements Initializable {
         // Aplicar filtros y obtener resultados
         DoublyLinkedList<Vehicle> resultados = filtrarVehiculos(marca, modelo, precioMin, precioMax, kmMin, kmMax);
         listaMostrada = resultados;
+        currentPage = 1;
         updateGrid();
         updatePagination();
     }
