@@ -66,6 +66,7 @@ public class BuscarVehiculosController implements Initializable {
 
     //Asumiendo que tengo una DoubleLinkedList de vehiculos
     DoublyLinkedList<Vehicle> vehiculos = Utilitaria.vehiculos;
+    DoublyLinkedList<Vehicle> old = Utilitaria.vehiculos;
     DoublyNode<Vehicle> currentNode;
     @FXML
     private VBox plantillaAutos;
@@ -115,15 +116,18 @@ public class BuscarVehiculosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // relevancia
         cbRelev.getItems().add("Relevancia");
+        cbRelev.setValue("Relevancia");
         cbRelev.getItems().add("Menor Precio");
         cbRelev.getItems().add("Mayor Precio");
         cbRelev.getItems().add("Menor Recorrido");
         cbRelev.getItems().add("Mayor Recorrido");
         vehiculoEscogido = null;
         //cbox marca
+        cbMarca.setValue(new Marca("Marca"));
+        cbModelo.setValue("Modelo");
         for(Marca m: Utilitaria.marcas){
             System.out.println(m.getNombre());
-            cbMarca.getItems().add(new Marca("Marca"));
+            //cbMarca.getItems().add(new Marca("Marca"));
             cbMarca.getItems().add(m);
         }
         listaMostrada = vehiculos;
@@ -307,7 +311,7 @@ public class BuscarVehiculosController implements Initializable {
                         e.printStackTrace();
                     }
                 });
-                gridCarros.add(auto, i, j);
+                gridCarros.add(auto, j, i);
                 tempNode = tempNode.getNext();
             }
         }
@@ -418,7 +422,7 @@ public class BuscarVehiculosController implements Initializable {
     private void cbMarcaClicked(ActionEvent event) {
         cbModelo.getItems().clear();
         Marca marca =  cbMarca.getValue();
-        cbModelo.getItems().add("Modelo");
+        cbModelo.setValue("Modelo");
         for(String modelo: marca.getModelos()){
             cbModelo.getItems().add(modelo);
         }
@@ -427,5 +431,32 @@ public class BuscarVehiculosController implements Initializable {
     @FXML
     private void cbModeloClick(ActionEvent event) {
         
+    }
+
+    @FXML
+    private void cbRelevClicked(ActionEvent event) {
+        System.out.println(cbRelev.getValue());
+        // cbRelev.getItems().add("Relevancia");
+        // cbRelev.getItems().add("Menor Precio");
+        // cbRelev.getItems().add("Mayor Precio");
+        // cbRelev.getItems().add("Menor Recorrido");
+        // cbRelev.getItems().add("Mayor Recorrido");
+        // Aplicar filtros y obtener resultados
+        DoublyLinkedList<Vehicle> resultados = vehiculos;
+        if(cbRelev.getValue().equals("Relevancia")){
+            resultados = old;
+        }
+        if(cbRelev.getValue().equals("Menor Precio")){
+            resultados.sort((v1, v2) -> (int) (v1.getPrecio().getCant() - v2.getPrecio().getCant()));
+        } else if (cbRelev.getValue().equals("Mayor Precio")){
+            resultados.sort((v1, v2) -> (int) (v2.getPrecio().getCant() - v1.getPrecio().getCant()));
+        } else if (cbRelev.getValue().equals("Menor Recorrido")){
+            resultados.sort((v1, v2) -> (int) (v1.getKm() - v2.getKm()));
+        } else if (cbRelev.getValue().equals("Mayor Recorrido")){
+            resultados.sort((v1, v2) -> (int) (v2.getKm() - v1.getKm()));
+        }
+        listaMostrada = resultados;
+        updateGrid();
+        updatePagination();
     }
 }

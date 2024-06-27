@@ -172,7 +172,7 @@
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="cbRelev" prefWidth="150.0" promptText="Relevancia" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
+                  <ComboBox fx:id="cbRelev" onAction="#cbRelevClicked" prefWidth="150.0" promptText="Relevancia" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;" />
                </children>
             </HBox>
             <GridPane fx:id="gridCarros" hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" style="-fx-background-color: #FFFFFF;" vgap="20.0">

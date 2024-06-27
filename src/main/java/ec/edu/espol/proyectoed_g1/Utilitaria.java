@@ -11,6 +11,8 @@ import excepciones.ComboBoxSinEleccion;
 import excepciones.NoEsNumero;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Comparator;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -75,6 +77,4 @@ public class Utilitaria implements Serializable {
             throw new NoEsNumero();
         }
     }
-    
-    
 }
