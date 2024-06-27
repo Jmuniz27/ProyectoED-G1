@@ -217,6 +217,15 @@ public class DoublyLinkedList<E> implements List<E> {
         }
     }
 
+    public DoublyLinkedList<E> copy() {
+        DoublyLinkedList<E> newList = new DoublyLinkedList<>();
+        DoublyNode<E> current = head;
+        while (current != null) {
+            newList.addLast(current.getContent());
+            current = current.getNext();
+        }
+        return newList;
+    }
     //getters and setters
     public DoublyNode<E> getHead() {
         return head;
