@@ -442,7 +442,7 @@ public class BuscarVehiculosController implements Initializable {
         // cbRelev.getItems().add("Menor Recorrido");
         // cbRelev.getItems().add("Mayor Recorrido");
         // Aplicar filtros y obtener resultados
-        DoublyLinkedList<Vehicle> resultados = vehiculos;
+        DoublyLinkedList<Vehicle> resultados = listaMostrada;
         if(cbRelev.getValue().equals("Relevancia")){
             resultados = old;
         }
