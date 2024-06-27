@@ -123,6 +123,7 @@ public class BuscarVehiculosController implements Initializable {
         cbRelev.getItems().add("Mayor Recorrido");
         vehiculoEscogido = null;
         //cbox marca
+        cbMarca.getItems().add(new Marca("Marca"));
         cbMarca.setValue(new Marca("Marca"));
         cbModelo.setValue("Modelo");
         for(Marca m: Utilitaria.marcas){
@@ -422,6 +423,7 @@ public class BuscarVehiculosController implements Initializable {
     private void cbMarcaClicked(ActionEvent event) {
         cbModelo.getItems().clear();
         Marca marca =  cbMarca.getValue();
+        cbModelo.getItems().add("Modelo");
         cbModelo.setValue("Modelo");
         for(String modelo: marca.getModelos()){
             cbModelo.getItems().add(modelo);
