@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -88,6 +89,10 @@ public class VerIndividualVehiculoController implements Initializable {
     private CircularDoublyLinkedList<Image> imagenes;
     
     private int index;
+    @FXML
+    private ImageView imgHeart;
+    @FXML
+    private Text favTxt;
 
     /**
      * Initializes the controller class.
@@ -119,6 +124,10 @@ public class VerIndividualVehiculoController implements Initializable {
         btnCorreo.setText(vehiculo.getDueno().getMail());
         ivPrincipal.setImage(imagenes.get(0));
         lblImageNumber.setText((index+1)+"");
+        if(vehiculo.isEsLiked()){
+            Image img3 = new Image("/imagenes/corazonLleno.png");
+            imgHeart.setImage(img3);
+        }
     }    
 
     @FXML
@@ -188,6 +197,24 @@ public class VerIndividualVehiculoController implements Initializable {
             }
             ivPrincipal.setImage(imagenes.get(index));
             lblImageNumber.setText((index+1)+"");
+        }
+    }
+
+    @FXML
+    private void clickFavs(MouseEvent event) {
+        System.out.println("click en favs");
+        if(!vehiculo.isEsLiked()){
+            System.out.println("vehiculo no es liked");
+            vehiculo.setEsLiked(true);
+            Image img4 = new Image("/imagenes/corazonLleno.png");
+            imgHeart.setImage(img4);
+            favTxt.setText("Quitar de Favoritos");
+        } else{
+            System.out.println("vehiculo es liked");
+            vehiculo.setEsLiked(false);
+            Image img4 = new Image("/imagenes/corazon.png");
+            imgHeart.setImage(img4);
+            favTxt.setText("Agregar a Favoritos");
         }
     }
     

@@ -26,6 +26,7 @@ public class Vehicle {
     private boolean esVendido;
     private Historial historial;
     private CircularDoublyLinkedList<Image> imagsCarro;
+    private boolean esLiked;
 
     public Vehicle(Precio precio, Marca marca, String modelo, int year, int km, String transmision, double peso, String ubiAct, String motor, Usuario dueno, boolean esVendido, Historial HistReparacion, CircularDoublyLinkedList<Image> imagsCarro) {
         this.precio = precio;
@@ -142,6 +143,13 @@ public class Vehicle {
     public void setImagsCarro(CircularDoublyLinkedList<Image> imagsCarro) {
         this.imagsCarro = imagsCarro;
     }
-    
+
+    public boolean isEsLiked() {
+        return esLiked;
+    }
+
+    public void setEsLiked(boolean esLiked) {
+        this.esLiked = esLiked;
+    }
     
 }

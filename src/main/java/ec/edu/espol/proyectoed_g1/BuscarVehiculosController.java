@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -107,6 +108,8 @@ public class BuscarVehiculosController implements Initializable {
     private DoublyLinkedList<Vehicle> listaMostrada;
     @FXML
     private ComboBox<String> cbRelev;
+    @FXML
+    private CheckBox FavsBtn;
     
 
     /**
@@ -454,5 +457,25 @@ public class BuscarVehiculosController implements Initializable {
         listaMostrada = resultados;
         updateGrid();
         updatePagination();
+    }
+
+    @FXML
+    private void clickFavs(ActionEvent event) {
+        if(FavsBtn.isSelected()){
+            listaMostrada = filtrarLiked();
+        } else {
+            listaMostrada = Utilitaria.vehiculos;
+        }
+        updateGrid();
+        updatePagination();
+    }
+    public DoublyLinkedList<Vehicle> filtrarLiked(){
+        DoublyLinkedList<Vehicle> liked = new DoublyLinkedList<>();
+        for(Vehicle v: Utilitaria.vehiculos){
+            if(v.isEsLiked()){
+                liked.addLast(v);
+            }
+        }
+        return liked;
     }
 }

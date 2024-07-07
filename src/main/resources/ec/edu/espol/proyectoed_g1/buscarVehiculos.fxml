@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -165,8 +166,17 @@
    <center>
       <VBox alignment="CENTER" prefHeight="650.0" prefWidth="274.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ver Favoritos: ">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <CheckBox fx:id="FavsBtn" mnemonicParsing="false" onAction="#clickFavs" style="-fx-background-color: #FFFF; -fx-border-color: #DADADA;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></CheckBox>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ordenar por:">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="12.0" />
