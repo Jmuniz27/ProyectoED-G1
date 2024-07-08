@@ -1,10 +1,5 @@
 package ec.edu.espol.proyectoed_g1;
 
-import ec.edu.espol.proyectoed_g1.modelo.clases.Marca;
-import ec.edu.espol.proyectoed_g1.modelo.clases.Historial;
-import ec.edu.espol.proyectoed_g1.modelo.clases.Usuario;
-import ec.edu.espol.proyectoed_g1.modelo.clases.Vehicle;
-import ec.edu.espol.proyectoed_g1.modelo.clases.Precio;
 import ec.edu.espol.proyectoed_g1.modelo.clases.*;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
@@ -32,6 +27,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        StageUtils.setStageIcon(stage);
         /*
         Comparator<Vehicle> cmp1 = new Comparator<>(){
             @Override
