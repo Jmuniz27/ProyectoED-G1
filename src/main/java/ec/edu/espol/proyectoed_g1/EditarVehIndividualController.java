@@ -39,21 +39,21 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 /**
  * FXML Controller class
  *
- * @author zahid
+ * @author jmuni
  */
-public class CrearVehiculoController implements Initializable {
-
+public class EditarVehIndividualController implements Initializable {
     @FXML
     private Button botonInicio;
     @FXML
@@ -94,8 +94,8 @@ public class CrearVehiculoController implements Initializable {
     private CircularDoublyLinkedList<Image> imagenes = new CircularDoublyLinkedList<>();
     
     
-    private LinkedList<AccidenteServicios> reparaciones = new LinkedList<>();
-    private LinkedList<AccidenteServicios> mantenimientos = new LinkedList<>();
+    private LinkedList<AccidenteServicios> reparaciones;
+    private LinkedList<AccidenteServicios> mantenimientos;
     
     @FXML
     private Button btnAnadirMantenimiento;
@@ -107,11 +107,26 @@ public class CrearVehiculoController implements Initializable {
     private Label lblCantReparaciones;
     @FXML
     private FlowPane fpImagenes;
+    @FXML
+    private Text txtTitle;
+    private Vehicle vehSeleccionado;
+    @FXML
+    private Button btnVerReparaciones;
+    @FXML
+    private Button btnVerMantenimiento;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        vehSeleccionado = EditarVehiculoController.vehiculoEscogido;
+        mostrarImagenes();
+        reparaciones = vehSeleccionado.getHistorial().getAccidentes();
+        mantenimientos = vehSeleccionado.getHistorial().getMantenimiento();
+        lblCantReparaciones.setText(String.valueOf(reparaciones.size()));
+        lblCantMantenimientos.setText(String.valueOf(mantenimientos.size()));
+        System.out.println(vehSeleccionado.getMarca().getNombre() + " " + vehSeleccionado.getModelo() + " " + vehSeleccionado.getYear() + "en editarVehIndController");
+        txtTitle.setText("Editar Vehiculo " + vehSeleccionado.getMarca().getNombre() + " " + vehSeleccionado.getModelo() + " " + vehSeleccionado.getYear());
         imagenes.clear();
         setNumericTextField(tfPrecio);
         setNumericTextField(tfTelefono);
@@ -144,6 +159,21 @@ public class CrearVehiculoController implements Initializable {
         for(String c: Utilitaria.ciudades){
             cbCiudad.getItems().add(c);
         }
+        
+        //llenado campos con la info del vehiculo
+        cbMarca.setValue(vehSeleccionado.getMarca());
+        cbModelo.setValue(vehSeleccionado.getModelo());
+        cbAnio.setValue(vehSeleccionado.getYear());
+        cbKilo.setValue(vehSeleccionado.getKm());
+        cbMotor.setValue(vehSeleccionado.getMotor());
+        cbTransmision.setValue(vehSeleccionado.getTransmision());
+        cbPeso.setValue((int)vehSeleccionado.getPeso());
+        cbCiudad.setValue(vehSeleccionado.getUbiAct());
+        tfPrecio.setText(String.valueOf(vehSeleccionado.getPrecio().getCant()));
+        if(vehSeleccionado.getPrecio().isEsNegociable()){
+            checkNegociable.setSelected(true);
+        }
+        //Llenando los campos con la información del vehículo
         
     }    
 
@@ -180,90 +210,75 @@ public class CrearVehiculoController implements Initializable {
         verificarTFStringVacio(tfApellido);
         verificarTFStringVacio(tfTelefono);
         verificarTFStringVacio(tfCorreo);
-        return new Usuario(tfNombre.getText(),tfApellido.getText(),tfTelefono.getText(), tfCorreo.getText());
+        return new Usuario(tfNombre.getText() + " " + tfApellido.getText(),tfTelefono.getText(), tfCorreo.getText());
     }
     
     
     @FXML
-    private void clickEnPonerVenta(ActionEvent event) {
-        try{
-            //Creando Precio
-            Precio precio = crearPrecio();
-            Utilitaria.verificarComboBox(cbMarca);
-            
-            //Creando datos de ComboBoxes
-            Marca marca = cbMarca.getValue();
-            Utilitaria.verificarComboBox(cbModelo);
-            String modelo = cbModelo.getValue();
-            Utilitaria.verificarComboBox(cbAnio);
-            int year = cbAnio.getValue();
-            Utilitaria.verificarComboBox(cbKilo);
-            int km = cbKilo.getValue();
-            Utilitaria.verificarComboBox(cbTransmision);
-            String transmisión = cbTransmision.getValue();
-            Utilitaria.verificarComboBox(cbTransmision);
-            String motor = cbMotor.getValue();
-            Utilitaria.verificarComboBox(cbPeso);
-            double peso = cbPeso.getValue();
-            Utilitaria.verificarComboBox(cbCiudad);
-            String ubiAct = cbCiudad.getValue();
-            
-            //Creando Usuario
-            Usuario dueno = crearUsuario();
-            boolean esVendido = false;
-            
-            //Creando Historial
-            Historial histReparacion = new Historial(reparaciones,mantenimientos);
-            System.out.println(imagenes);
-            if(imagenes.isEmpty()){
-                throw new NoHayImagenes();
+    private void clickEditarVehiculo(ActionEvent event) {
+        try {
+            // Asignación de nuevos valores desde los controles de la UI
+            vehSeleccionado.setPrecio(crearPrecio());
+            vehSeleccionado.setMarca(cbMarca.getValue());
+            vehSeleccionado.setModelo(cbModelo.getValue());
+            vehSeleccionado.setYear(cbAnio.getValue());
+            vehSeleccionado.setKm(cbKilo.getValue());
+            vehSeleccionado.setTransmision(cbTransmision.getValue());
+            vehSeleccionado.setMotor(cbMotor.getValue());
+            vehSeleccionado.setPeso(cbPeso.getValue());
+            vehSeleccionado.setUbiAct(cbCiudad.getValue());
+            vehSeleccionado.setDueno(crearUsuario());
+    
+            // Solo añadir nuevas imágenes si se han cargado durante la sesión de edición
+            if (!imagenes.isEmpty()) {
+                for (Image img : imagenes) {
+                    vehSeleccionado.getImagsCarro().addFirst(img);
+                }
+                imagenes.clear(); // Limpia la lista temporal después de añadir las nuevas imágenes
             }
-            Vehicle vehiculo = new Vehicle(precio,marca,modelo,year,km,transmisión,peso,ubiAct,motor,dueno,esVendido,histReparacion,imagenes);
-            Utilitaria.vehiculos.addLast(vehiculo);
-            try{
-                App.setRoot("inicio");
-            } catch(IOException e){
-                e.printStackTrace();
-            }
-           
-        } catch(StringVacio s){
-            Utilitaria.mostrarAlerta2("No puede dejar campos vacíos.", Alert.AlertType.ERROR);
-        } catch(NoEsNumero n){
-            Utilitaria.mostrarAlerta2("El precio ingresado no es un número.", Alert.AlertType.ERROR);
-        } catch(ComboBoxSinEleccion co){
-            Utilitaria.mostrarAlerta2("Por favor escoja una opción en todos los campos.", Alert.AlertType.ERROR);
-        } catch(NoHayImagenes nhi){
-            Utilitaria.mostrarAlerta2("Debe subir al menos una imagen.", Alert.AlertType.ERROR);
+    
+            // Refrescar la vista de imágenes en la UI
+            mostrarImagenes();
+    
+            Utilitaria.mostrarAlerta2("Vehículo actualizado con éxito.", Alert.AlertType.INFORMATION);
+            App.setRoot("inicio");
+    
+        } catch (Exception e) { // Captura las excepciones más generales para simplificar
+            Utilitaria.mostrarAlerta2("Error al actualizar el vehículo: " + e.getMessage(), Alert.AlertType.ERROR);
         }
-        
     }
 
     @FXML
     private void clickEnSubirImagen(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg","*.jpeg"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"));
         File file = fileChooser.showOpenDialog(new Stage());
-            if (file != null) {
-                try {
-                    Image image = new Image(new FileInputStream(file));
-                    imagenes.addLast(image);
-                    mostrarImagenes();
-                } catch (FileNotFoundException ex) {
-                    ex.printStackTrace();
-                }
+        if (file != null) {
+            try {
+                Image image = new Image(new FileInputStream(file));
+                vehSeleccionado.getImagsCarro().addLast(image); // Asegúrate de que añades a la lista correcta
+                mostrarImagenes(); // Llama a mostrarImagenes para actualizar el FlowPane
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
             }
+        }
     }
     
-    public void mostrarImagenes(){
+    public void mostrarImagenes() {
         fpImagenes.getChildren().clear();
-        for(Image image: imagenes){
+        for (Image image : vehSeleccionado.getImagsCarro()) {
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(85);
             imageView.setFitHeight(85);
+            imageView.setOnMouseClicked(event -> {
+                if (event.getButton() == MouseButton.SECONDARY) {
+                    vehSeleccionado.getImagsCarro().remove(image);
+                    mostrarImagenes();
+                }
+            });
             fpImagenes.getChildren().add(imageView);
         }
     }
-
     @FXML
     private void clickEnModelo(MouseEvent event) {
         cbModelo.getItems().clear();
@@ -334,5 +349,49 @@ public class CrearVehiculoController implements Initializable {
                 textField.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
+    }
+
+    @FXML
+    private void clickEnVerReparacion(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editarReparaciones.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Ver Reparaciones");
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+            actualizarContadores();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void clickEnVerMantenimiento(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editarMantenimientos.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Editar Mantenimientos");
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+            actualizarContadores();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    //para actualizar el contador de mantenimientos y reparaciones si se elimina o se añade uno
+    private void actualizarContadores() {
+        lblCantMantenimientos.setText(String.valueOf(mantenimientos.size()));
+        lblCantReparaciones.setText(String.valueOf(reparaciones.size()));
     }
 }

@@ -12,6 +12,7 @@ import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
  */
 public class Usuario {
     private String name;
+    private String lastName;
     private String number;
     private String mail;
     private DoublyLinkedList<Vehicle> misVehiculos;
@@ -22,6 +23,15 @@ public class Usuario {
         this.mail = mail;
         this.misVehiculos = new DoublyLinkedList<>();
     }
+
+    
+    public Usuario(String name, String lastName, String number, String mail) {
+        this.name = name;
+        this.lastName = lastName;
+        this.number = number;
+        this.mail = mail;
+    }
+
 
     public String getName() {
         return name;
@@ -54,7 +64,14 @@ public class Usuario {
     public void setMisVehiculos(DoublyLinkedList<Vehicle> misVehiculos) {
         this.misVehiculos = misVehiculos;
     }
-    
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
     
     
 }

@@ -249,5 +249,28 @@ public class CircularDoublyLinkedList<E> implements List<E>{
         }
         return true;
     }
-    
+    public boolean remove(E element) {
+        if (isEmpty()) {
+            return false; // The list is empty.
+        }
+        
+        DoublyNode<E> current = head;
+        
+        while (current != null) {
+            if ((current.getContent() == null && element == null) || (current.getContent() != null && current.getContent().equals(element))) {
+                if (current == head) {
+                    removeFirst();
+                } else if (current == last) {
+                    removeLast();
+                } else {
+                    current.getPrevious().setNext(current.getNext());
+                    current.getNext().setPrevious(current.getPrevious());
+                }
+                return true;
+            }
+            current = current.getNext();
+        }
+
+        return false; // Element not found.
+    }
 }

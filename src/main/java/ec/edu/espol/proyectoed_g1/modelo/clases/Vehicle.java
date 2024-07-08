@@ -68,6 +68,14 @@ public class Vehicle {
         return motor;
     }
 
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public void setMotor(String motor) {
+        this.motor = motor;
+    }
+
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }

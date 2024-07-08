@@ -82,7 +82,11 @@ public class InicioController implements Initializable {
 
     @FXML
     private void clickEnVerMisVehiculos(ActionEvent event) {
-        Utilitaria.mostrarAlerta("Todavía no se implementa la funcionalidad para editar y eliminar mis vehículos", Alert.AlertType.INFORMATION, "inicio");
+        try{
+            App.setRoot("editarVehiculo");
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
 }

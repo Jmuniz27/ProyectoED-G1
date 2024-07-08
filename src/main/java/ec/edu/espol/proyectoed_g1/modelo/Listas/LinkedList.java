@@ -18,6 +18,34 @@ public class LinkedList<E> implements List<E>{
     public NodeList<E> getHeader() {
         return header;
     }
+    public boolean remove(E element) {
+        if (header == null) {
+            return false; // lista vacia
+        }
+
+        if (header.getContent().equals(element)) {
+            header = header.getNext();
+            if (header == null) {
+                last = null; // lista viene vacia
+            }
+            return true;
+        }
+
+        NodeList<E> current = header;
+        while (current.getNext() != null && !current.getNext().getContent().equals(element)) {
+            current = current.getNext();
+        }
+
+        if (current.getNext() != null) {
+            current.setNext(current.getNext().getNext());
+            if (current.getNext() == null) {
+                last = current; // actualiza el ult nodo
+            }
+            return true;
+        }
+
+        return false; // no fue encontrado
+    }
 
     public void setHeader(NodeList<E> header) {
         this.header = header;
