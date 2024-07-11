@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -82,6 +83,17 @@ public class EditarVehiculoController implements Initializable {
                 try{
                     App.setRoot("editarVehIndividual");
                 } catch(Exception e){
+                    e.printStackTrace();
+                }
+            });
+            Button btnEliminar = (Button) auto.lookup("#btnEliminar");
+            btnEliminar.setOnMouseClicked(event ->{
+                try {
+                    vehiculos.remove(vehiculos.indexOf(vehiculo));
+                    Utilitaria.mostrarAlerta2("Vehículo eliminado con éxito.", Alert.AlertType.INFORMATION);
+                    App.setRoot("editarVehiculo");
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });

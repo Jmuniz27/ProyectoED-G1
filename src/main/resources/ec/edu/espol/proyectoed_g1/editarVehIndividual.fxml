@@ -409,16 +409,20 @@
                                     </VBox>
                                  </children>
                               </HBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="35.0">
+                                 <children>
+                                    <Button fx:id="botonPonerVenta" mnemonicParsing="false" onAction="#clickEditarVehiculo" prefHeight="39.0" prefWidth="288.0" style="-fx-background-color: e0252d; -fx-background-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Editar Vehiculo" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                              </VBox>
                            </children>
                         </VBox>
-                        <Button fx:id="botonPonerVenta" mnemonicParsing="false" onAction="#clickEditarVehiculo" prefHeight="39.0" prefWidth="288.0" style="-fx-background-color: e0252d; -fx-background-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Editar Vehiculo" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                      </children>
                   </VBox>
                </children>
