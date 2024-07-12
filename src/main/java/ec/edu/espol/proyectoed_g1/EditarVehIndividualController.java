@@ -99,8 +99,8 @@ public class EditarVehIndividualController implements Initializable {
     private CircularDoublyLinkedList<String> imagenes = new CircularDoublyLinkedList<>();
     
     
-    private LinkedList<AccidenteServicios> reparaciones;
-    private LinkedList<AccidenteServicios> mantenimientos;
+    public static LinkedList<AccidenteServicios> reparaciones;
+    public static LinkedList<AccidenteServicios> mantenimientos;
     
     @FXML
     private Button btnAnadirMantenimiento;
@@ -125,14 +125,14 @@ public class EditarVehIndividualController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         vehSeleccionado = EditarVehiculoController.vehiculoEscogido;
+        reparaciones = vehSeleccionado.getHistorial().getAccidentes().copy();
+        mantenimientos = vehSeleccionado.getHistorial().getMantenimiento().copy();
+        imagenes = vehSeleccionado.getImagsCarro().copy();
         mostrarImagenes();
-        reparaciones = vehSeleccionado.getHistorial().getAccidentes();
-        mantenimientos = vehSeleccionado.getHistorial().getMantenimiento();
-        lblCantReparaciones.setText(String.valueOf(reparaciones.size()));
+        lblCantReparaciones.setText(reparaciones.size()+"");
         lblCantMantenimientos.setText(String.valueOf(mantenimientos.size()));
         System.out.println(vehSeleccionado.getMarca().getNombre() + " " + vehSeleccionado.getModelo() + " " + vehSeleccionado.getYear() + "en editarVehIndController");
         txtTitle.setText("Editar Vehiculo " + vehSeleccionado.getMarca().getNombre() + " " + vehSeleccionado.getModelo() + " " + vehSeleccionado.getYear());
-        imagenes.clear();
         setNumericTextField(tfPrecio);
         setNumericTextField(tfTelefono);
         /*Image loadingCar = new Image("/imagenes/default.png");
@@ -178,6 +178,10 @@ public class EditarVehIndividualController implements Initializable {
         if(vehSeleccionado.getPrecio().isEsNegociable()){
             checkNegociable.setSelected(true);
         }
+        tfNombre.setText(vehSeleccionado.getDueno().getName());
+        tfApellido.setText(vehSeleccionado.getDueno().getLastName());
+        tfTelefono.setText(vehSeleccionado.getDueno().getNumber());
+        tfCorreo.setText(vehSeleccionado.getDueno().getMail());
         //Llenando los campos con la información del vehículo
         
     }    
@@ -215,7 +219,7 @@ public class EditarVehIndividualController implements Initializable {
         verificarTFStringVacio(tfApellido);
         verificarTFStringVacio(tfTelefono);
         verificarTFStringVacio(tfCorreo);
-        return new Usuario(tfNombre.getText() + " " + tfApellido.getText(),tfTelefono.getText(), tfCorreo.getText());
+        return new Usuario(tfNombre.getText(), tfApellido.getText(),tfTelefono.getText(), tfCorreo.getText());
     }
     
     
@@ -233,23 +237,19 @@ public class EditarVehIndividualController implements Initializable {
             vehSeleccionado.setPeso(cbPeso.getValue());
             vehSeleccionado.setUbiAct(cbCiudad.getValue());
             vehSeleccionado.setDueno(crearUsuario());
-    
+            vehSeleccionado.setImagsCarro(imagenes);
+            vehSeleccionado.setHistorial(new Historial(reparaciones,mantenimientos));
+            
             // Solo añadir nuevas imágenes si se han cargado durante la sesión de edición
-            if (!imagenes.isEmpty()) {
-                for (String imgURL : imagenes) {
-                    vehSeleccionado.getImagsCarro().addFirst(imgURL);
-                }
-                imagenes.clear(); // Limpia la lista temporal después de añadir las nuevas imágenes
-            }
+            
+            Utilitaria.saveListToFile("vehiculos.dat",Utilitaria.vehiculos);
     
-            // Refrescar la vista de imágenes en la UI
-            mostrarImagenes();
     
             Utilitaria.mostrarAlerta2("Vehículo actualizado con éxito.", Alert.AlertType.INFORMATION);
             App.setRoot("inicio");
     
         } catch (Exception e) { // Captura las excepciones más generales para simplificar
-            Utilitaria.mostrarAlerta2("Error al actualizar el vehículo: " + e.getMessage(), Alert.AlertType.ERROR);
+            Utilitaria.mostrarAlerta2("Error al actualizar el vehículo.", Alert.AlertType.ERROR);
         }
     }
 
@@ -263,7 +263,7 @@ public class EditarVehIndividualController implements Initializable {
                     // Guardar la imagen en la carpeta específica
                     String imageUrl = saveImage(file);
                     // Añadir la URL a la lista
-                    vehSeleccionado.getImagsCarro().addLast(imageUrl);
+                    imagenes.addLast(imageUrl);
                     mostrarImagenes();
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -272,7 +272,7 @@ public class EditarVehIndividualController implements Initializable {
     }
     
     private String saveImage(File file) throws IOException {
-        String imageDirectory = "imagenes/";
+        String imageDirectory = "imagenesSubidas/";
         File directory = new File(imageDirectory);
         if (!directory.exists()) {
             directory.mkdirs();
@@ -285,14 +285,14 @@ public class EditarVehIndividualController implements Initializable {
     
     public void mostrarImagenes() {
         fpImagenes.getChildren().clear();
-        for (String imageURL : vehSeleccionado.getImagsCarro()) {
+        for (String imageURL : imagenes) {
             Image image = new Image(imageURL);
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(85);
             imageView.setFitHeight(85);
             imageView.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.SECONDARY) {
-                    vehSeleccionado.getImagsCarro().remove(imageURL);
+                    imagenes.remove(imageURL);
                     mostrarImagenes();
                 }
             });
@@ -384,6 +384,8 @@ public class EditarVehIndividualController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.showAndWait();
+            EditarReparacionesController accidenteController = fxmlLoader.getController();
+            reparaciones = accidenteController.getReparaciones();
             actualizarContadores();
         } catch(IOException e){
             e.printStackTrace();
@@ -403,6 +405,8 @@ public class EditarVehIndividualController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.showAndWait();
+            EditarMantenimientosController accidenteController = fxmlLoader.getController();
+            mantenimientos = accidenteController.getMantenimientos();
             actualizarContadores();
         } catch(IOException e){
             e.printStackTrace();

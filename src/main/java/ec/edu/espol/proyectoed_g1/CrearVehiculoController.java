@@ -225,6 +225,7 @@ public class CrearVehiculoController implements Initializable {
             }
             Vehicle vehiculo = new Vehicle(precio,marca,modelo,year,km,transmisión,peso,ubiAct,motor,dueno,esVendido,histReparacion,imagenes);
             Utilitaria.vehiculos.addLast(vehiculo);
+            Utilitaria.saveListToFile("vehiculos.dat",Utilitaria.vehiculos);
             try{
                 App.setRoot("inicio");
             } catch(IOException e){

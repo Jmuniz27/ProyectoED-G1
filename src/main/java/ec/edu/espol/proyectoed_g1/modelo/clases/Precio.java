@@ -4,11 +4,13 @@
  */
 package ec.edu.espol.proyectoed_g1.modelo.clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author creditos gonzalez
  */
-public class Precio {
+public class Precio implements Serializable{
     private double cant;
     private boolean esNegociable;
 

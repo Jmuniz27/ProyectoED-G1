@@ -5,12 +5,13 @@
 package ec.edu.espol.proyectoed_g1.modelo.clases;
 
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
+import java.io.Serializable;
 
 /**
  *
  * @author creditos gonzalez
  */
-public class Usuario {
+public class Usuario implements Serializable{
     private String name;
     private String lastName;
     private String number;

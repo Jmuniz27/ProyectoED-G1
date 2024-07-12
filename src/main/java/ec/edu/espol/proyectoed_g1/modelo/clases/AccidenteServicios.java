@@ -4,6 +4,7 @@
  */
 package ec.edu.espol.proyectoed_g1.modelo.clases;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -11,7 +12,7 @@ import java.util.Date;
  *
  * @author isabella
  */
-public class AccidenteServicios{
+public class AccidenteServicios implements Serializable{
     private LocalDate fecha;
     private String descrip;
     

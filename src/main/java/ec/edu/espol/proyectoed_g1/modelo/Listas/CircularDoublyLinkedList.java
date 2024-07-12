@@ -5,8 +5,9 @@ import java.util.Iterator;
 
 import ec.edu.espol.proyectoed_g1.modelo.Interfaces.List;
 import ec.edu.espol.proyectoed_g1.modelo.Nodos.DoublyNode;
+import java.io.Serializable;
 
-public class CircularDoublyLinkedList<E> implements List<E>{
+public class CircularDoublyLinkedList<E> implements List<E>, Serializable{
     private DoublyNode<E> head;
     private DoublyNode<E> last;
     public CircularDoublyLinkedList() {
@@ -272,5 +273,18 @@ public class CircularDoublyLinkedList<E> implements List<E>{
         }
 
         return false; // Element not found.
+    }
+    
+    public CircularDoublyLinkedList<E> copy() {
+        CircularDoublyLinkedList<E> copy = new CircularDoublyLinkedList<>();
+        if (head == null) {
+            return copy;
+        }
+        DoublyNode<E> current = head;
+        do {
+            copy.addLast(current.getContent());
+            current = current.getNext();
+        } while (current != head);
+        return copy;
     }
 }

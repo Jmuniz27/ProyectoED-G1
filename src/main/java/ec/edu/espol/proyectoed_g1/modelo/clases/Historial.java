@@ -5,12 +5,13 @@
 package ec.edu.espol.proyectoed_g1.modelo.clases;
 
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
+import java.io.Serializable;
 
 /**
  *
  * @author creditos gonzalez
  */
-public class Historial{
+public class Historial implements Serializable{
     private LinkedList<AccidenteServicios> reparaciones;
     private LinkedList<AccidenteServicios> mantenimientos;
 

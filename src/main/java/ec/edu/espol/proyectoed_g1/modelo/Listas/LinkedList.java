@@ -5,8 +5,9 @@ import java.util.Comparator;
 import java.util.Iterator;
 import ec.edu.espol.proyectoed_g1.modelo.Nodos.NodeList;
 import ec.edu.espol.proyectoed_g1.modelo.Interfaces.List;
+import java.io.Serializable;
 
-public class LinkedList<E> implements List<E>{
+public class LinkedList<E> implements List<E>,Serializable{
     private NodeList<E> header;
     private NodeList<E> last;
     //private int size = 0;
@@ -54,7 +55,19 @@ public class LinkedList<E> implements List<E>{
     public NodeList<E> getLast() {
         return last;
     }
+    
+    public LinkedList<E> copy() {
+        LinkedList<E> copy = new LinkedList<>();
+        NodeList<E> current = this.header;
 
+        while (current != null) {
+            copy.addLast(current.getContent());
+            current = current.getNext();
+        }
+        
+        return copy;
+    }
+    
     public void setLast(NodeList<E> last) {
         this.last = last;
     }

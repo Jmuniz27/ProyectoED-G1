@@ -33,13 +33,15 @@ public class EditarReparacionesController implements Initializable {
     private VBox vbReparaciones;
     @FXML
     private Button btnSalir;
+    
+    private LinkedList<AccidenteServicios> reparaciones = new LinkedList<>();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         vbReparaciones.getChildren().clear();
-        LinkedList<AccidenteServicios> reparaciones = EditarVehiculoController.vehiculoEscogido.getHistorial().getAccidentes();
+        reparaciones = EditarVehIndividualController.reparaciones;
         Comparator<AccidenteServicios> cmp1 = new Comparator<>(){
             @Override
             public int compare(AccidenteServicios a1, AccidenteServicios a2){
@@ -90,5 +92,9 @@ public class EditarReparacionesController implements Initializable {
             e.printStackTrace();
             return null;
         }
+    }
+    
+    public LinkedList<AccidenteServicios> getReparaciones(){
+        return reparaciones;
     }
 }

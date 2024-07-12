@@ -90,6 +90,7 @@ public class EditarVehiculoController implements Initializable {
             btnEliminar.setOnMouseClicked(event ->{
                 try {
                     vehiculos.remove(vehiculos.indexOf(vehiculo));
+                    Utilitaria.saveListToFile("vehiculos.dat",Utilitaria.vehiculos);
                     Utilitaria.mostrarAlerta2("Vehículo eliminado con éxito.", Alert.AlertType.INFORMATION);
                     App.setRoot("editarVehiculo");
                 } catch (IOException e) {

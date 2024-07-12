@@ -436,13 +436,8 @@ public class BuscarVehiculosController implements Initializable {
     @FXML
     private void cbRelevClicked(ActionEvent event) {
         System.out.println(cbRelev.getValue());
-        // cbRelev.getItems().add("Relevancia");
-        // cbRelev.getItems().add("Menor Precio");
-        // cbRelev.getItems().add("Mayor Precio");
-        // cbRelev.getItems().add("Menor Recorrido");
-        // cbRelev.getItems().add("Mayor Recorrido");
         // Aplicar filtros y obtener resultados
-        DoublyLinkedList<Vehicle> resultados = listaMostrada;
+        DoublyLinkedList<Vehicle> resultados = listaMostrada.copy();
         if(cbRelev.getValue().equals("Relevancia")){
             resultados = old;
         }
