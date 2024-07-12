@@ -5,12 +5,13 @@
 package ec.edu.espol.proyectoed_g1.modelo.clases;
 
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
+import java.io.Serializable;
 
 /**
  *
  * @author isabella
  */
-public class Marca {
+public class Marca implements Serializable{
     private String nombre;
     private LinkedList<String> modelos = new LinkedList<>();
     public Marca(String nombre, LinkedList<String> modelos){

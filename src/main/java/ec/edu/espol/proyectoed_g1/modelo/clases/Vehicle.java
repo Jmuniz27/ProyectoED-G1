@@ -6,13 +6,14 @@ package ec.edu.espol.proyectoed_g1.modelo.clases;
 
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
+import java.io.Serializable;
 import javafx.scene.image.Image;
 
 /**
  *
  * @author creditos gonzalez
  */
-public class Vehicle {
+public class Vehicle implements Serializable{
     private Precio precio;
     private Marca marca;
     private String modelo;

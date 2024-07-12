@@ -1,7 +1,9 @@
 
 package ec.edu.espol.proyectoed_g1.modelo.Nodos;
 
-public class NodeList<E> {
+import java.io.Serializable;
+
+public class NodeList<E> implements Serializable{
     private E content;
     private NodeList<E> next;
 

@@ -9,7 +9,11 @@ import ec.edu.espol.proyectoed_g1.modelo.clases.Vehicle;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
 import excepciones.ComboBoxSinEleccion;
 import excepciones.NoEsNumero;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.Duration;
 import java.util.Comparator;
@@ -26,15 +30,15 @@ import javafx.scene.control.Tooltip;
  * @author isabella
  */
 public class Utilitaria implements Serializable {
-    
-    public static DoublyLinkedList<Vehicle> vehiculos = new DoublyLinkedList<>();
-    public static DoublyLinkedList<Marca> marcas = new DoublyLinkedList<>();
-    public static DoublyLinkedList<Integer> anios = new DoublyLinkedList<>();
-    public static DoublyLinkedList<Integer> kilometrajes = new DoublyLinkedList<>();
-    public static DoublyLinkedList<String> motores = new DoublyLinkedList<>();
-    public static DoublyLinkedList<String> transmisiones = new DoublyLinkedList<>();
-    public static DoublyLinkedList<Integer> pesos = new DoublyLinkedList<>();
-    public static DoublyLinkedList<String> ciudades = new DoublyLinkedList<>();
+   
+    public static DoublyLinkedList<Vehicle> vehiculos = readListFromFile("vehiculos.dat", Vehicle.class);
+    public static DoublyLinkedList<Marca> marcas = readListFromFile("marcas.dat", Marca.class);
+    public static DoublyLinkedList<Integer> anios = readListFromFile("anios.dat", Integer.class);
+    public static DoublyLinkedList<Integer> kilometrajes = readListFromFile("kilometrajes.dat", Integer.class);
+    public static DoublyLinkedList<String> motores = readListFromFile("motores.dat", String.class);
+    public static DoublyLinkedList<String> transmisiones = readListFromFile("transmisiones.dat", String.class);
+    public static DoublyLinkedList<Integer> pesos = readListFromFile("pesos.dat", Integer.class);
+    public static DoublyLinkedList<String> ciudades = readListFromFile("ciudades.dat", String.class);
     
     
     public static void mostrarAlerta(String msg, Alert.AlertType a, String fxml) {
@@ -87,4 +91,33 @@ public class Utilitaria implements Serializable {
         tooltip.setShowDuration(javafx.util.Duration.INDEFINITE);
         return tooltip;
     }
+    
+    //Para serializar las listas
+    
+    public static <T> DoublyLinkedList<T> readListFromFile(String filename, Class<T> clazz) {
+        DoublyLinkedList<T> list = new DoublyLinkedList<>();
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
+            list = (DoublyLinkedList<T>) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    public static <T> void saveListToFile(String filename, DoublyLinkedList<T> list) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
+            out.writeObject(list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static <T> void addToFile(String filename, T item, Class<T> clazz) {
+        if (item != null) {
+            DoublyLinkedList<T> list = readListFromFile(filename, clazz);
+            list.addLast(item);
+            saveListToFile(filename, list);
+        }
+    }
+    
 }

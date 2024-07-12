@@ -1,5 +1,5 @@
 # ProyectoED
-**Grupo 8**
+**Grupo 1**
 **Proyecto Estructura de Datos Par 1**
 
 ## Descripción

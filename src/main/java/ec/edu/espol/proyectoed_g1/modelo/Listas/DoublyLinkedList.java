@@ -5,8 +5,9 @@ import java.util.Iterator;
 
 import ec.edu.espol.proyectoed_g1.modelo.Interfaces.List;
 import ec.edu.espol.proyectoed_g1.modelo.Nodos.DoublyNode;
+import java.io.Serializable;
 
-public class DoublyLinkedList<E> implements List<E> {
+public class DoublyLinkedList<E> implements List<E>, Serializable {
     private DoublyNode<E> head;
     private DoublyNode<E> last;
 

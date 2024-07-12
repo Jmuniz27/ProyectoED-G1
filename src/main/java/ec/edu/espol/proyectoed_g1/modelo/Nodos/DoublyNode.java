@@ -1,6 +1,8 @@
 package ec.edu.espol.proyectoed_g1.modelo.Nodos;
 
-public class DoublyNode<E> {
+import java.io.Serializable;
+
+public class DoublyNode<E> implements Serializable{
     private E content;
     private DoublyNode<E> next;
     private DoublyNode<E> previous;

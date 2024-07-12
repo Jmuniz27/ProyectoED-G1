@@ -213,12 +213,14 @@ public class VerIndividualVehiculoController implements Initializable {
             Image img4 = new Image("/imagenes/corazonLleno.png");
             imgHeart.setImage(img4);
             favTxt.setText("Quitar de Favoritos");
+            Utilitaria.saveListToFile("vehiculos.dat",Utilitaria.vehiculos);
         } else{
             System.out.println("vehiculo es liked");
             vehiculo.setEsLiked(false);
             Image img4 = new Image("/imagenes/corazon.png");
             imgHeart.setImage(img4);
             favTxt.setText("Agregar a Favoritos");
+            Utilitaria.saveListToFile("vehiculos.dat",Utilitaria.vehiculos);
         }
     }
     
