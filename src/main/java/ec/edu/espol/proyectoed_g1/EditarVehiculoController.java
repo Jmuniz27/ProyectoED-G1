@@ -88,9 +88,10 @@ public class EditarVehiculoController implements Initializable {
 
             //planImg.setImage(new Image(getClass().getResourceAsStream("/resources/default-car.png")));
 
-            CircularDoublyLinkedList<Image> imagsCarro = vehiculo.getImagsCarro();
+            CircularDoublyLinkedList<String> imagsCarro = vehiculo.getImagsCarro();
             if(!imagsCarro.isEmpty()){
-                planImg.setImage(imagsCarro.get(0));
+                Image image = new Image(imagsCarro.get(0));
+                planImg.setImage(image);
             }
             plantVehName.setText(vehiculo.getMarca() + " " + vehiculo.getModelo());
             planVehAnio.setText(String.valueOf(vehiculo.getYear()));

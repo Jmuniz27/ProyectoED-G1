@@ -342,98 +342,98 @@ public class App extends Application {
         
         //Imagenes de los vehiculos
         //Chevrolet Spark
-        CircularDoublyLinkedList<Image> imgSpark = new CircularDoublyLinkedList<>();
-        imgSpark.addLast(new Image("/imagenes/spark1.jpeg"));
-        imgSpark.addLast(new Image("/imagenes/spark2.jpeg"));
+        CircularDoublyLinkedList<String> imgSpark = new CircularDoublyLinkedList<>();
+        imgSpark.addLast("/imagenes/spark1.jpeg");
+        imgSpark.addLast("/imagenes/spark2.jpeg");
         
         //Toyota Corolla
-        CircularDoublyLinkedList<Image> imgCorolla = new CircularDoublyLinkedList<>();
-        imgCorolla.addLast(new Image("/imagenes/Toyota_Corolla_1.jpg"));
-        imgCorolla.addLast(new Image("/imagenes/Toyota_Corolla_2.jpg"));
-        imgCorolla.addLast(new Image("/imagenes/Toyota_Corolla_3.jpg"));
-        imgCorolla.addLast(new Image("/imagenes/Toyota_Corolla_4.jpg"));
+        CircularDoublyLinkedList<String> imgCorolla = new CircularDoublyLinkedList<>();
+        imgCorolla.addLast("/imagenes/Toyota_Corolla_1.jpg");
+        imgCorolla.addLast("/imagenes/Toyota_Corolla_2.jpg");
+        imgCorolla.addLast("/imagenes/Toyota_Corolla_3.jpg");
+        imgCorolla.addLast("/imagenes/Toyota_Corolla_4.jpg");
         
         //Honda Civic
-        CircularDoublyLinkedList<Image> imgCivic = new CircularDoublyLinkedList<>();
-        imgCivic.addLast(new Image("/imagenes/Honda_Civic_1.png"));
-        imgCivic.addLast(new Image("/imagenes/Honda_Civic_2.png"));
-        imgCivic.addLast(new Image("/imagenes/Honda_Civic_3.png"));
+        CircularDoublyLinkedList<String> imgCivic = new CircularDoublyLinkedList<>();
+        imgCivic.addLast("/imagenes/Honda_Civic_1.png");
+        imgCivic.addLast("/imagenes/Honda_Civic_2.png");
+        imgCivic.addLast("/imagenes/Honda_Civic_3.png");
         
         //FordMustang
-        CircularDoublyLinkedList<Image> imgMustang = new CircularDoublyLinkedList<>();
-        imgMustang.addLast(new Image("/imagenes/Ford_Mustang_1.jpeg"));
-        imgMustang.addLast(new Image("/imagenes/Ford_Mustang_2.jpeg"));
-        imgMustang.addLast(new Image("/imagenes/Ford_Mustang_3.jpeg"));
-        imgMustang.addLast(new Image("/imagenes/Ford_Mustang_4.jpeg"));
+        CircularDoublyLinkedList<String> imgMustang = new CircularDoublyLinkedList<>();
+        imgMustang.addLast("/imagenes/Ford_Mustang_1.jpeg");
+        imgMustang.addLast("/imagenes/Ford_Mustang_2.jpeg");
+        imgMustang.addLast("/imagenes/Ford_Mustang_3.jpeg");
+        imgMustang.addLast("/imagenes/Ford_Mustang_4.jpeg");
         
         //Audi Q5
-        CircularDoublyLinkedList<Image> imgQ5 = new CircularDoublyLinkedList<>();
-        imgQ5.addLast(new Image("/imagenes/audi_q5_1.jpeg"));
-        imgQ5.addLast(new Image("/imagenes/audi_q5_2.jpeg"));
+        CircularDoublyLinkedList<String> imgQ5 = new CircularDoublyLinkedList<>();
+        imgQ5.addLast("/imagenes/audi_q5_1.jpeg");
+        imgQ5.addLast("/imagenes/audi_q5_2.jpeg");
         
         //BMW X5
-        CircularDoublyLinkedList<Image> imgX5 = new CircularDoublyLinkedList<>();
-        imgX5.addLast(new Image("/imagenes/BMW_X5_1.jpg"));
-        imgX5.addLast(new Image("/imagenes/BMW_X5_2.jpg"));
-        imgX5.addLast(new Image("/imagenes/BMW_X5_3.jpg"));
-        imgX5.addLast(new Image("/imagenes/BMW_X5_4.jpg"));
+        CircularDoublyLinkedList<String> imgX5 = new CircularDoublyLinkedList<>();
+        imgX5.addLast("/imagenes/BMW_X5_1.jpg");
+        imgX5.addLast("/imagenes/BMW_X5_2.jpg");
+        imgX5.addLast("/imagenes/BMW_X5_3.jpg");
+        imgX5.addLast("/imagenes/BMW_X5_4.jpg");
         
         //Mercedes GLC
-        CircularDoublyLinkedList<Image> imgGLC = new CircularDoublyLinkedList<>();
-        imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_1.jpeg"));
-        imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_2.jpeg"));
-        imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_3.jpeg"));
-        imgGLC.addLast(new Image("/imagenes/Mercedes_GLC_4.jpeg"));
+        CircularDoublyLinkedList<String> imgGLC = new CircularDoublyLinkedList<>();
+        imgGLC.addLast("/imagenes/Mercedes_GLC_1.jpeg");
+        imgGLC.addLast("/imagenes/Mercedes_GLC_2.jpeg");
+        imgGLC.addLast("/imagenes/Mercedes_GLC_3.jpeg");
+        imgGLC.addLast("/imagenes/Mercedes_GLC_4.jpeg");
         
         //Nissan Sentra
-        CircularDoublyLinkedList<Image> imgSentra = new CircularDoublyLinkedList<>();
-        imgSentra.addLast(new Image("/imagenes/nissan_sentra_1.jpeg"));
-        imgSentra.addLast(new Image("/imagenes/nissan_sentra_2.jpg"));
+        CircularDoublyLinkedList<String> imgSentra = new CircularDoublyLinkedList<>();
+        imgSentra.addLast("/imagenes/nissan_sentra_1.jpeg");
+        imgSentra.addLast("/imagenes/nissan_sentra_2.jpg");
         
         //Chevrolet Malubu
-        CircularDoublyLinkedList<Image> imgMalibu = new CircularDoublyLinkedList<>();
-        imgMalibu.addLast(new Image("/imagenes/chevrolet_malibu1.jpeg"));
-        imgMalibu.addLast(new Image("/imagenes/chevrolet_malibu2.jpg"));
+        CircularDoublyLinkedList<String> imgMalibu = new CircularDoublyLinkedList<>();
+        imgMalibu.addLast("/imagenes/chevrolet_malibu1.jpeg");
+        imgMalibu.addLast("/imagenes/chevrolet_malibu2.jpg");
         
         //Toyota Camry
-        CircularDoublyLinkedList<Image> imgCamry = new CircularDoublyLinkedList<>();
-        imgCamry.addLast(new Image("/imagenes/Toyota_Camry_1.jpeg"));
-        imgCamry.addLast(new Image("/imagenes/Toyota_Camry_2.jpeg"));
-        imgCamry.addLast(new Image("/imagenes/Toyota_Camry_3.jpeg"));
-        imgCamry.addLast(new Image("/imagenes/Toyota_Camry_4.jpeg"));
+        CircularDoublyLinkedList<String> imgCamry = new CircularDoublyLinkedList<>();
+        imgCamry.addLast("/imagenes/Toyota_Camry_1.jpeg");
+        imgCamry.addLast("/imagenes/Toyota_Camry_2.jpeg");
+        imgCamry.addLast("/imagenes/Toyota_Camry_3.jpeg");
+        imgCamry.addLast("/imagenes/Toyota_Camry_4.jpeg");
         
         //Honda Accord
-        CircularDoublyLinkedList<Image> imgAccord = new CircularDoublyLinkedList<>();
-        imgAccord.addLast(new Image("/imagenes/honda_accord_1.jpeg"));
-        imgAccord.addLast(new Image("/imagenes/honda_accord_2.jpeg"));
+        CircularDoublyLinkedList<String> imgAccord = new CircularDoublyLinkedList<>();
+        imgAccord.addLast("/imagenes/honda_accord_1.jpeg");
+        imgAccord.addLast("/imagenes/honda_accord_2.jpeg");
         
         //Ford Explorer
-        CircularDoublyLinkedList<Image> imgExplorer = new CircularDoublyLinkedList<>();
-        imgExplorer.addLast(new Image("/imagenes/Ford_Explorer_1.jpg"));
-        imgExplorer.addLast(new Image("/imagenes/Ford_Explorer_2.jpg"));
-        imgExplorer.addLast(new Image("/imagenes/Ford_Explorer_3.jpg"));
-        imgExplorer.addLast(new Image("/imagenes/Ford_Explorer_4.jpg"));
+        CircularDoublyLinkedList<String> imgExplorer = new CircularDoublyLinkedList<>();
+        imgExplorer.addLast("/imagenes/Ford_Explorer_1.jpg");
+        imgExplorer.addLast("/imagenes/Ford_Explorer_2.jpg");
+        imgExplorer.addLast("/imagenes/Ford_Explorer_3.jpg");
+        imgExplorer.addLast("/imagenes/Ford_Explorer_4.jpg");
         
         //Nissan Rogue
-        CircularDoublyLinkedList<Image> imgRogue = new CircularDoublyLinkedList<>();
-        imgRogue.addLast(new Image("/imagenes/Nissan_Rogue_1.jpeg"));
-        imgRogue.addLast(new Image("/imagenes/Nissan_Rogue_2.jpeg"));
-        imgRogue.addLast(new Image("/imagenes/Nissan_Rogue_3.jpeg"));
-        imgRogue.addLast(new Image("/imagenes/Nissan_Rogue_4.jpeg"));
+        CircularDoublyLinkedList<String> imgRogue = new CircularDoublyLinkedList<>();
+        imgRogue.addLast("/imagenes/Nissan_Rogue_1.jpeg");
+        imgRogue.addLast("/imagenes/Nissan_Rogue_2.jpeg");
+        imgRogue.addLast("/imagenes/Nissan_Rogue_3.jpeg");
+        imgRogue.addLast("/imagenes/Nissan_Rogue_4.jpeg");
         
         //BMW 3 Series
-        CircularDoublyLinkedList<Image> img3Series = new CircularDoublyLinkedList<>();
-        img3Series.addLast(new Image("/imagenes/BMW_3SERIES_1.jpeg"));
-        img3Series.addLast(new Image("/imagenes/BMW_3SERIES_2.jpeg"));
-        img3Series.addLast(new Image("/imagenes/BMW_3SERIES_3.jpeg"));
-        img3Series.addLast(new Image("/imagenes/BMW_3SERIES_4.jpeg"));
+        CircularDoublyLinkedList<String> img3Series = new CircularDoublyLinkedList<>();
+        img3Series.addLast("/imagenes/BMW_3SERIES_1.jpeg");
+        img3Series.addLast("/imagenes/BMW_3SERIES_2.jpeg");
+        img3Series.addLast("/imagenes/BMW_3SERIES_3.jpeg");
+        img3Series.addLast("/imagenes/BMW_3SERIES_4.jpeg");
         
         //Mercedes-Benz E-Class
-        CircularDoublyLinkedList<Image> imgEClass = new CircularDoublyLinkedList<>();
-        imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_1.jpeg"));
-        imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_2.jpeg"));
-        imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_3.jpeg"));
-        imgEClass.addLast(new Image("/imagenes/MercedesBenz_EClass_4.jpeg"));
+        CircularDoublyLinkedList<String> imgEClass = new CircularDoublyLinkedList<>();
+        imgEClass.addLast("/imagenes/MercedesBenz_EClass_1.jpeg");
+        imgEClass.addLast("/imagenes/MercedesBenz_EClass_2.jpeg");
+        imgEClass.addLast("/imagenes/MercedesBenz_EClass_3.jpeg");
+        imgEClass.addLast("/imagenes/MercedesBenz_EClass_4.jpeg");
         
         
         

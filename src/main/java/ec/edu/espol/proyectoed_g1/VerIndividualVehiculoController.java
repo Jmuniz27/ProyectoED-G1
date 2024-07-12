@@ -86,7 +86,7 @@ public class VerIndividualVehiculoController implements Initializable {
     
     private Vehicle vehiculo;
     
-    private CircularDoublyLinkedList<Image> imagenes;
+    private CircularDoublyLinkedList<String> imagenes;
     
     private int index;
     @FXML
@@ -122,7 +122,7 @@ public class VerIndividualVehiculoController implements Initializable {
         lblNombreUsuario.setText(vehiculo.getDueno().getName());
         btnTelefono.setText(vehiculo.getDueno().getNumber());
         btnCorreo.setText(vehiculo.getDueno().getMail());
-        ivPrincipal.setImage(imagenes.get(0));
+        ivPrincipal.setImage(new Image(imagenes.get(0)));
         lblImageNumber.setText((index+1)+"");
         if(vehiculo.isEsLiked()){
             Image img3 = new Image("/imagenes/corazonLleno.png");
@@ -183,7 +183,7 @@ public class VerIndividualVehiculoController implements Initializable {
             if (index < 0) {
                 index = imagenes.size() - 1; // Volvemos al final de la lista circular
             }
-            ivPrincipal.setImage(imagenes.get(index));
+            ivPrincipal.setImage(new Image(imagenes.get(index)));
             lblImageNumber.setText((index+1)+"");
         }
     }
@@ -195,7 +195,7 @@ public class VerIndividualVehiculoController implements Initializable {
             if (index >= imagenes.size()) {
                 index = 0; // Volvemos al inicio de la lista circular
             }
-            ivPrincipal.setImage(imagenes.get(index));
+            ivPrincipal.setImage(new Image(imagenes.get(index)));
             lblImageNumber.setText((index+1)+"");
         }
     }

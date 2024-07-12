@@ -23,7 +23,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -91,7 +96,7 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private Button botonSubirImagen;
     
-    private CircularDoublyLinkedList<Image> imagenes = new CircularDoublyLinkedList<>();
+    private CircularDoublyLinkedList<String> imagenes = new CircularDoublyLinkedList<>();
     
     
     private LinkedList<AccidenteServicios> reparaciones = new LinkedList<>();
@@ -245,18 +250,33 @@ public class CrearVehiculoController implements Initializable {
         File file = fileChooser.showOpenDialog(new Stage());
             if (file != null) {
                 try {
-                    Image image = new Image(new FileInputStream(file));
-                    imagenes.addLast(image);
+                    // Guardar la imagen en la carpeta específica
+                    String imageUrl = saveImage(file);
+                    // Añadir la URL a la lista
+                    imagenes.addLast(imageUrl);
                     mostrarImagenes();
-                } catch (FileNotFoundException ex) {
+                } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
     }
     
+    private String saveImage(File file) throws IOException {
+        String imageDirectory = "imagenesSubidas/";
+        File directory = new File(imageDirectory);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+        String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getName();
+        Path targetPath = Paths.get(imageDirectory + uniqueFileName);
+        Files.copy(file.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+        return targetPath.toUri().toString();
+    }
+    
     public void mostrarImagenes(){
         fpImagenes.getChildren().clear();
-        for(Image image: imagenes){
+        for(String imageURL: imagenes){
+            Image image = new Image(imageURL);
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(85);
             imageView.setFitHeight(85);
