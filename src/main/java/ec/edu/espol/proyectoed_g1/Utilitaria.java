@@ -11,6 +11,7 @@ import excepciones.ComboBoxSinEleccion;
 import excepciones.NoEsNumero;
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.Duration;
 import java.util.Comparator;
 
 import javafx.scene.control.Alert;
@@ -18,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 
 /**
  *
@@ -76,5 +78,13 @@ public class Utilitaria implements Serializable {
         } catch (NumberFormatException e) {
             throw new NoEsNumero();
         }
+    }
+
+    public static Tooltip crearComents(String title, String msj){
+        Tooltip tooltip = new Tooltip(title+ "\n" + msj);
+        tooltip.setStyle("-fx-font-size: 16px; -fx-background-color: lightgray; -fx-text-fill: black;");
+        tooltip.setShowDelay(javafx.util.Duration.millis(0));
+        tooltip.setShowDuration(javafx.util.Duration.INDEFINITE);
+        return tooltip;
     }
 }

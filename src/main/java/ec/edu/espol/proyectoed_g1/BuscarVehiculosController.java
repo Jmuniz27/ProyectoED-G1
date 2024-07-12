@@ -156,7 +156,7 @@ public class BuscarVehiculosController implements Initializable {
             e.printStackTrace();
         }
     }
-
+//filtros
     @FXML
     private void buscarFiltros(ActionEvent event) {
         // Obtener valores de los filtros
@@ -256,16 +256,7 @@ public class BuscarVehiculosController implements Initializable {
         return resultado;
     }
     
-
-    private Integer validarNumero(String num) {
-        if(num == null || num.isEmpty()) return null;
-        try {
-            return Integer.parseInt(num);
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
+// paginacion
     @FXML
     private void prevPag(ActionEvent event) {
         if (currentPage > 1) {
@@ -279,15 +270,6 @@ public class BuscarVehiculosController implements Initializable {
         if (currentPage < totalPages) {
             currentPage++;
             goToPage(currentPage);
-        }
-    }
-    private void pruebaUpdate(){
-        gridCarros.getChildren().clear();
-        for (int i = 0; i < 2; i++) {
-            for(int j = 0; j < 2; j++){
-                gridCarros.add(new Label(j+""), i, j);
-                System.out.println(i + " " + j);
-            }
         }
     }
     private void updateGrid() {
@@ -397,18 +379,6 @@ public class BuscarVehiculosController implements Initializable {
             alerta.showAndWait();
     }
     //filtros
-    private void mostrarResultados(DoublyLinkedList<Vehicle> resultados) {
-        gridCarros.getChildren().clear();
-        DoublyNode<Vehicle> tempNode = resultados.getHead();
-        for (int i = 0; i < 2 && tempNode != null; i++) {
-            for(int j = 0; j < 2 && tempNode != null; j++){
-                System.out.println(i + " " + j);
-                VBox auto = plantillaAuto(tempNode.getContent());
-                gridCarros.add(auto, i, j);
-                tempNode = tempNode.getNext();
-            }
-        }
-    }
     private void setNumericTextField(TextField textField) {
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -443,9 +413,6 @@ public class BuscarVehiculosController implements Initializable {
         // cbRelev.getItems().add("Mayor Recorrido");
         // Aplicar filtros y obtener resultados
         DoublyLinkedList<Vehicle> resultados = listaMostrada;
-        if(cbRelev.getValue().equals("Relevancia")){
-            resultados = old;
-        }
         if(cbRelev.getValue().equals("Menor Precio")){
             resultados.sort((v1, v2) -> (int) (v1.getPrecio().getCant() - v2.getPrecio().getCant()));
         } else if (cbRelev.getValue().equals("Mayor Precio")){

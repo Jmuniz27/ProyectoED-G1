@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -99,6 +100,9 @@ public class VerIndividualVehiculoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Tooltip.install(ivPrincipal, Utilitaria.crearComents("Uso de CircularDoublyLinkedList", "Para recorrer de manera circular de ambos lados"));
+        Tooltip.install(btnDespuesImagen, Utilitaria.crearComents("Uso de CircularDoublyLinkedList", "Para recorrer de manera circular de ambos lados"));
+        Tooltip.install(btnAntesImagen, Utilitaria.crearComents("Uso de CircularDoublyLinkedList", "Para recorrer de manera circular de ambos lados"));
         vehiculo = BuscarVehiculosController.vehiculoEscogido;
         index = 0;
         imagenes = vehiculo.getImagsCarro();
