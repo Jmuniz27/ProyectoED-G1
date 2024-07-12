@@ -5,7 +5,6 @@
 package ec.edu.espol.proyectoed_g1;
 
 import ec.edu.espol.proyectoed_g1.modelo.clases.AccidenteServicios;
-import excepciones.NoSeCreoAccidenteServicio;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;

@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -30,12 +31,15 @@ public class VerMantenimientosController implements Initializable {
     private VBox vbMantenimientos;
     @FXML
     private Button btnSalir;
+    @FXML
+    private Label title;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Tooltip.install(title, Utilitaria.crearComents("Se implemento una LinkedList<Vehicle>", "Para ver de forma lineal"));
         vbMantenimientos.getChildren().clear();
         LinkedList<AccidenteServicios> mantenimientos = BuscarVehiculosController.vehiculoEscogido.getHistorial().getMantenimiento();
         Comparator<AccidenteServicios> cmp1 = new Comparator<>(){

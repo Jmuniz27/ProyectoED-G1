@@ -10,11 +10,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.DoublyLinkedList;
-import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Nodos.DoublyNode;
-import ec.edu.espol.proyectoed_g1.modelo.clases.AccidenteServicios;
 import java.util.Comparator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,9 +26,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -117,6 +116,12 @@ public class BuscarVehiculosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Crear comentarios
+        Tooltip.install(botonBuscar, Utilitaria.crearComents("Se implementa DoublyLinkedList<Vehicle>", "Me devuelve una lista por marca y modelo; otra por km y otra por precio. Al final se hace intersecciones entre las 3 listas y se presenta al usuario"));
+        Tooltip.install(cbRelev, Utilitaria.crearComents("Se usa comparator", "Para establecer prioridad en precio o km"));
+        Tooltip.install(FavsBtn, Utilitaria.crearComents("Usa una DoublyLinkedList<Vehicle>", "Filtra los vehiculos isLiked"));
+        Tooltip.install(gridCarros, Utilitaria.crearComents("Se implemento DoublyLinkedList<Vehicle>",
+                "Porque  La navegación debe poder realizarse en dos sentidos (hacia adelante y hacia atrás) mirando páginas de vehículos."));
         // relevancia
         vehiculos = Utilitaria.vehiculos.copy();
         cbRelev.getItems().add("Menor Precio");

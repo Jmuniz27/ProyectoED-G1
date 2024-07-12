@@ -4,7 +4,6 @@
  */
 package ec.edu.espol.proyectoed_g1;
 import ec.edu.espol.proyectoed_g1.modelo.clases.*;
-import ec.edu.espol.proyectoed_g1.modelo.Listas.CircularDoublyLinkedList;
 import ec.edu.espol.proyectoed_g1.modelo.Listas.LinkedList;
 import java.io.IOException;
 import java.net.URL;
@@ -15,14 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -36,12 +31,15 @@ public class VerReparacionesController implements Initializable {
     private VBox vbReparaciones;
     @FXML
     private Button btnSalir;
+    @FXML
+    private Label title;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Tooltip.install(title, Utilitaria.crearComents("Se implemento una LinkedList<Vehicle>", "Para ver de forma lineal"));
         vbReparaciones.getChildren().clear();
         LinkedList<AccidenteServicios> reparaciones = BuscarVehiculosController.vehiculoEscogido.getHistorial().getAccidentes();
         Comparator<AccidenteServicios> cmp1 = new Comparator<>(){
@@ -81,7 +79,6 @@ public class VerReparacionesController implements Initializable {
             // Actualizar el contenido de la celda
             Button btnFecha = (Button) rep.lookup("#btnFecha");
             Label lblDescri = (Label) rep.lookup("#lblDescri");
-                 
             btnFecha.setText(reparacion.getFecha().toString());
             lblDescri.setText(reparacion.getDescrip());
             return rep;

@@ -18,7 +18,7 @@
       <children>
          <HBox alignment="CENTER" prefHeight="59.0" prefWidth="580.0">
             <children>
-               <Label style="-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Reparaciones" textFill="#e0252d">
+               <Label fx:id="title" style="-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.6, 0, 0);" text="Reparaciones" textFill="#e0252d">
                   <font>
                      <Font name="Arial Rounded MT Bold" size="22.0" />
                   </font>

@@ -6,7 +6,6 @@ package ec.edu.espol.proyectoed_g1.modelo.clases;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  *
