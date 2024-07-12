@@ -38,6 +38,8 @@ public class PlantillaVehEditController implements Initializable {
     private Button btnEditar;
 
     public static Vehicle vehiculoEscogido;
+    @FXML
+    private Button btnEliminar;
 
     /**
      * Initializes the controller class.
@@ -55,5 +57,9 @@ public class PlantillaVehEditController implements Initializable {
         } catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void clickEliminar(MouseEvent event) {
     }
 }
